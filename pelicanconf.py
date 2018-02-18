@@ -2,7 +2,39 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = ''
+AUTHORS = {
+    'Onur Aslan': {
+        'description': """
+            I am a superhero saving thousand of lives in Internet.
+        """,
+        'cover': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Milky_Way_Arch.jpg/1920px-Milky_Way_Arch.jpg',
+        'image': 'https://lh6.googleusercontent.com/-zEMaXmWAhdI/AAAAAAAAAAI/AAAAAAAAAAA/eVdgsm3TIDU/s128-c-k/photo.jpg',
+        'links': (('github', 'https://github.com/onuraslan'),
+                  ('twitter-square', 'https://twitter.com/oasln')),
+    },
+
+    'Gilles Vandewiele': {
+        'description': """
+            White-box machine learning and decision support systems.
+        """,
+        'cover': '/images/banner_gilles.jpg',
+        'image': '/images/profielfoto_gilles.jpg',
+        'links': (('github', 'https://github.com/GillesVandewiele'),
+                  ('twitter-square', 'https://twitter.com/gillesvdwiele'),
+                  ('linkedin', 'https://www.linkedin.com/in/gillesvandewiele')),
+    },
+
+    'Pieter Bonte': {
+        'description': """
+            Stream reasoning.
+        """,
+        'cover': '/images/banner_gilles.jpg',
+        'image': '/images/profielfoto_pieter.jpg',
+        'links': (('github', 'https://github.com/pbonte/'),
+                  ('twitter-square', 'https://twitter.com/psbonte'),
+                  ('linkedin', ' https://www.linkedin.com/in/pieter-bonte-9294315a')),
+    }
+}
 SITENAME = 'Knowledge Management'
 SITEURL = ''
 THEME = 'medius'
@@ -50,39 +82,7 @@ PAGINATED_DIRECT_TEMPLATES = ('index', 'includes/posts', 'publications', 'blog')
 
 PUBLICATIONS_SRC = 'content/publications.bib'
 
-MEDIUS_AUTHORS = {
-    'Onur Aslan': {
-        'description': """
-            I am a superhero saving thousand of lives in Internet.
-        """,
-        'cover': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Milky_Way_Arch.jpg/1920px-Milky_Way_Arch.jpg',
-        'image': 'https://lh6.googleusercontent.com/-zEMaXmWAhdI/AAAAAAAAAAI/AAAAAAAAAAA/eVdgsm3TIDU/s128-c-k/photo.jpg',
-        'links': (('github', 'https://github.com/onuraslan'),
-                  ('twitter-square', 'https://twitter.com/oasln')),
-    },
-
-    'Gilles Vandewiele': {
-        'description': """
-            White-box machine learning and decision support systems.
-        """,
-        'cover': '/images/banner_gilles.jpg',
-        'image': '/images/profielfoto_gilles.jpg',
-        'links': (('github', 'https://github.com/GillesVandewiele'),
-                  ('twitter-square', 'https://twitter.com/gillesvdwiele'),
-                  ('linkedin', 'https://www.linkedin.com/in/gillesvandewiele')),
-    },
-
-    'Pieter Bonte': {
-        'description': """
-            Stream reasoning.
-        """,
-        'cover': '/images/banner_gilles.jpg',
-        'image': '/images/profielfoto_pieter.jpg',
-        'links': (('github', 'https://github.com/pbonte/'),
-                  ('twitter-square', 'https://twitter.com/psbonte'),
-                  ('linkedin', ' https://www.linkedin.com/in/pieter-bonte-9294315a')),
-    }
-}
+MEDIUS_AUTHORS = AUTHORS
 
 SITESUBTITLE = 'Exploiting domain knowledge to enable more intelligent machine learning, event processing and personalized & context-aware decision support systems'
 
