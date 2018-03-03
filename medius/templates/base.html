@@ -33,6 +33,8 @@
         {% if TAG_FEED_RSS and tag %}
         <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS|format(tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
         {% endif %}
+
+        <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/list.js"> </script>
         {% endblock head %}
 </head>
 <body>

@@ -1,0 +1,15 @@
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
+<http://example.com/me/corky> a vcard:Individual;
+  vcard:hasEmail <mailto:corky@example.com>;
+  vcard:fn "Corky Crystal";
+  vcard:logo "test.png";
+  vcard:hasAddress [ a vcard:Home;
+    vcard:country-name "Australia";
+    vcard:locality "WonderCity";
+    vcard:postal-code "5555";
+    vcard:street-address "111 Lake Drive" ];
+  vcard:hasTelephone [ a vcard:Home,
+    vcard:Voice;
+    vcard:hasValue <tel:+61755555555> ];
+   vcard:nickname "Corks" .

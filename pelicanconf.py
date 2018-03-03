@@ -17,7 +17,7 @@ AUTHORS = {
         'description': """
             White-box machine learning and decision support systems.
         """,
-        'cover': '/images/banner_gilles.jpg',
+        'cover': '/images/banner.png',
         'image': '/images/profielfoto_gilles.jpg',
         'links': (('github', 'https://github.com/GillesVandewiele'),
                   ('twitter-square', 'https://twitter.com/gillesvdwiele'),
@@ -28,7 +28,7 @@ AUTHORS = {
         'description': """
             Stream reasoning.
         """,
-        'cover': '/images/banner_gilles.jpg',
+        'cover': '/images/banner.png',
         'image': '/images/profielfoto_pieter.jpg',
         'links': (('github', 'https://github.com/pbonte/'),
                   ('twitter-square', 'https://twitter.com/psbonte'),
@@ -60,7 +60,7 @@ DISPLAY_PAGES_ON_MENU = False
 PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = ['pelican-bibtex']
 
-STATIC_PATHS = ['images']
+STATIC_PATHS = ['images', 'js']
 
 
 MENUITEMS = (
@@ -79,6 +79,7 @@ ICONS = (
 
 DIRECT_TEMPLATES = ('includes/posts', 'publications', 'index', 'about', 'blog')
 PAGINATED_DIRECT_TEMPLATES = ('index', 'includes/posts', 'publications', 'blog') 
+DISQUS_SITENAME = "localhost"
 
 PUBLICATIONS_SRC = 'content/publications.bib'
 
