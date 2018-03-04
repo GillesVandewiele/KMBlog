@@ -1,15 +1,30 @@
-@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
-@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
-<http://example.com/me/corky> a vcard:Individual;
-  vcard:hasEmail <mailto:corky@example.com>;
-  vcard:fn "Corky Crystal";
-  vcard:logo "test.png";
-  vcard:hasAddress [ a vcard:Home;
-    vcard:country-name "Australia";
-    vcard:locality "WonderCity";
-    vcard:postal-code "5555";
-    vcard:street-address "111 Lake Drive" ];
-  vcard:hasTelephone [ a vcard:Home,
-    vcard:Voice;
-    vcard:hasValue <tel:+61755555555> ];
-   vcard:nickname "Corks" .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc:   <http://purl.org/dc/elements/1.1/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+
+<#GVDW>
+    a foaf:Person ;
+    foaf:name "Gilles Vandewiele" ;
+    foaf:givenName "Gilles" ;
+    foaf:familyName "Vandewiele" ;
+    foaf:mbox <mailto:gilles.vandewiele@ugent.be> ;
+    foaf:homepage <http://users.ugent.be/~givdwiel> ;
+    foaf:depiction <gilles.jpg> ;
+    foaf:account <https://github.com/GillesVandewiele> ;
+    foaf:account <https://twitter.com/gillesvdwiele> ;
+    foaf:account <https://www.linkedin.com/in/gillesvandewiele> ;
+    foaf:interest <https://en.wikipedia.org/wiki/Decision_support_system>;
+    owl:sameAs <https://data.verborgh.org/people/gilles_vandewiele> ;
+
+<#PB>
+    a foaf:Person ;
+    foaf:name "Pieter Bonte" ;
+    foaf:givenName "Pieter" ;
+    foaf:familyName "Bonte" ;
+    foaf:mbox <mailto:pieter.bonte@ugent.be> ;
+    foaf:depiction <pieter.jpg> ;
+    foaf:account <https://github.com/pbonte/> ;
+    foaf:account <https://twitter.com/psbonte> ;
+    foaf:account <https://www.linkedin.com/in/pieter-bonte-9294315a> ;

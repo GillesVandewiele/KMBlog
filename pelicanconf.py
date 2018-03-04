@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+import rdflib
+
+def extract_authors(author_path):
+    pass
 
 AUTHORS = {
     'Onur Aslan': {

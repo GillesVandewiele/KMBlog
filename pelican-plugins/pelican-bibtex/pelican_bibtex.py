@@ -66,6 +66,8 @@ class Publication(object):
 
 
     def create_citation_formats(self):
+        # TODO: use the different variables of an object
+        # to create different citation formats
         pass
 
 class BibGenerator(Generator):
@@ -98,9 +100,6 @@ class BibGenerator(Generator):
             ))
             return
 
-        #for entry in bibdata_all.entries:
-        #    print(BibliographyData(entries={entry: bibdata_all.entries[entry]}).to_string('bibtex'))
-
         # Create Publication objects and add them to a list
         publications = []
 
@@ -111,8 +110,13 @@ class BibGenerator(Generator):
         decoder = latexcodec.lexer.LatexIncrementalDecoder()
 
         for entry in bibdata_all.entries:
-            raw_tex = re.sub(r'([A-z]+ +=)', r'\n    \1', decoder.decode(
-                bytes(BibliographyData(entries={entry: bibdata_all.entries[entry]}).to_string('bibtex'), encoding='latex')
+            raw_tex = re.sub(
+                r'([A-z]+ +=)', 
+                r'\n    \1', 
+                decoder.decode(bytes(
+                    BibliographyData(entries={entry: bibdata_all.entries[entry]}).to_string('bibtex'), 
+                    encoding='latex'
+                )
             ))[:-1]
             raw_tex += '\n}'
             formatted_entry = list(plain_style.format_entries([bibdata_all.entries[entry]]))[0]
