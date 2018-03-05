@@ -1,0 +1,17 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc:   <http://purl.org/dc/elements/1.1/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+
+<#PieterBonte>
+    a foaf:Person ;
+    foaf:name "Pieter Bonte" ;
+    foaf:givenName "Pieter" ;
+    foaf:familyName "Bonte" ;
+    foaf:mbox <mailto:pieter.bonte@ugent.be> ;
+    foaf:depiction "pieter.jpg" ;
+    foaf:account <https://github.com/pbonte/> ;
+    foaf:account <https://twitter.com/psbonte> ;
+    foaf:account <https://www.linkedin.com/in/pieter-bonte-9294315a> ;
+    foaf:interest "Stream Reasoning" .

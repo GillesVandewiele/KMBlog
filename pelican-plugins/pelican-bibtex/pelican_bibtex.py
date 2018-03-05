@@ -16,7 +16,9 @@ from pybtex.backends import html
 from pybtex.style.formatting import plain
 
 from collections import defaultdict
+
 import latexcodec
+from pylatexenc.latex2text import LatexNodes2Text
 
 BIBTEX_TYPE_TO_TEXT = {
     'inproceedings': 'Conference',
@@ -89,10 +91,14 @@ class BibGenerator(Generator):
             return
 
         # Try to parse the bibtex files
-        refs_file = self.settings['PUBLICATIONS_SRC']
+        pub_dir = self.settings['PUBLICATIONS_SRC']
         try:
-            with codecs.open(refs_file, encoding="latex") as stream:
-                bibdata_all = Parser().parse_stream(stream)
+            bibdata_all = BibliographyData()
+            for file in os.listdir(pub_dir):
+                with codecs.open(pub_dir+os.sep+file, 'r', encoding="utf8") as stream:
+                    bibdata = Parser().parse_stream(stream)
+                    key, entry = bibdata.entries.items()[0]
+                    bibdata_all.entries[key] = entry
         except PybtexError as e:
             logger.warn('`pelican_bibtex` failed to parse file %s: %s' % (
                 refs_file,
@@ -128,11 +134,14 @@ class BibGenerator(Generator):
             
             authors = entry.fields.get('author', '').split(' and ')
             authors = [
-                re.sub(r'[\{\}]', '', (x.split(',')[1] + ' ' + x.split(',')[0]).strip())
+                LatexNodes2Text().latex_to_text(
+                    re.sub(r'[\{\}]', '', (x.split(',')[1] + ' ' + x.split(',')[0]).strip())
+                )
                 for x in authors
             ]
             
-            title = entry.fields.get('title', '')
+            print(type(entry.fields.get('title', '')))
+            title = LatexNodes2Text().latex_to_text(entry.fields.get('title', ''))
             
             pdf = entry.fields.get('pdf', None)
             slides = entry.fields.get('slides', None)

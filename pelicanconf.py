@@ -2,43 +2,92 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 import rdflib
+import os
+
+
 
 def extract_authors(author_path):
-    pass
+    g = rdflib.Graph()
+    for author_rdf_file in os.listdir(author_path):
+        g.parse(AUTHORS_PATH+os.sep+author_rdf_file, format='turtle')
 
-AUTHORS = {
-    'Onur Aslan': {
-        'description': """
-            I am a superhero saving thousand of lives in Internet.
-        """,
-        'cover': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Milky_Way_Arch.jpg/1920px-Milky_Way_Arch.jpg',
-        'image': 'https://lh6.googleusercontent.com/-zEMaXmWAhdI/AAAAAAAAAAI/AAAAAAAAAAA/eVdgsm3TIDU/s128-c-k/photo.jpg',
-        'links': (('github', 'https://github.com/onuraslan'),
-                  ('twitter-square', 'https://twitter.com/oasln')),
-    },
+    # Get all unique author URIs
+    qres = g.query("""SELECT ?author  WHERE {
+                        ?author rdf:type foaf:Person .
+                   }""",
+                   initNs={'rdf': rdflib.Namespace('http://www.w3.org/1999/02/22-rdf-syntax-ns#'),
+                           'foaf': rdflib.Namespace('http://xmlns.com/foaf/0.1/')})
+    authors = [x[0] for x in qres]
 
-    'Gilles Vandewiele': {
-        'description': """
-            White-box machine learning and decision support systems.
-        """,
-        'cover': '/images/banner.png',
-        'image': '/images/profielfoto_gilles.jpg',
-        'links': (('github', 'https://github.com/GillesVandewiele'),
-                  ('twitter-square', 'https://twitter.com/gillesvdwiele'),
-                  ('linkedin', 'https://www.linkedin.com/in/gillesvandewiele')),
-    },
+    author_dict = {}
+    for author in authors:
+        # Get the name
+        qres = g.query("""SELECT ?name  WHERE {
+                        ?author foaf:name ?name .
+                   }""",
+                   initNs={'foaf': rdflib.Namespace('http://xmlns.com/foaf/0.1/')},
+                   initBindings={'author': author})
+        name = str(list(qres)[0][0].toPython())
+        author_dict[name] = {}
 
-    'Pieter Bonte': {
-        'description': """
-            Stream reasoning.
-        """,
-        'cover': '/images/banner.png',
-        'image': '/images/profielfoto_pieter.jpg',
-        'links': (('github', 'https://github.com/pbonte/'),
-                  ('twitter-square', 'https://twitter.com/psbonte'),
-                  ('linkedin', ' https://www.linkedin.com/in/pieter-bonte-9294315a')),
-    }
-}
+        # Get his interests
+        qres = g.query("""SELECT ?interest  WHERE {
+                        ?author foaf:interest ?interest .
+                   }""",
+                   initNs={'foaf': rdflib.Namespace('http://xmlns.com/foaf/0.1/')},
+                   initBindings={'author': author})
+        # Build the description string based on his interests
+        if len(qres) == 1:
+            description = str(list(qres)[0][0].toPython())
+        else:
+            interests = [str(x[0].toPython()) for x in qres]
+            description = ','.join(interests[:-2]) + ' and '.join(interests[-2:])
+        author_dict[name]['description'] = description
+
+        # Get his image
+        qres = g.query("""SELECT ?image  WHERE {
+                        ?author foaf:depiction ?image .
+                   }""",
+                   initNs={'foaf': rdflib.Namespace('http://xmlns.com/foaf/0.1/')},
+                   initBindings={'author': author})
+        image = list(qres)[0][0]
+        print(type(image))
+        if type(image) == rdflib.term.Literal:
+            image = '/images/'+str(image.toPython())
+        else:
+            image = str(image.toPython())
+
+        # Set the image and cover image
+        author_dict[name]['image'] = image
+        author_dict[name]['cover'] = '/images/banner.png'
+
+        # Get the links
+        author_dict[name]['links'] = []
+        qres = g.query("""SELECT ?account  WHERE {
+                        ?author foaf:account ?account .
+                   }""",
+                   initNs={'foaf': rdflib.Namespace('http://xmlns.com/foaf/0.1/')},
+                   initBindings={'author': author})
+
+        for link in qres:
+            uri = str(link[0].toPython())
+            if 'github' in uri:
+                author_dict[name]['links'].append(('github', uri))
+            elif 'twitter' in uri:
+                author_dict[name]['links'].append(('twitter-square', uri))
+            elif 'linkedin' in uri:
+                author_dict[name]['links'].append(('linkedin', uri))
+            else:
+                author_dict[name]['links'].append(('globe', uri))
+
+    return author_dict
+
+
+
+AUTHORS_PATH = 'content/authors'       
+AUTHORS = extract_authors(AUTHORS_PATH)
+print(AUTHORS)
+
 SITENAME = 'Knowledge Management'
 SITEURL = ''
 THEME = 'medius'
@@ -85,7 +134,7 @@ DIRECT_TEMPLATES = ('includes/posts', 'publications', 'index', 'about', 'blog')
 PAGINATED_DIRECT_TEMPLATES = ('index', 'includes/posts', 'publications', 'blog') 
 DISQUS_SITENAME = "localhost"
 
-PUBLICATIONS_SRC = 'content/publications.bib'
+PUBLICATIONS_SRC = 'content/publications'
 
 MEDIUS_AUTHORS = AUTHORS
 

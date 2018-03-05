@@ -4,27 +4,17 @@
 @prefix dc:   <http://purl.org/dc/elements/1.1/> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 
-<#GVDW>
+<GillesVandewiele>
     a foaf:Person ;
     foaf:name "Gilles Vandewiele" ;
     foaf:givenName "Gilles" ;
     foaf:familyName "Vandewiele" ;
     foaf:mbox <mailto:gilles.vandewiele@ugent.be> ;
     foaf:homepage <http://users.ugent.be/~givdwiel> ;
-    foaf:depiction <gilles.jpg> ;
+    foaf:depiction <http://users.ugent.be/~givdwiel/img/profielfoto.jpg> ;
     foaf:account <https://github.com/GillesVandewiele> ;
     foaf:account <https://twitter.com/gillesvdwiele> ;
     foaf:account <https://www.linkedin.com/in/gillesvandewiele> ;
-    foaf:interest <https://en.wikipedia.org/wiki/Decision_support_system>;
-    owl:sameAs <https://data.verborgh.org/people/gilles_vandewiele> ;
-
-<#PB>
-    a foaf:Person ;
-    foaf:name "Pieter Bonte" ;
-    foaf:givenName "Pieter" ;
-    foaf:familyName "Bonte" ;
-    foaf:mbox <mailto:pieter.bonte@ugent.be> ;
-    foaf:depiction <pieter.jpg> ;
-    foaf:account <https://github.com/pbonte/> ;
-    foaf:account <https://twitter.com/psbonte> ;
-    foaf:account <https://www.linkedin.com/in/pieter-bonte-9294315a> ;
+    foaf:interest "Decision Support Systems" ;
+    foaf:interest "White-Box Machine Learning" ;
+    owl:sameAs <https://data.verborgh.org/people/gilles_vandewiele> .
