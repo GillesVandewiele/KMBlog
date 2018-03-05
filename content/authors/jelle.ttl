@@ -1,0 +1,17 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc:   <http://purl.org/dc/elements/1.1/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+
+<#JelleDeBock>
+   a foaf:Person ;
+   foaf:name "Jelle De Bock" ;
+   foaf:givenName "Jelle" ;
+   foaf:familyName "De Bock" ;
+   foaf:mbox <mailto:jelle.debock@ugent.be> ;
+   foaf:depiction "jelle.jpg" ;
+   foaf:account <https://github.com/jelledebock> ;
+   foaf:account <https://twitter.com/JelleDeBock> ;
+   foaf:account <https://www.linkedin.com/in/jelle-de-bock-670a7090/> ;
+   foaf:interest "Data processing and analytics" .
