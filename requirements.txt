@@ -2,3 +2,5 @@ pelican
 latexcodec
 pybtex
 pylatexenc
+ghp-import
+rdflib
