@@ -20,6 +20,8 @@ from collections import defaultdict
 import latexcodec
 from pylatexenc.latex2text import LatexNodes2Text
 
+import codecs
+
 BIBTEX_TYPE_TO_TEXT = {
     'inproceedings': 'Conference',
     'article': 'Journal',

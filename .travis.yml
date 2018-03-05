@@ -4,6 +4,7 @@ python:
 install:
 - pip install -r requirements.txt
 script:
+- python test/test_bib_entry.py
 - make publish github
 env:
   global:
