@@ -4,7 +4,7 @@
 @prefix dc:   <http://purl.org/dc/elements/1.1/> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 
-<GillesVandewiele>
+<#GillesVandewiele>
     a foaf:Person ;
     foaf:name "Gilles Vandewiele" ;
     foaf:givenName "Gilles" ;
