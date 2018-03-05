@@ -119,6 +119,6 @@ cf_upload: publish
 
 github: publish
 	ghp-import -n $(OUTPUTDIR)
-	@git push -fq https://f8561983d9644d08bbc02411a0d34447f473aecc@github.com/KMBlog.git gh-pages > /dev/null
+	@git push -fq https://${GITHUB_TOKEN}@github.com/KMBlog.git gh-pages > /dev/null
 
 .PHONY: html help clean regenerate serve serve-global devserver stopserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
