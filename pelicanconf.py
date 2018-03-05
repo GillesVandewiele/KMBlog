@@ -51,7 +51,6 @@ def extract_authors(author_path, site_url=''):
                    initNs={'foaf': rdflib.Namespace('http://xmlns.com/foaf/0.1/')},
                    initBindings={'author': author})
         image = list(qres)[0][0]
-        print(type(image))
         if type(image) == rdflib.term.Literal:
             image = site_url+'/images/'+str(image.toPython())
         else:
