@@ -1,9 +1,8 @@
-Title: Article without cover 08
-Category: Category
-Date: 2015-09-09
-Thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Montagem_Sistema_Solar.jpg/787px-Montagem_Sistema_Solar.jpg
-SubTitle: This is subtitle
-Tags: Solar System, Orbit
+Title: About
+url: 
+save_as: about.html
+
+This is an example page.
 
 The **Solar System** comprises the Sun and the objects that orbit it, either
 directly or indirectly. Of those objects that orbit the Sun directly,
@@ -13,7 +12,7 @@ planets and small Solar System bodies such as comets and asteroids. Of
 those that orbit the Sun indirectly, two are larger than the smallest
 planet.
 
-Cover Copyright: Released on public domain by [NASA](http://solarsystem.nasa.gov/multimedia/display.cfm?Category=Planets&IM_ID=10164)
+Image Copyright: Released on public domain by [NASA](http://solarsystem.nasa.gov/multimedia/display.cfm?Category=Planets&IM_ID=10164)
 
 ### Lorem
 

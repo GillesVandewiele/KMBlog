@@ -116,15 +116,8 @@ class BibGenerator(Generator):
         decoder = latexcodec.lexer.LatexIncrementalDecoder()
 
         for entry in bibdata_all.entries:
-            raw_tex = re.sub(
-                r'([A-z]+ +=)', 
-                r'\n    \1', 
-                decoder.decode(bytes(
-                    BibliographyData(entries={entry: bibdata_all.entries[entry]}).to_string('bibtex'), 
-                    encoding='latex'
-                )
-            ))[:-1]
-            raw_tex += '\n}'
+            raw_tex = BibliographyData(entries={entry: bibdata_all.entries[entry]}).to_string('bibtex')
+            #raw_tex += '\n}'
             formatted_entry = list(plain_style.format_entries([bibdata_all.entries[entry]]))[0]
 
             key = formatted_entry.key
@@ -140,7 +133,6 @@ class BibGenerator(Generator):
                 for x in authors
             ]
             
-            print(type(entry.fields.get('title', '')))
             title = LatexNodes2Text().latex_to_text(entry.fields.get('title', ''))
             
             pdf = entry.fields.get('pdf', None)
@@ -149,9 +141,9 @@ class BibGenerator(Generator):
 
             where = ''
             if 'booktitle' in entry.fields:
-                where = entry.fields.get('booktitle')
+                where = LatexNodes2Text().latex_to_text(entry.fields.get('booktitle'))
             elif 'journal' in entry.fields:
-                where = entry.fields.get('journal')
+                where = LatexNodes2Text().latex_to_text(entry.fields.get('journal'))
             
             abstract = entry.fields.get('abstract', '')
 
