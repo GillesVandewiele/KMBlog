@@ -26,6 +26,7 @@ CLOUDFILES_CONTAINER=my_cloudfiles_container
 DROPBOX_DIR=~/Dropbox/Public/
 
 GITHUB_PAGES_BRANCH=gh-pages
+GH_TOKEN = bpQmhqSMRWgKR+Eq75Sj0e4e1MBYUrujUVe2A5t5GqfYOlbDcfwLAwSyAfdDbzDif7Gp1HkBuCIOVGKefL5ZiWZn/5MJ1JHi0t+psJQLCcknT1xC2YK6TzP0LB1lfQoWB62TAZ4ftOC9UYHWrZC9gJXqBzjU0J6yx0dlCFH4V9pywncyQO4JidnkPSnel/kbwq87hDpPw9VMmPFV8UaDawnjKvtCWCxK2qfGXCRDujNYJAtTojscLRCuUAmyhxXTeDNWI29aTd36rUhMRfEbzMA/Fn2cFhz+yRmYvYFwDysy5bKWJy9iJmTFw1/s0CxAthQBDVTNZCOw6srTScRvRJ1sPP/8ddMMsuHUz+4Z9bf4b5ExYuuBP19Xxnnqdmrsc9D5jQ0BNnxpBmZ/tKIjMEbcjM9IPdh4tbQnKlWF6ibD8p6ulVflpIUP3IMeuXktfssVDSPI4f8IxT8TBfthXQ0YNoIToHyFoxg0rYmePhRd20n99B1RUMa5XI5OIoXczIpEY6VzP4/7HjjhFLchLimAJ6LtnqTUEe/9aq/MMnMdMYCSIiaAyJYh6c70/XAD+LGXI4yyx/JHjOOkznwRABXmIEjnrXre5ZgMVYGV6xKGxal1gG/LZa0Pji2Km4eygbWiobXH9h8+ObatoMp8Q7IYIU/9jLm08d5JLQRcqSs=
 
 DEBUG ?= 0
 ifeq ($(DEBUG), 1)
@@ -119,6 +120,6 @@ cf_upload: publish
 
 github: publish
 	ghp-import -n $(OUTPUTDIR)
-    @git push -fq https://GillesVandewiele@github.com/KMBlog.git gh-pages > /dev/null
+    git push -fq https://${GH_TOKEN}@github.com/KMBlog.git gh-pages > /dev/null
 
 .PHONY: html help clean regenerate serve serve-global devserver stopserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
