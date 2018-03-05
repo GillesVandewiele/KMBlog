@@ -503,6 +503,18 @@ div.author-page-divider {
     border-color: rgba(0, 0, 0, 0.6);
     color: rgba(0, 0, 0, 0.8); }
 
+div.tags a {
+  color: rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 0.97);
+  font-size: 13px;
+  border-radius: 3px;
+  border: 1px solid #f0f0f0;
+  padding: 5px 10px;
+  line-height: 22px;
+  text-decoration: none;
+  margin: 0 8px 8px 0;
+  display: inline-block; }
+
 div.tags a.inactive {
   color: rgba(0, 0, 0, 0.6);
   background: rgba(255, 255, 255, 0.97);

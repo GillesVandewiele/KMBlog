@@ -92,7 +92,7 @@
             </div>
             <div class="tags">
               {% for year in publications_per_year.keys()|sort %}
-                <a class="filterBtn active">{{ year }}</a>
+                <a class="filterBtn active" style="cursor: pointer;">{{ year }}</a>
               {% endfor %}
             </div>
 
@@ -101,7 +101,7 @@
             </div>
             <div class="tags">
               {% for type in publications_per_type.keys() %}
-                <a class="filterBtn active">{{ type }}</a>
+                <a class="filterBtn active" style="cursor: pointer;">{{ type }}</a>
               {% endfor %}
             </div>
 
