@@ -1,1 +1,4 @@
 pelican
+latexcodec
+pybtex
+pylatexenc
