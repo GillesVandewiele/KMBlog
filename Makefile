@@ -26,7 +26,6 @@ CLOUDFILES_CONTAINER=my_cloudfiles_container
 DROPBOX_DIR=~/Dropbox/Public/
 
 GITHUB_PAGES_BRANCH=gh-pages
-GH_TOKEN=1d25071610a552bd916b83aca246559568792ca2
 
 DEBUG ?= 0
 ifeq ($(DEBUG), 1)
@@ -120,6 +119,6 @@ cf_upload: publish
 
 github: publish
 	ghp-import -n $(OUTPUTDIR)
-	@git push -fq https://$(GH_TOKEN)@github.com/KMBlog.git gh-pages > /dev/null
+	@git push -fq https://f8561983d9644d08bbc02411a0d34447f473aecc@github.com/KMBlog.git gh-pages > /dev/null
 
 .PHONY: html help clean regenerate serve serve-global devserver stopserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
