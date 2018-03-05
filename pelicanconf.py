@@ -80,6 +80,8 @@ def extract_authors(author_path):
             else:
                 author_dict[name]['links'].append(('globe', uri))
 
+        author_dict[name]['links'] = sorted(author_dict[name]['links'], key=lambda x: x[0])
+
     return author_dict
 
 
