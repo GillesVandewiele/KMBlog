@@ -1,0 +1,18 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc:   <http://purl.org/dc/elements/1.1/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+
+<#MathiasDeBrouwer>
+   a foaf:Person ;
+   foaf:name "Mathias De Brouwer" ;
+   foaf:givenName "Mathias" ;
+   foaf:familyName "De Brouwer" ;
+   foaf:mbox <mailto:mrdbrouw.debrouwer@ugent.be> ;
+   foaf:depiction <https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAIA_wDGAAAAAQAAAAAAAAtsAAAAJGNhMWUwMTc1LTM4OTctNDc0NC04YjUwLTZhZDgzZDljNmJhNg.jpg> ;
+   foaf:account <https://github.com/mrdbrouw> ;
+   foaf:account <https://twitter.com/mathiasdbr> ;
+   foaf:account <https://www.linkedin.com/in/mathiasdebrouwer/> ;
+   foaf:interest "Edge Computing" ;
+   foaf:interest "Stream Reasoning" .

@@ -6,7 +6,7 @@ import os
 
 
 
-def extract_authors(author_path):
+def extract_authors(author_path, site_url=''):
     g = rdflib.Graph()
     for author_rdf_file in os.listdir(author_path):
         g.parse(AUTHORS_PATH+os.sep+author_rdf_file, format='turtle')
@@ -53,13 +53,13 @@ def extract_authors(author_path):
         image = list(qres)[0][0]
         print(type(image))
         if type(image) == rdflib.term.Literal:
-            image = '/images/'+str(image.toPython())
+            image = site_url+'/images/'+str(image.toPython())
         else:
             image = str(image.toPython())
 
         # Set the image and cover image
         author_dict[name]['image'] = image
-        author_dict[name]['cover'] = '/images/banner.png'
+        author_dict[name]['cover'] = site_url+'/images/banner.png'
 
         # Get the links
         author_dict[name]['links'] = []
@@ -88,7 +88,6 @@ def extract_authors(author_path):
 
 AUTHORS_PATH = 'content/authors'       
 AUTHORS = extract_authors(AUTHORS_PATH)
-print(AUTHORS)
 
 SITENAME = 'Knowledge Management'
 SITEURL = ''
@@ -115,13 +114,13 @@ DISPLAY_PAGES_ON_MENU = False
 PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = ['pelican-bibtex']
 
-STATIC_PATHS = ['images', 'js']
+STATIC_PATHS = ['images']
 
 
 MENUITEMS = (
-    ('About', '/about.html'),
-    ('Publications', '/publications.html'),
-    ('Blog', '/blog.html'),
+    ('About', SITEURL+'/about.html'),
+    ('Publications', SITEURL+'/publications.html'),
+    ('Blog', SITEURL+'/blog.html'),
     )
 
 # Blogroll

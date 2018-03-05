@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Knowledge Management Blog - Category</title><link href="http://gillesvandewiele.github.io/KMBlog/" rel="alternate"></link><link href="http://gillesvandewiele.github.io/KMBlog/feeds/category.atom.xml" rel="self"></link><id>http://gillesvandewiele.github.io/KMBlog/</id><updated>2015-09-11T00:00:00+02:00</updated><entry><title>Medius</title><link href="http://gillesvandewiele.github.io/KMBlog/medius.html" rel="alternate"></link><published>2015-09-11T00:00:00+02:00</published><updated>2015-09-11T00:00:00+02:00</updated><author><name>Gilles Vandewiele</name></author><id>tag:gillesvandewiele.github.io,2015-09-11:/KMBlog/medius.html</id><summary type="html">&lt;p&gt;&lt;em&gt;All images used in this demo are taken from Wikipedia commons and they are
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Knowledge Management Blog - Category</title><link href="https://gillesvandewiele.github.io/KMBlog/" rel="alternate"></link><link href="https://gillesvandewiele.github.io/KMBlog/feeds/category.atom.xml" rel="self"></link><id>https://gillesvandewiele.github.io/KMBlog/</id><updated>2015-09-11T00:00:00+02:00</updated><entry><title>Medius</title><link href="https://gillesvandewiele.github.io/KMBlog/medius.html" rel="alternate"></link><published>2015-09-11T00:00:00+02:00</published><updated>2015-09-11T00:00:00+02:00</updated><author><name>Gilles Vandewiele</name></author><id>tag:gillesvandewiele.github.io,2015-09-11:/KMBlog/medius.html</id><summary type="html">&lt;p&gt;&lt;em&gt;All images used in this demo are taken from Wikipedia commons and they are
 released to public domain by NASA.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Medius is a responsive theme for
 &lt;a href="http://blog.getpelican.com/"&gt;Pelican&lt;/a&gt;. It is heavily inspired from
@@ -14,7 +14,7 @@ in &lt;a href="https://github.com/onuraslan/medius"&gt;github&lt;/a&gt; reposito
 welcomed!&lt;/p&gt;
 &lt;p&gt;Medius comes with few templates:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href="http://gillesvandewiele.github.io/KMBlog/index.html"&gt;Index&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gillesvandewiele.github.io/KMBlog/index.html"&gt;Index&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://onur.github.io/medius/category/category.html"&gt;Category Page&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://onur.github.io/medius/author/onur-aslan.html"&gt;Author Page&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -62,7 +62,7 @@ element must be URL for this icon.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;If you visit my &lt;a href="http://gillesvandewiele.github.io/KMBlog/author/onur-aslan.html"&gt;author page&lt;/a&gt;, you can see my
+&lt;p&gt;If you visit my &lt;a href="https://gillesvandewiele.github.io/KMBlog/author/onur-aslan.html"&gt;author page&lt;/a&gt;, you can see my
 cover image, description and profile image.&lt;/p&gt;
 &lt;h3&gt;Post Images&lt;/h3&gt;
 &lt;p&gt;A post can have a &lt;code&gt;SubTitle&lt;/code&gt;, a big &lt;code&gt;Cover&lt;/code&gt; image and a &lt;code&gt;Thumbnail&lt;/code&gt; that
@@ -78,12 +78,12 @@ Thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Hubble2005-
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Check &lt;a href="http://gillesvandewiele.github.io/KMBlog/article-without-cover-01.html"&gt;one of the other page&lt;/a&gt; that
+&lt;p&gt;Check &lt;a href="https://gillesvandewiele.github.io/KMBlog/article-without-cover-01.html"&gt;one of the other page&lt;/a&gt; that
 has no cover and only &lt;code&gt;Thumbnail&lt;/code&gt; defined in metadata.&lt;/p&gt;
 &lt;p&gt;You don't need to supply a &lt;code&gt;Cover&lt;/code&gt; or &lt;code&gt;Thumbnail&lt;/code&gt; in your posts, but
-&lt;a href="http://gillesvandewiele.github.io/KMBlog/category/category.html"&gt;category pages&lt;/a&gt; will look better if you supply
+&lt;a href="https://gillesvandewiele.github.io/KMBlog/category/category.html"&gt;category pages&lt;/a&gt; will look better if you supply
 &lt;code&gt;Thumbnail&lt;/code&gt; in all of your posts.&lt;/p&gt;
-&lt;p&gt;Demo is fully available in &lt;a href="https://github.com/onuraslan/medius/tree/demo"&gt;demo branch&lt;/a&gt;.&lt;/p&gt;</content></entry><entry><title>Article without cover 01</title><link href="http://gillesvandewiele.github.io/KMBlog/article-without-cover-01.html" rel="alternate"></link><published>2015-09-10T00:00:00+02:00</published><updated>2015-09-10T00:00:00+02:00</updated><author><name></name></author><id>tag:gillesvandewiele.github.io,2015-09-10:/KMBlog/article-without-cover-01.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Kepler-186f&lt;/strong&gt; is an exoplanet orbiting the red dwarf Kepler-186,
+&lt;p&gt;Demo is fully available in &lt;a href="https://github.com/onuraslan/medius/tree/demo"&gt;demo branch&lt;/a&gt;.&lt;/p&gt;</content></entry><entry><title>Article without cover 01</title><link href="https://gillesvandewiele.github.io/KMBlog/article-without-cover-01.html" rel="alternate"></link><published>2015-09-10T00:00:00+02:00</published><updated>2015-09-10T00:00:00+02:00</updated><author><name></name></author><id>tag:gillesvandewiele.github.io,2015-09-10:/KMBlog/article-without-cover-01.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Kepler-186f&lt;/strong&gt; is an exoplanet orbiting the red dwarf Kepler-186,
 about 490 light-years (151 pc) from the Earth. It is the first planet
 with a radius similar to Earth's to be discovered in the habitable zone of
 another star. NASA's Kepler spacecraft detected it using the transit
@@ -110,7 +110,7 @@ eligendi.&lt;/p&gt;
 &lt;p&gt;Lorem enim id corrupti eos natus? Voluptatem consequatur non doloribus
 deleniti at consequatur. Eius veniam amet commodi doloremque perspiciatis
 maxime animi. Ratione suscipit cupiditate sint error laboriosam! Nobis rem
-ratione.&lt;/p&gt;</content><category term="Kepler"></category></entry><entry><title>Article without cover 02</title><link href="http://gillesvandewiele.github.io/KMBlog/article-without-cover-02.html" rel="alternate"></link><published>2015-09-09T00:00:00+02:00</published><updated>2015-09-09T00:00:00+02:00</updated><author><name></name></author><id>tag:gillesvandewiele.github.io,2015-09-09:/KMBlog/article-without-cover-02.html</id><summary type="html">&lt;p&gt;The &lt;strong&gt;Solar System&lt;/strong&gt; comprises the Sun and the objects that orbit it, either
+ratione.&lt;/p&gt;</content><category term="Kepler"></category></entry><entry><title>Article without cover 02</title><link href="https://gillesvandewiele.github.io/KMBlog/article-without-cover-02.html" rel="alternate"></link><published>2015-09-09T00:00:00+02:00</published><updated>2015-09-09T00:00:00+02:00</updated><author><name></name></author><id>tag:gillesvandewiele.github.io,2015-09-09:/KMBlog/article-without-cover-02.html</id><summary type="html">&lt;p&gt;The &lt;strong&gt;Solar System&lt;/strong&gt; comprises the Sun and the objects that orbit it, either
 directly or indirectly. Of those objects that orbit the Sun directly,
 the largest eight are the planets that form the planetary system around
 it, while the remainder are significantly smaller objects, such as dwarf
@@ -134,7 +134,7 @@ eligendi.&lt;/p&gt;
 &lt;p&gt;Lorem enim id corrupti eos natus? Voluptatem consequatur non doloribus
 deleniti at consequatur. Eius veniam amet commodi doloremque perspiciatis
 maxime animi. Ratione suscipit cupiditate sint error laboriosam! Nobis rem
-ratione.&lt;/p&gt;</content><category term="Solar System"></category></entry><entry><title>Article without cover 03</title><link href="http://gillesvandewiele.github.io/KMBlog/article-without-cover-03.html" rel="alternate"></link><published>2015-09-09T00:00:00+02:00</published><updated>2015-09-09T00:00:00+02:00</updated><author><name></name></author><id>tag:gillesvandewiele.github.io,2015-09-09:/KMBlog/article-without-cover-03.html</id><summary type="html">&lt;p&gt;The &lt;strong&gt;Solar System&lt;/strong&gt; comprises the Sun and the objects that orbit it, either
+ratione.&lt;/p&gt;</content><category term="Solar System"></category></entry><entry><title>Article without cover 03</title><link href="https://gillesvandewiele.github.io/KMBlog/article-without-cover-03.html" rel="alternate"></link><published>2015-09-09T00:00:00+02:00</published><updated>2015-09-09T00:00:00+02:00</updated><author><name></name></author><id>tag:gillesvandewiele.github.io,2015-09-09:/KMBlog/article-without-cover-03.html</id><summary type="html">&lt;p&gt;The &lt;strong&gt;Solar System&lt;/strong&gt; comprises the Sun and the objects that orbit it, either
 directly or indirectly. Of those objects that orbit the Sun directly,
 the largest eight are the planets that form the planetary system around
 it, while the remainder are significantly smaller objects, such as dwarf
@@ -158,7 +158,7 @@ eligendi.&lt;/p&gt;
 &lt;p&gt;Lorem enim id corrupti eos natus? Voluptatem consequatur non doloribus
 deleniti at consequatur. Eius veniam amet commodi doloremque perspiciatis
 maxime animi. Ratione suscipit cupiditate sint error laboriosam! Nobis rem
-ratione.&lt;/p&gt;</content><category term="Solar System"></category></entry><entry><title>Article without cover 04</title><link href="http://gillesvandewiele.github.io/KMBlog/article-without-cover-04.html" rel="alternate"></link><published>2015-09-09T00:00:00+02:00</published><updated>2015-09-09T00:00:00+02:00</updated><author><name></name></author><id>tag:gillesvandewiele.github.io,2015-09-09:/KMBlog/article-without-cover-04.html</id><summary type="html">&lt;p&gt;The &lt;strong&gt;Solar System&lt;/strong&gt; comprises the Sun and the objects that orbit it, either
+ratione.&lt;/p&gt;</content><category term="Solar System"></category></entry><entry><title>Article without cover 04</title><link href="https://gillesvandewiele.github.io/KMBlog/article-without-cover-04.html" rel="alternate"></link><published>2015-09-09T00:00:00+02:00</published><updated>2015-09-09T00:00:00+02:00</updated><author><name></name></author><id>tag:gillesvandewiele.github.io,2015-09-09:/KMBlog/article-without-cover-04.html</id><summary type="html">&lt;p&gt;The &lt;strong&gt;Solar System&lt;/strong&gt; comprises the Sun and the objects that orbit it, either
 directly or indirectly. Of those objects that orbit the Sun directly,
 the largest eight are the planets that form the planetary system around
 it, while the remainder are significantly smaller objects, such as dwarf
@@ -182,7 +182,7 @@ eligendi.&lt;/p&gt;
 &lt;p&gt;Lorem enim id corrupti eos natus? Voluptatem consequatur non doloribus
 deleniti at consequatur. Eius veniam amet commodi doloremque perspiciatis
 maxime animi. Ratione suscipit cupiditate sint error laboriosam! Nobis rem
-ratione.&lt;/p&gt;</content><category term="Solar System"></category><category term="Sun"></category></entry><entry><title>Article without cover 05</title><link href="http://gillesvandewiele.github.io/KMBlog/article-without-cover-05.html" rel="alternate"></link><published>2015-09-09T00:00:00+02:00</published><updated>2015-09-09T00:00:00+02:00</updated><author><name></name></author><id>tag:gillesvandewiele.github.io,2015-09-09:/KMBlog/article-without-cover-05.html</id><summary type="html">&lt;p&gt;The &lt;strong&gt;Solar System&lt;/strong&gt; comprises the Sun and the objects that orbit it, either
+ratione.&lt;/p&gt;</content><category term="Solar System"></category><category term="Sun"></category></entry><entry><title>Article without cover 05</title><link href="https://gillesvandewiele.github.io/KMBlog/article-without-cover-05.html" rel="alternate"></link><published>2015-09-09T00:00:00+02:00</published><updated>2015-09-09T00:00:00+02:00</updated><author><name></name></author><id>tag:gillesvandewiele.github.io,2015-09-09:/KMBlog/article-without-cover-05.html</id><summary type="html">&lt;p&gt;The &lt;strong&gt;Solar System&lt;/strong&gt; comprises the Sun and the objects that orbit it, either
 directly or indirectly. Of those objects that orbit the Sun directly,
 the largest eight are the planets that form the planetary system around
 it, while the remainder are significantly smaller objects, such as dwarf
@@ -206,7 +206,7 @@ eligendi.&lt;/p&gt;
 &lt;p&gt;Lorem enim id corrupti eos natus? Voluptatem consequatur non doloribus
 deleniti at consequatur. Eius veniam amet commodi doloremque perspiciatis
 maxime animi. Ratione suscipit cupiditate sint error laboriosam! Nobis rem
-ratione.&lt;/p&gt;</content><category term="Solar System"></category><category term="Sun"></category></entry><entry><title>Article without cover 06</title><link href="http://gillesvandewiele.github.io/KMBlog/article-without-cover-06.html" rel="alternate"></link><published>2015-09-09T00:00:00+02:00</published><updated>2015-09-09T00:00:00+02:00</updated><author><name></name></author><id>tag:gillesvandewiele.github.io,2015-09-09:/KMBlog/article-without-cover-06.html</id><summary type="html">&lt;p&gt;The &lt;strong&gt;Solar System&lt;/strong&gt; comprises the Sun and the objects that orbit it, either
+ratione.&lt;/p&gt;</content><category term="Solar System"></category><category term="Sun"></category></entry><entry><title>Article without cover 06</title><link href="https://gillesvandewiele.github.io/KMBlog/article-without-cover-06.html" rel="alternate"></link><published>2015-09-09T00:00:00+02:00</published><updated>2015-09-09T00:00:00+02:00</updated><author><name></name></author><id>tag:gillesvandewiele.github.io,2015-09-09:/KMBlog/article-without-cover-06.html</id><summary type="html">&lt;p&gt;The &lt;strong&gt;Solar System&lt;/strong&gt; comprises the Sun and the objects that orbit it, either
 directly or indirectly. Of those objects that orbit the Sun directly,
 the largest eight are the planets that form the planetary system around
 it, while the remainder are significantly smaller objects, such as dwarf
@@ -230,7 +230,7 @@ eligendi.&lt;/p&gt;
 &lt;p&gt;Lorem enim id corrupti eos natus? Voluptatem consequatur non doloribus
 deleniti at consequatur. Eius veniam amet commodi doloremque perspiciatis
 maxime animi. Ratione suscipit cupiditate sint error laboriosam! Nobis rem
-ratione.&lt;/p&gt;</content><category term="Solar System"></category><category term="Sun"></category><category term="Orbit"></category></entry><entry><title>Article without cover 07</title><link href="http://gillesvandewiele.github.io/KMBlog/article-without-cover-07.html" rel="alternate"></link><published>2015-09-09T00:00:00+02:00</published><updated>2015-09-09T00:00:00+02:00</updated><author><name></name></author><id>tag:gillesvandewiele.github.io,2015-09-09:/KMBlog/article-without-cover-07.html</id><summary type="html">&lt;p&gt;The &lt;strong&gt;Solar System&lt;/strong&gt; comprises the Sun and the objects that orbit it, either
+ratione.&lt;/p&gt;</content><category term="Solar System"></category><category term="Sun"></category><category term="Orbit"></category></entry><entry><title>Article without cover 07</title><link href="https://gillesvandewiele.github.io/KMBlog/article-without-cover-07.html" rel="alternate"></link><published>2015-09-09T00:00:00+02:00</published><updated>2015-09-09T00:00:00+02:00</updated><author><name></name></author><id>tag:gillesvandewiele.github.io,2015-09-09:/KMBlog/article-without-cover-07.html</id><summary type="html">&lt;p&gt;The &lt;strong&gt;Solar System&lt;/strong&gt; comprises the Sun and the objects that orbit it, either
 directly or indirectly. Of those objects that orbit the Sun directly,
 the largest eight are the planets that form the planetary system around
 it, while the remainder are significantly smaller objects, such as dwarf
@@ -254,7 +254,7 @@ eligendi.&lt;/p&gt;
 &lt;p&gt;Lorem enim id corrupti eos natus? Voluptatem consequatur non doloribus
 deleniti at consequatur. Eius veniam amet commodi doloremque perspiciatis
 maxime animi. Ratione suscipit cupiditate sint error laboriosam! Nobis rem
-ratione.&lt;/p&gt;</content><category term="Solar System"></category></entry><entry><title>Article without cover 08</title><link href="http://gillesvandewiele.github.io/KMBlog/article-without-cover-08.html" rel="alternate"></link><published>2015-09-09T00:00:00+02:00</published><updated>2015-09-09T00:00:00+02:00</updated><author><name></name></author><id>tag:gillesvandewiele.github.io,2015-09-09:/KMBlog/article-without-cover-08.html</id><summary type="html">&lt;p&gt;The &lt;strong&gt;Solar System&lt;/strong&gt; comprises the Sun and the objects that orbit it, either
+ratione.&lt;/p&gt;</content><category term="Solar System"></category></entry><entry><title>Article without cover 08</title><link href="https://gillesvandewiele.github.io/KMBlog/article-without-cover-08.html" rel="alternate"></link><published>2015-09-09T00:00:00+02:00</published><updated>2015-09-09T00:00:00+02:00</updated><author><name></name></author><id>tag:gillesvandewiele.github.io,2015-09-09:/KMBlog/article-without-cover-08.html</id><summary type="html">&lt;p&gt;The &lt;strong&gt;Solar System&lt;/strong&gt; comprises the Sun and the objects that orbit it, either
 directly or indirectly. Of those objects that orbit the Sun directly,
 the largest eight are the planets that form the planetary system around
 it, while the remainder are significantly smaller objects, such as dwarf

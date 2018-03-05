@@ -11,13 +11,25 @@ sys.path.append(os.curdir)
 from pelicanconf import *
 
 SITENAME = 'Knowledge Management Blog'
-SITEURL = 'http://gillesvandewiele.github.io/KMBlog'
-RELATIVE_URLS = True
+SITEURL = 'https://gillesvandewiele.github.io/KMBlog'
+RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 
 DELETE_OUTPUT_DIRECTORY = False
+
+MENUITEMS = (
+    ('About', SITEURL+'/about.html'),
+    ('Publications', SITEURL+'/publications.html'),
+    ('Blog', SITEURL+'/blog.html'),
+    )
+
+
+AUTHORS = extract_authors(AUTHORS_PATH, SITEURL)
+MEDIUS_AUTHORS = AUTHORS
+
+
 
 # Following items are often useful when publishing
 

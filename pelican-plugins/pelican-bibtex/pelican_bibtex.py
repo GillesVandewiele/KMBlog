@@ -150,6 +150,8 @@ class BibGenerator(Generator):
             where = ''
             if 'booktitle' in entry.fields:
                 where = entry.fields.get('booktitle')
+            elif 'journal' in entry.fields:
+                where = entry.fields.get('journal')
             
             abstract = entry.fields.get('abstract', '')
 
