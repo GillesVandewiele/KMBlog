@@ -4,3 +4,4 @@ pybtex
 pylatexenc
 ghp-import
 rdflib
+markdown
