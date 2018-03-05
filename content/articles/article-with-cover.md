@@ -99,9 +99,6 @@ Cover: https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Hubble2005-01-b
 Thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Hubble2005-01-barred-spiral-galaxy-NGC1300.jpg/800px-Hubble2005-01-barred-spiral-galaxy-NGC1300.jpg
 ```
 
-Check [one of the other page]({filename}/articles/article-without-cover-01.md) that
-has no cover and only `Thumbnail` defined in metadata.
-
 You don't need to supply a `Cover` or `Thumbnail` in your posts, but
 [category pages]({category}Category) will look better if you supply
 `Thumbnail` in all of your posts.
