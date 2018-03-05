@@ -10,7 +10,7 @@ PUBLICATION_DIR = 'content/publications'
 
 # Iterate over all the files in the PUBLICATION_DIR
 for file in os.listdir(PUBLICATION_DIR):
-    logger.warn( 'Trying to parse {}...'.format(file))
+    logger.warn( '[BIB] Trying to parse {}...'.format(file))
     # Try parsing it, should not crash
     with codecs.open(PUBLICATION_DIR+os.sep+file, 'r', encoding="utf8") as stream:
         bibdata = Parser().parse_stream(stream)
