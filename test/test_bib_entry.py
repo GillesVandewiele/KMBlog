@@ -13,4 +13,5 @@ for file in os.listdir(PUBLICATION_DIR):
     logger.warn( '[BIB] Trying to parse {}...'.format(file))
     # Try parsing it, should not crash
     with codecs.open(PUBLICATION_DIR+os.sep+file, 'r', encoding="utf8") as stream:
+    	assert len(stream.read()) > 0 
         bibdata = Parser().parse_stream(stream)

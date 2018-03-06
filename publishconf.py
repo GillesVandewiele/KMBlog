@@ -10,7 +10,7 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITENAME = 'Knowledge Management Blog'
+SITENAME = 'Knowledge Management'
 SITEURL = 'https://gillesvandewiele.github.io/KMBlog'
 RELATIVE_URLS = False
 
