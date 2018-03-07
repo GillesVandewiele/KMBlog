@@ -6,15 +6,15 @@
     {% if MEDIUS_AUTHORS.get(author|string).cover %}
     <div class="cover" style="background-image: url({{ MEDIUS_AUTHORS.get(author|string).cover }});" ></div>
     {% endif %}
-    <div class="avatar{% if not MEDIUS_AUTHORS.get(author|string).cover %}-no-cover{% endif %}"><img src="{{ MEDIUS_AUTHORS.get(author|string).image}}" alt="{{ author|striptags }}" width="125" height="125" property='foaf:depiction'></div>
+    <div class="avatar{% if not MEDIUS_AUTHORS.get(author|string).cover %}-no-cover{% endif %}"><img src="{{ MEDIUS_AUTHORS.get(author|string).image}}" alt="{{ author|striptags }}" width="125" height="125"></div>
     <div class="author-profile">
         <h1>{{ author }}</h1>
-        <p typeof="schema:Person foaf:Person" property='foaf:name dc:title' class="author-description">
+        <p class="author-description">
             {{ MEDIUS_AUTHORS.get(author|string).description }}
         </p>
         <ul class="author-links">
             {% for icon, link in MEDIUS_AUTHORS.get(author|string).links %}
-            <li><a property="foaf:account" href="{{ link }}"><i class="fa fa-{{ icon }}"></i></a>
+            <li><a href="{{ link }}"><i class="fa fa-{{ icon }}"></i></a>
             {% endfor %}
         </ul>
     </div>
