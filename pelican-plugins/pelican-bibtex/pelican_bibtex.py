@@ -38,7 +38,7 @@ BIBTEX_TYPE_TO_TEXT = {
 
 class Publication(object):
     def __init__(self, key, authors, title, year, where, 
-                 abstract=None, pdf_url=None, resource_urls=None):
+                 abstract='', pdf_url=None, resource_urls=None):
         """A publication object, has the following fields:
 
             * key (str): unique identifier
@@ -60,12 +60,12 @@ class Publication(object):
         self.pdf_url = pdf_url
         self.resource_urls = resource_urls
         self.citations = {
-            'bib': 'test1',
-            'IEEE': 'test2',
-            'ACM': 'test3',
-            'LNCS': 'test4',
-            'APA': 'test5',
-            'MLA': 'test6'
+            'bib': '<Not Supported Yet>',
+            'IEEE': '<Not Supported Yet>',
+            'ACM': '<Not Supported Yet>',
+            'LNCS': '<Not Supported Yet>',
+            'APA': '<Not Supported Yet>',
+            'MLA': '<Not Supported Yet>'
         }
 
 

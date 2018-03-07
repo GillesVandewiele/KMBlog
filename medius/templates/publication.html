@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="{{ DEFAULT_LANG }}">
+<html lang="{{ DEFAULT_LANG }}" prefix="schema: http://schema.org/ og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article# bibo: http://purl.org/ontology/bibo/ sioc: http://rdfs.org/sioc/ns# foaf: http://xmlns.com/foaf/0.1/" typeof="schema:WebPage">
 <head>
         {% block head %}
         <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+        
+
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <meta property="dc:title" content="{{ publication.title }}" />
+        
+        <meta property="og:type" content=article>
+        <meta property="og:title" content="{{ publication.title }}">
+        <meta property="og:description" content="{{ publication.abstract }}">
+        <meta property="og:url" content="{{ SITEURL }}/{{ output_file }}">
+
+        <meta name=citation_title content="{{ publication.title }}">
+        {% for author in publication.authors %}
+          <meta name=citation_author content="{{ author }}">
+        {% endfor %}
+        <meta name=citation_publication_date content="{{ publication.year }}">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
@@ -38,7 +54,6 @@
         {% endblock head %}
 </head>
 <body>
-{% block title %}{{ publication.title }}{% endblock %}
 {% block content %}
 
 <div class="main-container">
@@ -47,18 +62,19 @@
 
         <div class="article-header-container" style='text-align:left'>
                 <div class="title-container">
-                    <h5 style='margin-bottom: 5pt;'>{{ publication.title }}</h5>
+                    <h5 property="schema:name foaf:name dc:title" style='margin-bottom: 5pt;'>{{ publication.title }}</h5>
                     <h6 style='margin-top: 0pt;'>
                         by
                         {% for author in publication.authors %}
-                            {{ author }}{% if loop.index < publication.authors|length %},{% endif %}
+                            <span resource="{% if author in MEDIUS_AUTHORS.keys() %}{{ SITEURL }}/author/{{ author | replace(' ', '-') | lower }}.html {% endif %}" property="schema:author dc:creator foaf:maker" typeof="schema:Person foaf:Person"><span property="foaf:name dc:title">
+                            {{ author }}</span></span>{% if loop.index < publication.authors|length %},{% endif %}
                         {% endfor %}
                     </h6>
                 </div>
         </div>
-        <div class="entry-content" style='text-align:left; margin-bottom: 10pt;'>
+        <p property="schema:description dc:description" class="entry-content" style='text-align:left; margin-bottom: 10pt;'>
             {{ publication.abstract }}
-        </div>
+        </p>
 
       </div>
 
@@ -68,9 +84,6 @@
             <div class="right-head">
                  Cite
             </div>
-            <pre style='text-align: left; font-size: 8pt;'>
-{{ publication.citations['bib'] }}</pre>
-          	<!--
             <div class="right-head">
                  Cite
             </div>
@@ -87,7 +100,6 @@
                     </section>
                 {% endfor %}
             </div>
-        	-->
         </div>
       </div>
 
