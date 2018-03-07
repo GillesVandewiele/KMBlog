@@ -1,0 +1,17 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc:   <http://purl.org/dc/elements/1.1/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+
+<#Stijn Verstichel>
+    a foaf:Person ;
+    foaf:name "Stijn Verstichel" ;
+    foaf:givenName "Stijn" ;
+    foaf:familyName "Verstichel" ;
+    foaf:mbox <mailto:stijn.verstichel@ugent.be> ;
+    foaf:depiction <https://www.ugent.be/ea/img/idlab/members/stijnverstichel-jpg/@@images/744c237f-5a8f-4a7b-829b-4209233551b0.jpeg> ;
+    foaf:account <https://github.com/svrstich/> ;
+    foaf:account <https://twitter.com/svrstich> ;
+    foaf:account <https://be.linkedin.com/in/stijn-verstichel-3202015> ;
+    foaf:interest "Distributed Reasoning for Fault Detection and Diagnosis" .
