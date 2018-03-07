@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" prefix="schema: http://schema.org/ og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article# bibo: http://purl.org/ontology/bibo/ sioc: http://rdfs.org/sioc/ns# foaf: http://xmlns.com/foaf/0.1/" typeof="schema:WebPage">
+<head>
+        <title>Creating a connect-four bot with limited move time and file size</title>
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <script src="/theme/js/list.js"> </script>
+</head>
+<body>
+
+    <div class="navigation pure-menu pure-menu-horizontal">
+        <a href="/" class="pure-menu-heading  pure-menu-link">Knowledge Management</a>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"></li>
+            <li class="pure-menu-item"><a href="/about.html" class="pure-menu-link">About</a></li>
+            <li class="pure-menu-item"><a href="/publications.html" class="pure-menu-link">Publications</a></li>
+            <li class="pure-menu-item"><a href="/blog.html" class="pure-menu-link">Blog</a></li>
+
+        </ul>
+    </div>
+
+
+<div class="page-container">
+    <div class="entry-content">
+        <div class="post-meta pure-g">
+<div class="pure-u-3-4 meta-data">
+    <a href="/category/ai.html" class="category">AI</a><br />
+
+    <a class="author" href="/author/gilles-vandewiele.html">Gilles Vandewiele</a>
+    &mdash; <abbr title="2018-03-07T00:00:00+01:00">Wed 07 March 2018</abbr>
+</div>        </div>
+    </div>
+
+    <div class="article-header-container">
+        <div class="background-image-container">
+
+            <div class="background-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://cdn-images-1.medium.com/max/800/1*NKzsRiAxa_oiikgbLyLCyw.png);">
+                <img src="https://cdn-images-1.medium.com/max/800/1*NKzsRiAxa_oiikgbLyLCyw.png" alt="Creating a connect-four bot with limited move time and file size">
+                <div class="title">
+                <h1>
+                    Creating a connect-four bot with limited move time and file size
+                </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="entry-content">
+        <p>In the context of the ‘Informatics’ course, where the first-year engineers at the University of Ghent learn to code in Python, we set up an AI bot competition platform. The goal was to create a bot that plays the game connect-four by implementing the following function:</p>
+<div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">generate_move</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="n">saved_state</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Contains all code required to generate a move,</span>
+<span class="sd">        given a current game state (board &amp; player)</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            board (2D np.array):   game board (element is 0, 1 or 2)</span>
+<span class="sd">            player (int):          your plabyer number (float)</span>
+<span class="sd">            saved_state (object):  returned value from previous call</span>
+
+<span class="sd">         Returns:</span>
+
+<span class="sd">            action (int):                   number in [0, 6]</span>
+<span class="sd">            saved_state (optional, object): will be returned next time</span>
+<span class="sd">                                            the function is called</span>
+
+<span class="sd">         &quot;&quot;&quot;</span>
+         <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+
+
+<p>After submitting code to the platform, you automatically challenge all players ranked higher than you on the leaderboard. Games are simulated between your bot and opponents. Each game consists of five rounds in which either 5 points are awarded to the player that can first connect four tokens or 1 point to the player that connected the longest chain (most likely 3 tokens) first, in case of a draw. This to ensure that there is always a winner. The starting player of the first round is chosen randomly, after which the players alternate in who starts. Your rank keeps increasing until you lose (ladder game).</p>
+<p><img alt="A simulation of a game between bots. Player 1 is definitely on the winning hand." src="https://cdn-images-1.medium.com/max/2000/1*caKgF2XHXsBWsupJ2Pgagg.png"></p>
+<p>A colleague, <a href="http://users.ugent.be/~jvdrhoof/">Jeroen van der Hooft</a>, and I decided that it would be a fun exercise trying to mimic a perfect solver (<a href="http://connect4.gamesolver.org/?pos=">which wins the game if he can start</a>), based on the following <a href="http://blog.gamesolver.org/">blog post</a>, as much as possible. Some important requirements that our code had to comply (which led to the fact that our solver was <strong>not</strong> completely optimal) to were:
+<em> maximum file size of 1 MB 
+</em> generate_move could not run longer than 1s
+* only make use of the standard library and NumPy</p>
+<h2>Representing the game board with bitstrings</h2>
+<blockquote>
+<p>Let’s first introduce an efficient data structure to store the game board: <strong>bitstrings</strong>. I will summarize the most important operations (such as checking whether four tokens are connected, and updating the board after a move). For a very thorough explanation on the bitstrings (or bitboards), and all the possible operations, please check this <a href="https://github.com/denkspuren/BitboardC4/blob/master/BitboardDesign.md">readme</a> (albeit done a bit differently).</p>
+</blockquote>
+<p>We can represent each possible game state (or game board configuration) uniquely in the form of two bitstrings, which can easily be converted to an integer:
+<em> one bitstring representing the positions of the tokens of a player (<strong>position</strong>)
+</em> one bitstring representing the positions of of both players (<strong>mask</strong>)
+The position bitstring of the opponent can be calculated by applying a XOR-operator between <strong>mask</strong> and <strong>position</strong>. Of course, storing two bitstrings for the tokens of both players is a viable approach as well (we can then calculate the mask by applying the OR-operator on both bitstrings).</p>
+<p>The bitstring is composed of 49 bits which includes a sentinel row (all 0’s) of 7 bits (the use of this will be explained shortly). The bits are ordered as follows:</p>
+<p><img alt="The ordering of the bits to in the bitstring (0 is the least significant, or right-most, bit). Notice how bits 6, 13, 20, 27, 34, 41 and 48 form a sentinal row, which is always filled with 0's." src="https://cdn-images-1.medium.com/max/2000/1*rM2MZ88czcNpv0Jy0ocoCg.png"></p>
+<p>As an example, check the following game board configuration:</p>
+<p><img alt="An example of a possible game state / board configuration" src="https://cdn-images-1.medium.com/max/2000/1*A5b630g96x9PrhwB9Mvf1w.png"></p>
+<p>Now let’s form the bitstrings, with the <strong>position</strong> bitstring for the yellow player:</p>
+<div class="highlight"><pre><span></span>    <span class="c1"># position</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0011000</span>    <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;0000000000000000000110001101000100000000000000000&#39;</span>
+    <span class="mo">0001000</span>
+    <span class="mo">0000100</span>
+    <span class="mo">0001100</span>    <span class="o">=</span> <span class="mi">832700416</span>
+
+    <span class="c1"># mask</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0001000</span>
+    <span class="mo">0011000</span>    <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;0000000000000100000110011111000111100000000000000&#39;</span>
+    <span class="mo">0011000</span>
+    <span class="mo">0011100</span>
+    <span class="mo">0011110</span>    <span class="o">=</span> <span class="mi">35230302208</span>
+
+    <span class="c1"># (opponent position)</span>
+    <span class="mo">0000000</span>           <span class="mo">0000000</span>         <span class="mo">0000000</span>  
+    <span class="mo">0000000</span>           <span class="mo">0000000</span>         <span class="mo">0000000</span>
+    <span class="mo">0000000</span>           <span class="mo">0001000</span>         <span class="mo">0001000</span>
+    <span class="mo">0011000</span>    <span class="n">XOR</span>    <span class="mo">0011000</span>    <span class="o">=</span>    <span class="mo">0000000</span> 
+    <span class="mo">0001000</span>           <span class="mo">0011000</span>         <span class="mo">0010000</span>
+    <span class="mo">0000100</span>           <span class="mo">0011100</span>         <span class="mo">0011000</span>
+    <span class="mo">0001100</span>           <span class="mo">0011110</span>         <span class="mo">0010010</span>
+</pre></div>
+
+
+<p>Since the board input parameter is a numpy array of numpy arrays, we first need to convert this board to the corresponding bitmaps. Below is the (rather straight-forward) code to do this:</p>
+<div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">get_position_mask_bitmap</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+        <span class="n">position</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1"># Start with right-most column</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="c1"># Add 0-bits to sentinel </span>
+            <span class="n">mask</span> <span class="o">+=</span> <span class="s1">&#39;0&#39;</span>
+            <span class="n">position</span> <span class="o">+=</span> <span class="s1">&#39;0&#39;</span>
+            <span class="c1"># Start with bottom row</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+                <span class="n">mask</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">][</span><span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+                <span class="n">position</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">][</span><span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+
+<p>We can now use the <strong>position</strong> bitstring to check whether four tokens are connected, with the following <a href="https://en.wikipedia.org/wiki/Bitwise_operation">bitwise operations</a>:</p>
+<div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">connected_four</span><span class="p">(</span><span class="n">position</span><span class="p">):</span>
+        <span class="c1"># Horizontal check</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">position</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">position</span> <span class="o">&gt;&gt;</span> <span class="mi">7</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">m</span> <span class="o">&gt;&gt;</span> <span class="mi">14</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">True</span>
+
+        <span class="c1"># Diagonal \</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">position</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">position</span> <span class="o">&gt;&gt;</span> <span class="mi">6</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">m</span> <span class="o">&gt;&gt;</span> <span class="mi">12</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">True</span>
+
+        <span class="c1"># Diagonal /</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">position</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">position</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">m</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">True</span>
+
+        <span class="c1"># Vertical</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">position</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">position</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">m</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">True</span>
+
+        <span class="c1"># Nothing found</span>
+        <span class="k">return</span> <span class="bp">False</span>
+</pre></div>
+
+
+<p>Now let us break down the part where we check whether four tokens are connected horizontally:</p>
+<div class="highlight"><pre><span></span>    <span class="mf">1.</span> <span class="n">m</span> <span class="o">=</span> <span class="n">position</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">position</span> <span class="o">&gt;&gt;</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="mf">2.</span> <span class="k">if</span> <span class="n">m</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">m</span> <span class="o">&gt;&gt;</span> <span class="mi">14</span><span class="p">):</span>
+           <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+
+
+<p>The first step (1.) is shifting our bit-string 7 positions to the right and taking an AND-mask, this boils down to moving each bit to the left in our bit-board (we decrease the index in the bitstring, where index 0 corresponds to the right-most or least significant bit). Let us take the following bitboard as an example (simplified version which cannot occur in a real game):</p>
+<div class="highlight"><pre><span></span>    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0011110</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+
+    <span class="o">=</span>       <span class="sa">b</span><span class="s1">&#39;0000000001000000100000010000001000000000000000000&#39;</span>
+    <span class="o">&gt;&gt;</span> <span class="mi">7</span><span class="p">:</span>   <span class="sa">b</span><span class="s1">&#39;0000000000000000100000010000001000000100000000000&#39;</span>
+
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0111100</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+
+    <span class="o">&amp;</span><span class="p">:</span>      <span class="sa">b</span><span class="s1">&#39;0000000000000000000000010000001000000100000000000&#39;</span>
+
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0011100</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+</pre></div>
+
+
+<p>We can view the new bitboard as follows: a bit is equal to 1 if there is a token to left of it and if it is the same (or in other words: <em>the bits equal to 1 indicate that we can connect two tokens horizontally to the left from that position</em>). Now for the next operation (2.), we shift our result 14 positions to the right and apply an AND-mask again.</p>
+<div class="highlight"><pre><span></span>    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0011100</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+
+    <span class="o">=</span>       <span class="sa">b</span><span class="s1">&#39;0000000000000000100000010000001000000000000000000&#39;</span>
+    <span class="o">&gt;&gt;</span> <span class="mi">14</span><span class="p">:</span>  <span class="sa">b</span><span class="s1">&#39;0000000000000000000000000000001000000100000000000&#39;</span>
+              <span class="o">-------------------------------------------------</span>
+    <span class="o">&amp;</span>    <span class="p">:</span>  <span class="sa">b</span><span class="s1">&#39;0000000000000000000000000000001000000000000000000&#39;</span>
+
+    <span class="o">&gt;</span> <span class="mi">0</span><span class="err">?</span> <span class="p">:</span>  <span class="bp">True</span>  <span class="c1"># four connected tokens found</span>
+</pre></div>
+
+
+<p>By shifting our resulting bitstring 14 positions to the right, we are checking if we can match two horizontally consecutive tokens with two other horizontally consecutive tokens 2 positions left to it on the board. These steps combined are equivalent to checking whether four tokens are connected horizontally. The operations for the other directions (diagonally and vertically) are the same, we just shift our bitmap for more or less positions (1 for vertical, 8 for diagonal to the south-west (/) and 6 for diagonal to the south-east (\)).</p>
+<p>The reason for the sentinel row (the seven extra bits) is to make a distinct between the top and bottow row of the grid. Without it this approach would produce false positives, below are two <strong>position</strong> bitstrings, one on a 6x7 grid, the other on a 7x7 grid. We check whether we can find four vertically consecutive tokens (which is, in this case, false)</p>
+<div class="highlight"><pre><span></span>    <span class="n">vertical</span> <span class="n">check</span> <span class="n">on</span> <span class="mi">6</span><span class="n">x7</span> <span class="n">grid</span>
+    <span class="o">--------------------------</span>
+    <span class="mo">0010000</span>
+    <span class="mo">0010000</span>
+    <span class="mo">0010000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0001000</span>
+
+    <span class="o">=</span>       <span class="sa">b</span><span class="s1">&#39;000000000000000000000001111000000000000000&#39;</span>
+    <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">:</span>   <span class="sa">b</span><span class="s1">&#39;000000000000000000000000111100000000000000&#39;</span>
+    <span class="o">&amp;</span>   <span class="p">:</span>   <span class="sa">b</span><span class="s1">&#39;000000000000000000000000111000000000000000&#39;</span>
+    <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">:</span>   <span class="sa">b</span><span class="s1">&#39;000000000000000000000000001110000000000000&#39;</span>
+    <span class="o">&amp;</span>   <span class="p">:</span>   <span class="sa">b</span><span class="s1">&#39;000000000000000000000000001000000000000000&#39;</span>
+    <span class="o">&gt;</span> <span class="mi">0</span><span class="err">?</span><span class="p">:</span>   <span class="bp">True</span> <span class="p">(</span><span class="n">WRONG</span><span class="p">)</span>
+
+    <span class="n">vertical</span> <span class="n">check</span> <span class="n">on</span> <span class="mi">7</span><span class="n">x7</span> <span class="n">grid</span>
+    <span class="o">--------------------------</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0010000</span>
+    <span class="mo">0010000</span>
+    <span class="mo">0010000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0001000</span>
+
+    <span class="o">=</span>       <span class="sa">b</span><span class="s1">&#39;0000000000000000000000000001011100000000000000000&#39;</span>
+    <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">:</span>   <span class="sa">b</span><span class="s1">&#39;0000000000000000000000000000101110000000000000000&#39;</span>
+    <span class="o">&amp;</span>   <span class="p">:</span>   <span class="sa">b</span><span class="s1">&#39;0000000000000000000000000000001100000000000000000&#39;</span>
+    <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">:</span>   <span class="sa">b</span><span class="s1">&#39;0000000000000000000000000000000011000000000000000&#39;</span>
+    <span class="o">&amp;</span>   <span class="p">:</span>   <span class="sa">b</span><span class="s1">&#39;0000000000000000000000000000000000000000000000000&#39;</span>
+    <span class="o">&gt;</span> <span class="mi">0</span><span class="err">?</span><span class="p">:</span>   <span class="bp">False</span> <span class="p">(</span><span class="n">CORRECT</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Now let’s take a better look at the move-operation, where we change the bitmaps according to a move made by a player:</p>
+<div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">make_move</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span>
+        <span class="n">new_position</span> <span class="o">=</span> <span class="n">position</span> <span class="o">^</span> <span class="n">mask</span>
+        <span class="n">new_mask</span> <span class="o">=</span> <span class="n">mask</span> <span class="o">|</span> <span class="p">(</span><span class="n">mask</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">col</span><span class="o">*</span><span class="mi">7</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">new_position</span><span class="p">,</span> <span class="n">new_mask</span>
+</pre></div>
+
+
+<p>The first thing we do is apply a XOR-mask between the <strong>position</strong> and <strong>mask</strong> bitstring to obtain the position bitstring for the opponent (since it is going to be his turn after making this move). Then we update our <strong>mask</strong>bitstring by applying an OR-mask between the current mask and a addition of the mask with a bit in the corresponding column (where we want to drop our token). Let us take a look at an example:</p>
+<div class="highlight"><pre><span></span>    <span class="c1"># position</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0011000</span>
+    <span class="mo">0001000</span>
+    <span class="mo">0000100</span>
+    <span class="mo">0001100</span>
+
+    <span class="c1"># mask</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0001000</span>
+    <span class="mo">0011000</span>
+    <span class="mo">0011000</span>
+    <span class="mo">0011100</span>
+    <span class="mo">0011110</span>
+
+    <span class="c1"># Drop a token in the fourth column </span>
+    <span class="c1"># --&gt; make_move(position, mask, 4)</span>
+
+    <span class="c1"># new_position = position ^ mask</span>
+    <span class="c1"># new_position</span>
+    <span class="mo">0000000</span>           <span class="mo">0000000</span>         <span class="mo">0000000</span>  
+    <span class="mo">0000000</span>           <span class="mo">0000000</span>         <span class="mo">0000000</span>
+    <span class="mo">0000000</span>           <span class="mo">0001000</span>         <span class="mo">0001000</span>
+    <span class="mo">0011000</span>    <span class="n">XOR</span>    <span class="mo">0011000</span>    <span class="o">=</span>    <span class="mo">0000000</span> 
+    <span class="mo">0001000</span>           <span class="mo">0011000</span>         <span class="mo">0010000</span>
+    <span class="mo">0000100</span>           <span class="mo">0011100</span>         <span class="mo">0011000</span>
+    <span class="mo">0001100</span>           <span class="mo">0011110</span>         <span class="mo">0010010</span>
+
+    <span class="c1"># 1 &lt;&lt; (col*7)</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>     <span class="o">=</span>   <span class="mi">268435456</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000100</span>
+
+    <span class="c1"># mask + (1 &lt;&lt; (col*7)) = 35230302208 + 268435456 = 35498737664</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0001000</span>
+    <span class="mo">0011000</span>
+    <span class="mo">0011100</span>
+    <span class="mo">0011000</span>
+    <span class="mo">0011010</span>
+
+    <span class="c1"># mask | (mask + (1 &lt;&lt; (col*7)))</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0000000</span>
+    <span class="mo">0001000</span>
+    <span class="mo">0011000</span>
+    <span class="mo">0011100</span>
+    <span class="mo">0011100</span>
+    <span class="mo">0011110</span>
+</pre></div>
+
+
+<h2>Game trees, minimax and alpha-beta pruning</h2>
+<blockquote>
+<p>While reading the previous section, you might have been thinking to yourself: ‘why would you add so much complexity to your code?’. The reason why we are over-optimizing the basic operations of the connect-four game is because of the concept I will now introduce: <strong>game trees</strong>.</p>
+</blockquote>
+<p>For every game that has a discrete action space (or a finite number of possible actions in every move), we can construct a game tree in which each node represents a possible game state. The internal nodes at an <em>even depth </em>represent either the initial game state (the root) or a game state which resulted from a move made by the opponent. The internal nodes at an odd depth represent game states resulting from moves made by us. If a state is <em>game-ending</em> (four tokens connected or board is full), it is a leaf node. Each leaf node is awarded a certain score and not further expanded. Below is an example of a game subtree for the connect-four game.</p>
+<p><img alt="An example of a path to a game-ending state in a game subtree" src="https://cdn-images-1.medium.com/max/2000/1*NKzsRiAxa_oiikgbLyLCyw.png"></p>
+<p>In total, there are <a href="https://tromp.github.io/c4/c4.html">4531985219092 possible leaf nodes</a> and thus a much larger number of total nodes in the tree. Even with the optimized bitboard operations, it is computationally infeasible to traverse the entire game tree. We will need techniques to efficiently find a winning path in this tree.</p>
+<p>Now, while the path 1–1–2 in the game tree from the figure above leads to a game-ending state where the yellow player wins (it is a winning path), it rests on the assumption that red is a stupid bot and screws up his move (he does not block you).</p>
+<blockquote>
+<p>Since we do not know how ‘good’ the bot is we are going to play against, we have to assume the worst-case: what if our opponent is the best possible bot and thus makes the best possible move every time? If we can find a winning path against such a worst-case bot, then we can definitely take this path and be sure that we win the game (the real bot can only do worse, making the game end earlier). For the connect-four game, such a path exists if you are the starting player. Here is where the <strong>minimax</strong> algorithm comes in play.</p>
+</blockquote>
+<p>Before we can apply this algorithm to game trees, we need to define a scoring function for each node in the tree. We will just take the same scoring function as the <a href="http://blog.gamesolver.org/solving-connect-four/02-test-protocol/">blog post</a> this writing is based upon. The score for a game board configuration is equal to:
+<em> 0 if the game is going to end in a draw
+</em> 22 - the number of stones used if we can win the game
+* -(22 - the number of stones) if we will lose.
+In the picture below, if we assume that we are the yellow player, we can assign a score of -18 to the game board, since the red player can win with his fourth stone.</p>
+<p><img alt="This game board is assigned a score of -18 since the opponent can finish with 4 stones" src="https://cdn-images-1.medium.com/max/2000/1*d21t9oTSTYWcfdJnpc4jYQ.png"></p>
+<p>In practice, it is hard to assign a score when the game has not yet finished. That’s why we explore our tree until we reach a leaf node, calculate the score and propagate this score back upwards to the root. Now, when we are propagating these values upwards, internal nodes within our game tree will receive multiple values (a value for each of its children). The question is what value we should assign to the internal nodes. Now we can give the definition for the value of an internal node:
+<em> If the internal node is on an odd depth, we take the <strong>minimum</strong> value of the children their values (as an opponent, we want to make the final score as negative as possible, since we want to win)
+</em> If the internal node is on an even depth, we take the <strong>maximum</strong> value of the children their values (we want our score to be as positive as possible)</p>
+<p>Here’s an example, taken directly from <a href="https://en.wikipedia.org/wiki/Minimax">wikipedia</a>:</p>
+<p><img alt="The optimal score we can achieve is -7, by taking the action that corresponds to the edge that goes to the right child of the root." src="https://cdn-images-1.medium.com/max/2000/0*UmE_MFJ8ZYIq6wBi.png"></p>
+<blockquote>
+<p>So now we have a way to find the optimal path within a game tree. The problem with this approach is that, especially in the beginning of the game, it takes a very long time to traverse the entire tree. We only have 1 second to make a move! Therefore, we introduce a technique that allows us to prune (large) parts of the game tree, such that we do not need to search it entirely. The algorithm is called <strong>alpha-beta pruning</strong>.</p>
+</blockquote>
+<p>I will summarize the most important concepts. A nice step-by-step video, by prof. Pieter Abbeel, can be found <a href="https://www.youtube.com/watch?v=xBXHtz4Gbdo">here</a>. We define the following variables:
+<em> <strong>alpha</strong>: the current best score on the path to the root by the maximizer (us)
+</em> <strong>beta</strong>: the current best score on path to the root by minimizer (opponent)</p>
+<p>What we do is update our alpha and beta values every time we see a new value from our children (depending on whether we are on an even or odd depth). We pass these alpha and beta along to our other children, now when we find a value that is either higher than our current beta, or lower than our current alpha, we can discard the entire subtree (since we are sure that the optimal path will not go through this). Let us take a look at another example, again taken from <a href="https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning">wikipedia</a>:</p>
+<p><img alt="" src="https://cdn-images-1.medium.com/max/2424/0*v4kG9BqjLJcwT3dO.png"></p>
+<ul>
+<li>
+<p>We traverse the game tree depth first, from left to right. The first leaf we encounter is the left-most leaf (with value 5). The leaf propagates this value to its parent, where the beta-value is updated and changed into 5. It also checks the second left-most leaf (which has a value of 6) but this does not update any of the values (since 6 is not better than 5 if we are in the perspective of the minimizer).</p>
+</li>
+<li>
+<p>The best found value in this node (again, 5) gets propagated to its parent, where the alpha-value is updated. Now, we are at the the right child of this parent, and first checks its left child with value 7, and updates the beta-value (we now have alpha=5 and beta=7). We check the following child: with value 4, this is a better value for the minimizer so we now have beta=4 and alpha=5.</p>
+</li>
+<li>
+<p>Since now beta ≤ alpha, we can prune all the remaining children. This is because we will ALWAYS have a value ≤ 4 now in that internal node (we are a minimizer and only update our value when we encounter a value smaller than the current one), BUT the parent node will only update values when they are ≥ 5 (since we are a maximizer in that node). So whatever the value we will be after traversing all the nodes, it will never be chosen by the maximizer node, since it will must be larger than 5 in order for that to happen.</p>
+</li>
+<li>
+<p>This process continues for all remaining nodes…</p>
+</li>
+</ul>
+<p>A good python implementation of this algorithm, by the authors of<a href="http://aima.cs.berkeley.edu/"> one of the most prominent reference books of AI</a>, can be found <a href="https://github.com/aimacode/aima-python/blob/master/games.py">here</a>.</p>
+<p>In the subsequent section, further optimizations to this alpha-beta algorithm, of which most are tailored specifically for the connect-four game will be discussed. To assess the gain in performance of each of the optimizations, we will set up a baseline. We will express the success rate in function of the number or moves already made. An execution was successfully if the solution was found within a second. Here’s our baseline plot.</p>
+<p><img alt="The success rates in function of the sequence length. The longer the sequence, the smaller the moves till a game-ending state and thus how bigger the probability on a success. We can see that our algorithm can find the optimal moves once 27 moves have already been made (which means we would have to find an intermediate solution for the first 26 moves)." src="https://cdn-images-1.medium.com/max/3726/1*cDS4tv-3VJW1Nv6jMEthJg.png"></p>
+<h2>Other optimizations</h2>
+<p>In what now follows, the most significant implemented optimizations will be listed with a corresponding plot of the success rates, compared to the baseline.</p>
+<p><strong>1. Use of caching (transposition tables &amp; Python LRU cache)</strong>
+We can add the <strong>position</strong> and <strong>mask</strong> bitmap together to form a unique key. This key can be stored in a dictionary with the corresponding upper or lower bound. Now, before we start iterating over all our children, we can already initialize our current value, by getting the corresponding bound from the cache first. Another very simple optimization is adding <a href="https://docs.python.org/3/library/functools.html">lru_cache decorators</a> to every helper-function.</p>
+<p><img alt="We can see quite an improvement of our success rates compared to the baseline. Unfortunately, we plateau at around the same x-value as our baseline, which means we still need an intermediate solution for our (approximately) first 26 moves." src="https://cdn-images-1.medium.com/max/3710/1*saxwjnOBfG4OPrgTA81x-w.png"></p>
+<p><strong>2. Earlier determination of winning state</strong>
+Initially, an ending state (leaf node) was reached when either four tokens were connected or 42 moves were made. We can already determine one move earlier if the game will end or not (namely if there are three tokens connected and the user can make a move that introduces the fourth token in the connection). This is a very efficient check, and makes our trees more shallow.</p>
+<p><img alt="We see a significant improvement by making our trees more shallow… Moreover, we plateau at a lower x-value (around 23), which means we will only need an intermediate solution for the first 22 moves." src="https://cdn-images-1.medium.com/max/3726/1*lBtM-A76LF-Jr5tpetxGOQ.png"></p>
+<p><strong>3. Go for any winning path, not the winning path with shortest number of moves</strong>
+Instead of looking for a maximum or minimum value, we can just follow the path of the first strictly positive or negative (respectively) value. Those paths are not the optimal one (we will not win with a minimal number of moves or lose with a maximum number of moves), but we were more than happy with a regular win (it did not have to be the optimal one).</p>
+<p><img alt="An increase in the success rates, but we do not plateau on a lower x-value." src="https://cdn-images-1.medium.com/max/3726/1*pH9baJnGRXQ8ciw-vJNLPg.png"></p>
+<p><strong>4. Other optimizations</strong>
+Many other optimizations were tried: multi-processing (did not work out, probably due to the overhead in Python), sorting the order of leaf traversal based on heuristics (only worked on low depths of the game tree), pruning subtrees early that will lead to a game loss (small gain), etc. Here are the success rates of our final solution:</p>
+<p><img alt="The final listed improvements did not result in significant gains. Our solver can solve every sequence as soon as the length is higher or equal than 23. This means we need to find a solution to bridge the first 22 moves, where our solver often takes longer than 1 second." src="https://cdn-images-1.medium.com/max/3726/1*8OwVWen-T1A-yNg8GyPVCg.png"></p>
+<h2>Storing the first 22 optimal moves</h2>
+<p>Now there are still a lot of possible optimizations possible, but it seems like an almost impossible job to find the best move for every possible game configuration within 1 second, especially in a language such as Python. But since the game is deterministic, there’s only a limited number of optimal moves for each given game configuration. As an example, <a href="http://connect4.gamesolver.org/?pos=">the optimal move for the player starting the game</a> is ALWAYS dropping a token in the middle column.</p>
+<blockquote>
+<p>Therefore, we decided to store all optimal moves for shorter sequences (or game states with a low amount of moves already made) in a hard-coded fashion. Again, this proved to be challenging, since the file size could only be 1 MegaByte.</p>
+</blockquote>
+<p>For each possible sequence (an example of a sequence could be 3330, which means 4 moves have already been made: 3 tokens in the middle column and 1 in the left-most column), we stored its optimal move (<a href="http://connect4.gamesolver.org/?pos=4441">which would be 4 for this sequence</a>). A simple dictionary, where the different sequences represent the keys and the optimal moves the corresponding values explodes very quickly in terms of file size. This is due to a lot of redundant information being stored. One very efficient compression is to not use a dictionary, but use 7 sets instead. Store all sequences belonging to an optimal move (same value in the dictionary) in the same set (our sequence 3330 would be stored with other sequences such as 2220 in the same set). Then query all the sets to find a certain sequence, and output the corresponding move when a match is found. One of the seven sets can also be discarded for some more compression (if we cannot find a match in all 6 sets, then the final set has to contain this sequence).</p>
+<p>These sets with sequences still tended to grow large when we wanted to store longer sequences as well, so we decided to look for an even more efficient way to store the sequences. We tried to find a function f such that f(x) = y where x is the sequence (consisting of numbers 1–7, padded with 0’s in the front such that all sequences had the same length) and y is the corresponding optimal move. This is a typical machine learning setup, where we try to construct a model that accurately predicts a certain value or class, given an input vector. Moreover, we had a lot of data (our solver can be seen as an oracle, you just give it the sequence and wait for the corresponding optimal solution). We tried to fit a neural network, but we could not get achieve an error of 0 (which means that for some sequences, a sub-optimal solution was given). We then tried a decision tree, known for it’s over-fitting capabilities (especially if you do not specify a maximum depth or prune the tree afterwards). And indeed, an error of 0 on the data could be achieved (as a matter of fact: as long as we do not have two identical input vectors with conflicting labels, a decisision tree induction technique can always discover a hypothesis that completely fits the training data). We thus found a function that outputs the optimal move for a given sequence of a certain length. This decision tree can be deserialized very efficiently by traversing the tree breadth-first and storing the information of the nodes. Below is an example of a decision tree (for sequences up to length 2). <strong>Unfortunately, we did not get the decision tree solution working in the dockerized containers and had to resort back to the 6 sets to store our sequences in.</strong></p>
+<p><img alt="A decision tree for sequences of maximum length 2. The root node can be interpreted as follows: if the board is empty or the first move of the opponent was in the left-most column (empty sequence or ‘1’), then place a token in the middle. As expected, we see a lot of leaf nodes with 4 (since moving a token in the middle column is often the most optimal move in the beginning of the game). The root node and its two children can be serialized as: 0&lt;2 4 1&lt;2, which is very space-efficient." src="https://cdn-images-1.medium.com/max/2000/1*LOAJq1_ewzc-RT-LC6A9uQ.png"></p>
+<p>Since the connect-four game is symmetrical, we never stored a sequence larger than all 4’s. Thus, if we were to store sequences up to length 4, we would only store the sequences smaller than 4444. If we ever encountered a sequence larger than this, we can mirror it by applying 8 — k for every k in our sequence. Furthermore, given that there is an optimal solution for each state, it is possible to split move sets in two distinct sets: one for odd and for even moves. Using this approach allows to significantly reduce the state representation. As an example, consider the following sequence of moves:</p>
+<div class="highlight"><pre><span></span>1. 3
+2. 3
+1. 3
+2. 3
+1. 3
+2. 0
+1. 2
+2. 1
+</pre></div>
+
+
+<p>One possible representation would be 33333021. However, we know that our bot will take the optimal solution in each possible state. As such, it is sufficient to extract the moves made by the opponent only. This results in a state representation of 3301 or 3332 if the bot is the first or second player respectively. Using these state representations results in shorter paths in the tree, and thus in a more compressed action lookup table.</p>
+<h2>Concluding notes</h2>
+<p>Jeroen and I had a lot of fun while competing and it was a good exercise for the both of us. We were hoping that one submission would have been enough to get the #1 spot, but we had some troubles to make our code work in the dockerized containers server-side.</p>
+<p><img alt="" src="https://cdn-images-1.medium.com/max/2244/1*u9QxnMU_VA-GCEBPO3UgEA.png"></p>
+<p><strong>I would like to thank all students that competed and would like to congratulate TomVDM, pythonneke and Ledlamp for their top 3 spots. Moreover, I was impressed by the diversity and complexity of submissions made by first-year engineering students. The submissions ranged from alpha-beta pruning (albeit less deep searches than ours), very smart heuristic approaches to even neural networks.</strong></p>
+<blockquote>
+<h1>If anything in this blog post is unclear, if you know any possible improvements, or if you would like some more clarification on some of the written parts, please leave a comment. Moreover, I’m willing to share the (research grade) python code with others on request.</h1>
+</blockquote>
+<p>See you next year for another AI competition ;),</p>
+<p>Gilles &amp; Jeroen</p>
+    </div>
+
+    <footer>
+        <div class="pure-g post-footer">
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="pure-g poster-info">
+                    <div class="pure-u">
+                        <a href="/author/gilles-vandewiele.html"><img src="http://users.ugent.be/~givdwiel/img/profielfoto.jpg" alt=""></a>
+                    </div>
+                    <div class="pure-u-3-4">
+                        <h3 class="author-name"><a href="/author/gilles-vandewiele.html">Gilles Vandewiele</a></h3>
+                        <p class="author-description">
+                          Decision Support Systems and White-Box Machine Learning
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+    </footer>
+
+    <!--    <div class="entry-content">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'localhost';
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+-->
+
+</div>
+
+
+
+    <footer class="index-footer">
+
+        <a href="http://idlab.technology">IDLab</a>
+        <a href="http://www.ugent.be/">UGent</a>
+
+        <p style='color: rgba(0, 0, 0, 0.3); font-size: 12px; display: inline-block'>
+            &#9400; Gilles Vandewiele (2018)  | 
+            Created with <a href="https://blog.getpelican.com/" target='_blank' style='margin-right: 0'>Pelican </a> (<a href="https://github.com/onur/medius" target='_blank' style='margin-right: 0'>Medius</a> template)
+        </p>
+
+    </footer>
+
+</body>
+</html>
