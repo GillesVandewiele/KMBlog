@@ -62,13 +62,24 @@
       console.log(publicationList);
 
       buttons = document.getElementsByClassName('filterBtn');
+      yearButtons = document.getElementsByClassName('filterBtnYear');
+      typeButtons = document.getElementsByClassName('filterBtnType');
       for(i = 0; i < buttons.length; i++){
         buttons[i].addEventListener("click", function(){
           toggleButton(this);
 
           var activeButtons = getActiveButtons(buttons);
+          var yearActiveButtons = getActiveButtons(yearButtons);
+          var typeActiveButtons = getActiveButtons(typeButtons);
           publicationList.filter(function(item){
-            return (activeButtons.includes(item.values().year) && activeButtons.includes(item.values().type));
+            var result = true;
+            if(yearActiveButtons.length > 0){
+              result = result && yearActiveButtons.includes(item.values().year)
+            }
+            if(typeActiveButtons.length > 0){
+              result = result && typeActiveButtons.includes(item.values().type)
+            }
+            return result;
           });
 
         });
@@ -257,18 +268,18 @@
               Filter by year
             </div>
             <div class="tags">
-                <a class="filterBtn active" style="cursor: pointer;">2013</a>
-                <a class="filterBtn active" style="cursor: pointer;">2016</a>
-                <a class="filterBtn active" style="cursor: pointer;">2017</a>
-                <a class="filterBtn active" style="cursor: pointer;">2018</a>
+                <a class="filterBtn filterBtnYear inactive" style="cursor: pointer;">2013</a>
+                <a class="filterBtn filterBtnYear inactive" style="cursor: pointer;">2016</a>
+                <a class="filterBtn filterBtnYear inactive" style="cursor: pointer;">2017</a>
+                <a class="filterBtn filterBtnYear inactive" style="cursor: pointer;">2018</a>
             </div>
 
             <div class="right-head">
               Filter by article type
             </div>
             <div class="tags">
-                <a class="filterBtn active" style="cursor: pointer;">Conference</a>
-                <a class="filterBtn active" style="cursor: pointer;">Journal</a>
+                <a class="filterBtn filterBtnType inactive" style="cursor: pointer;">Conference</a>
+                <a class="filterBtn filterBtnType inactive" style="cursor: pointer;">Journal</a>
             </div>
 
           </div>

@@ -38,13 +38,24 @@
       console.log(publicationList);
 
       buttons = document.getElementsByClassName('filterBtn');
+      yearButtons = document.getElementsByClassName('filterBtnYear');
+      typeButtons = document.getElementsByClassName('filterBtnType');
       for(i = 0; i < buttons.length; i++){
         buttons[i].addEventListener("click", function(){
           toggleButton(this);
 
           var activeButtons = getActiveButtons(buttons);
+          var yearActiveButtons = getActiveButtons(yearButtons);
+          var typeActiveButtons = getActiveButtons(typeButtons);
           publicationList.filter(function(item){
-            return (activeButtons.includes(item.values().year) && activeButtons.includes(item.values().type));
+            var result = true;
+            if(yearActiveButtons.length > 0){
+              result = result && yearActiveButtons.includes(item.values().year)
+            }
+            if(typeActiveButtons.length > 0){
+              result = result && typeActiveButtons.includes(item.values().type)
+            }
+            return result;
           });
 
         });
@@ -92,7 +103,7 @@
             </div>
             <div class="tags">
               {% for year in publications_per_year.keys()|sort %}
-                <a class="filterBtn active" style="cursor: pointer;">{{ year }}</a>
+                <a class="filterBtn filterBtnYear inactive" style="cursor: pointer;">{{ year }}</a>
               {% endfor %}
             </div>
 
@@ -101,7 +112,7 @@
             </div>
             <div class="tags">
               {% for type in publications_per_type.keys() %}
-                <a class="filterBtn active" style="cursor: pointer;">{{ type }}</a>
+                <a class="filterBtn filterBtnType inactive" style="cursor: pointer;">{{ type }}</a>
               {% endfor %}
             </div>
 
