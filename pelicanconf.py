@@ -120,6 +120,7 @@ MENUITEMS = (
     ('About', SITEURL+'/about.html'),
     ('Publications', SITEURL+'/publications.html'),
     ('Blog', SITEURL+'/blog.html'),
+    #('Conferences', SITEURL+'/conferences.html'),
     )
 
 # Blogroll
@@ -130,7 +131,7 @@ ICONS = (
     ('github', 'https://github.com/IBCNServices'),
 )
 
-DIRECT_TEMPLATES = ('includes/posts', 'publications', 'index', 'about', 'blog')
+DIRECT_TEMPLATES = ('includes/posts', 'publications', 'index', 'about', 'blog', 'conferences')
 PAGINATED_DIRECT_TEMPLATES = ('index', 'includes/posts', 'publications', 'blog') 
 DISQUS_SITENAME = "localhost"
 

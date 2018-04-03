@@ -1,5 +1,5 @@
 Title: Creating a connect-four bot with limited move time and file size
-Category: AI
+Category: Artificial Intelligence
 Date: 2018-03-07
 Authors: Gilles Vandewiele
 Cover: https://cdn-images-1.medium.com/max/800/1*NKzsRiAxa_oiikgbLyLCyw.png
@@ -8,41 +8,51 @@ Thumbnail: https://upload.wikimedia.org/wikipedia/commons/e/e9/Connect4.PNG
 In the context of the ‘Informatics’ course, where the first-year engineers at the University of Ghent learn to code in Python, we set up an AI bot competition platform. The goal was to create a bot that plays the game connect-four by implementing the following function:
 
 ```python
-    def generate_move(board, player, saved_state):
-        """Contains all code required to generate a move,
-        given a current game state (board & player)
+def generate_move(board, player, saved_state):
+    """Contains all code required to generate a move,
+    given a current game state (board & player)
 
-        Args:
+    Args:
+    -----
+        board (2D np.array):   game board (element is 0, 1 or 2)
+        player (int):          your player number (float)
+        saved_state (object):  returned value from previous call
 
-            board (2D np.array):   game board (element is 0, 1 or 2)
-            player (int):          your plabyer number (float)
-            saved_state (object):  returned value from previous call
+     Returns:
+     --------
+        action (int):                   number in [0, 6]
+        saved_state (optional, object): will be returned next time
+                                        the function is called
 
-         Returns:
-
-            action (int):                   number in [0, 6]
-            saved_state (optional, object): will be returned next time
-                                            the function is called
-
-         """
-         return 0
+     """
+     return 0
 ```
 
 After submitting code to the platform, you automatically challenge all players ranked higher than you on the leaderboard. Games are simulated between your bot and opponents. Each game consists of five rounds in which either 5 points are awarded to the player that can first connect four tokens or 1 point to the player that connected the longest chain (most likely 3 tokens) first, in case of a draw. This to ensure that there is always a winner. The starting player of the first round is chosen randomly, after which the players alternate in who starts. Your rank keeps increasing until you lose (ladder game).
 
 ![A simulation of a game between bots. Player 1 is definitely on the winning hand.](https://cdn-images-1.medium.com/max/2000/1*caKgF2XHXsBWsupJ2Pgagg.png)
 
+
+
 A colleague, [Jeroen van der Hooft](http://users.ugent.be/~jvdrhoof/), and I decided that it would be a fun exercise trying to mimic a perfect solver ([which wins the game if he can start](http://connect4.gamesolver.org/?pos=)), based on the following [blog post](http://blog.gamesolver.org/), as much as possible. Some important requirements that our code had to comply (which led to the fact that our solver was **not** completely optimal) to were:
-* maximum file size of 1 MB 
-* generate_move could not run longer than 1s
-* only make use of the standard library and NumPy
+
+- maximum file size of 1 MB 
+
+- generate_move could not run longer than 1s
+
+- only make use of the standard library and NumPy
+
 
 ## Representing the game board with bitstrings
 > Let’s first introduce an efficient data structure to store the game board: **bitstrings**. I will summarize the most important operations (such as checking whether four tokens are connected, and updating the board after a move). For a very thorough explanation on the bitstrings (or bitboards), and all the possible operations, please check this [readme](https://github.com/denkspuren/BitboardC4/blob/master/BitboardDesign.md) (albeit done a bit differently).
 
 We can represent each possible game state (or game board configuration) uniquely in the form of two bitstrings, which can easily be converted to an integer:
-* one bitstring representing the positions of the tokens of a player (**position**)
-* one bitstring representing the positions of of both players (**mask**)
+
+- one bitstring representing the positions of the tokens of a player (**position**)
+
+- one bitstring representing the positions of of both players (**mask**)
+
+
 The position bitstring of the opponent can be calculated by applying a XOR-operator between **mask** and **position**. Of course, storing two bitstrings for the tokens of both players is a viable approach as well (we can then calculate the mask by applying the OR-operator on both bitstrings).
 
 The bitstring is composed of 49 bits which includes a sentinel row (all 0’s) of 7 bits (the use of this will be explained shortly). The bits are ordered as follows:
@@ -56,137 +66,137 @@ As an example, check the following game board configuration:
 Now let’s form the bitstrings, with the **position** bitstring for the yellow player:
 
 ```python
-    # position
-    0000000
-    0000000
-    0000000
-    0011000    = b'0000000000000000000110001101000100000000000000000'
-    0001000
-    0000100
-    0001100    = 832700416
+# position
+0000000
+0000000
+0000000
+0011000    = b'0000000000000000000110001101000100000000000000000'
+0001000
+0000100
+0001100    = 832700416
 
-    # mask
-    0000000
-    0000000
-    0001000
-    0011000    = b'0000000000000100000110011111000111100000000000000'
-    0011000
-    0011100
-    0011110    = 35230302208
+# mask
+0000000
+0000000
+0001000
+0011000    = b'0000000000000100000110011111000111100000000000000'
+0011000
+0011100
+0011110    = 35230302208
 
-    # (opponent position)
-    0000000           0000000         0000000  
-    0000000           0000000         0000000
-    0000000           0001000         0001000
-    0011000    XOR    0011000    =    0000000 
-    0001000           0011000         0010000
-    0000100           0011100         0011000
-    0001100           0011110         0010010
+# (opponent position)
+0000000           0000000         0000000  
+0000000           0000000         0000000
+0000000           0001000         0001000
+0011000    XOR    0011000    =    0000000 
+0001000           0011000         0010000
+0000100           0011100         0011000
+0001100           0011110         0010010
 ```
 
 Since the board input parameter is a numpy array of numpy arrays, we first need to convert this board to the corresponding bitmaps. Below is the (rather straight-forward) code to do this:
 
 ```python
-    def get_position_mask_bitmap(board, player):
-        position, mask = '', ''
-        # Start with right-most column
-        for j in range(6, -1, -1):
-            # Add 0-bits to sentinel 
-            mask += '0'
-            position += '0'
-            # Start with bottom row
-            for i in range(0, 6):
-                mask += ['0', '1'][board[i, j] != 0]
-                position += ['0', '1'][board[i, j] == player]
-        return int(position, 2), int(mask, 2)
+def get_position_mask_bitmap(board, player):
+    position, mask = '', ''
+    # Start with right-most column
+    for j in range(6, -1, -1):
+        # Add 0-bits to sentinel 
+        mask += '0'
+        position += '0'
+        # Start with bottom row
+        for i in range(0, 6):
+            mask += ['0', '1'][board[i, j] != 0]
+            position += ['0', '1'][board[i, j] == player]
+    return int(position, 2), int(mask, 2)
 ```
 
 We can now use the **position** bitstring to check whether four tokens are connected, with the following [bitwise operations](https://en.wikipedia.org/wiki/Bitwise_operation):
 
 ```python
-    def connected_four(position):
-        # Horizontal check
-        m = position & (position >> 7)
-        if m & (m >> 14):
-            return True
+def connected_four(position):
+    # Horizontal check
+    m = position & (position >> 7)
+    if m & (m >> 14):
+        return True
 
-        # Diagonal \
-        m = position & (position >> 6)
-        if m & (m >> 12):
-            return True
+    # Diagonal \
+    m = position & (position >> 6)
+    if m & (m >> 12):
+        return True
 
-        # Diagonal /
-        m = position & (position >> 8)
-        if m & (m >> 16):
-            return True
+    # Diagonal /
+    m = position & (position >> 8)
+    if m & (m >> 16):
+        return True
 
-        # Vertical
-        m = position & (position >> 1)
-        if m & (m >> 2):
-            return True
+    # Vertical
+    m = position & (position >> 1)
+    if m & (m >> 2):
+        return True
 
-        # Nothing found
-        return False
+    # Nothing found
+    return False
 ```
 
 Now let us break down the part where we check whether four tokens are connected horizontally:
 
 ```python
-    1. m = position & (position >> 7)
-    2. if m & (m >> 14):
-           return True
+1. m = position & (position >> 7)
+2. if m & (m >> 14):
+       return True
 ```
 
 The first step (1.) is shifting our bit-string 7 positions to the right and taking an AND-mask, this boils down to moving each bit to the left in our bit-board (we decrease the index in the bitstring, where index 0 corresponds to the right-most or least significant bit). Let us take the following bitboard as an example (simplified version which cannot occur in a real game):
 
 ```python
-    0000000
-    0000000
-    0011110
-    0000000
-    0000000
-    0000000
-    0000000
+0000000
+0000000
+0011110
+0000000
+0000000
+0000000
+0000000
 
-    =       b'0000000001000000100000010000001000000000000000000'
-    >> 7:   b'0000000000000000100000010000001000000100000000000'
+=       b'0000000001000000100000010000001000000000000000000'
+>> 7:   b'0000000000000000100000010000001000000100000000000'
 
-    0000000
-    0000000
-    0111100
-    0000000
-    0000000
-    0000000
-    0000000
+0000000
+0000000
+0111100
+0000000
+0000000
+0000000
+0000000
 
-    &:      b'0000000000000000000000010000001000000100000000000'
+&:      b'0000000000000000000000010000001000000100000000000'
 
-    0000000
-    0000000
-    0011100
-    0000000
-    0000000
-    0000000
-    0000000
+0000000
+0000000
+0011100
+0000000
+0000000
+0000000
+0000000
 ```
 
 We can view the new bitboard as follows: a bit is equal to 1 if there is a token to left of it and if it is the same (or in other words: *the bits equal to 1 indicate that we can connect two tokens horizontally to the left from that position*). Now for the next operation (2.), we shift our result 14 positions to the right and apply an AND-mask again.
 
 ```python
-    0000000
-    0000000
-    0011100
-    0000000
-    0000000
-    0000000
-    0000000
+0000000
+0000000
+0011100
+0000000
+0000000
+0000000
+0000000
 
-    =       b'0000000000000000100000010000001000000000000000000'
-    >> 14:  b'0000000000000000000000000000001000000100000000000'
-              -------------------------------------------------
-    &    :  b'0000000000000000000000000000001000000000000000000'
+=       b'0000000000000000100000010000001000000000000000000'
+>> 14:  b'0000000000000000000000000000001000000100000000000'
+          -------------------------------------------------
+&    :  b'0000000000000000000000000000001000000000000000000'
 
-    > 0? :  True  # four connected tokens found
+> 0? :  True  # four connected tokens found
 ```
 
 By shifting our resulting bitstring 14 positions to the right, we are checking if we can match two horizontally consecutive tokens with two other horizontally consecutive tokens 2 positions left to it on the board. These steps combined are equivalent to checking whether four tokens are connected horizontally. The operations for the other directions (diagonally and vertically) are the same, we just shift our bitmap for more or less positions (1 for vertical, 8 for diagonal to the south-west (/) and 6 for diagonal to the south-east (\\)).
@@ -195,109 +205,109 @@ The reason for the sentinel row (the seven extra bits) is to make a distinct bet
 
 
 ```python
-    vertical check on 6x7 grid
-    --------------------------
-    0010000
-    0010000
-    0010000
-    0000000
-    0000000
-    0001000
+vertical check on 6x7 grid
+--------------------------
+0010000
+0010000
+0010000
+0000000
+0000000
+0001000
 
-    =       b'000000000000000000000001111000000000000000'
-    >> 1:   b'000000000000000000000000111100000000000000'
-    &   :   b'000000000000000000000000111000000000000000'
-    >> 2:   b'000000000000000000000000001110000000000000'
-    &   :   b'000000000000000000000000001000000000000000'
-    > 0?:   True (WRONG)
+=       b'000000000000000000000001111000000000000000'
+>> 1:   b'000000000000000000000000111100000000000000'
+&   :   b'000000000000000000000000111000000000000000'
+>> 2:   b'000000000000000000000000001110000000000000'
+&   :   b'000000000000000000000000001000000000000000'
+> 0?:   True (WRONG)
 
-    vertical check on 7x7 grid
-    --------------------------
-    0000000
-    0010000
-    0010000
-    0010000
-    0000000
-    0000000
-    0001000
+vertical check on 7x7 grid
+--------------------------
+0000000
+0010000
+0010000
+0010000
+0000000
+0000000
+0001000
 
-    =       b'0000000000000000000000000001011100000000000000000'
-    >> 1:   b'0000000000000000000000000000101110000000000000000'
-    &   :   b'0000000000000000000000000000001100000000000000000'
-    >> 2:   b'0000000000000000000000000000000011000000000000000'
-    &   :   b'0000000000000000000000000000000000000000000000000'
-    > 0?:   False (CORRECT)
+=       b'0000000000000000000000000001011100000000000000000'
+>> 1:   b'0000000000000000000000000000101110000000000000000'
+&   :   b'0000000000000000000000000000001100000000000000000'
+>> 2:   b'0000000000000000000000000000000011000000000000000'
+&   :   b'0000000000000000000000000000000000000000000000000'
+> 0?:   False (CORRECT)
 ```
 
 Now let’s take a better look at the move-operation, where we change the bitmaps according to a move made by a player:
 
 ```python
-    def make_move(position, mask, col):
-        new_position = position ^ mask
-        new_mask = mask | (mask + (1 << (col*7)))
-        return new_position, new_mask
+def make_move(position, mask, col):
+    new_position = position ^ mask
+    new_mask = mask | (mask + (1 << (col*7)))
+    return new_position, new_mask
 ```
 
 The first thing we do is apply a XOR-mask between the **position** and **mask** bitstring to obtain the position bitstring for the opponent (since it is going to be his turn after making this move). Then we update our **mask**bitstring by applying an OR-mask between the current mask and a addition of the mask with a bit in the corresponding column (where we want to drop our token). Let us take a look at an example:
 
 ```python
-    # position
-    0000000
-    0000000
-    0000000
-    0011000
-    0001000
-    0000100
-    0001100
+# position
+0000000
+0000000
+0000000
+0011000
+0001000
+0000100
+0001100
 
-    # mask
-    0000000
-    0000000
-    0001000
-    0011000
-    0011000
-    0011100
-    0011110
+# mask
+0000000
+0000000
+0001000
+0011000
+0011000
+0011100
+0011110
 
-    # Drop a token in the fourth column 
-    # --> make_move(position, mask, 4)
+# Drop a token in the fourth column 
+# --> make_move(position, mask, 4)
 
-    # new_position = position ^ mask
-    # new_position
-    0000000           0000000         0000000  
-    0000000           0000000         0000000
-    0000000           0001000         0001000
-    0011000    XOR    0011000    =    0000000 
-    0001000           0011000         0010000
-    0000100           0011100         0011000
-    0001100           0011110         0010010
+# new_position = position ^ mask
+# new_position
+0000000           0000000         0000000  
+0000000           0000000         0000000
+0000000           0001000         0001000
+0011000    XOR    0011000    =    0000000 
+0001000           0011000         0010000
+0000100           0011100         0011000
+0001100           0011110         0010010
 
-    # 1 << (col*7)
-    0000000
-    0000000
-    0000000
-    0000000     =   268435456
-    0000000
-    0000000
-    0000100
+# 1 << (col*7)
+0000000
+0000000
+0000000
+0000000     =   268435456
+0000000
+0000000
+0000100
 
-    # mask + (1 << (col*7)) = 35230302208 + 268435456 = 35498737664
-    0000000
-    0000000
-    0001000
-    0011000
-    0011100
-    0011000
-    0011010
+# mask + (1 << (col*7)) = 35230302208 + 268435456 = 35498737664
+0000000
+0000000
+0001000
+0011000
+0011100
+0011000
+0011010
 
-    # mask | (mask + (1 << (col*7)))
-    0000000
-    0000000
-    0001000
-    0011000
-    0011100
-    0011100
-    0011110
+# mask | (mask + (1 << (col*7)))
+0000000
+0000000
+0001000
+0011000
+0011100
+0011100
+0011110
 ```
 
 ## Game trees, minimax and alpha-beta pruning
@@ -313,16 +323,23 @@ Now, while the path 1–1–2 in the game tree from the figure above leads to a 
 > Since we do not know how ‘good’ the bot is we are going to play against, we have to assume the worst-case: what if our opponent is the best possible bot and thus makes the best possible move every time? If we can find a winning path against such a worst-case bot, then we can definitely take this path and be sure that we win the game (the real bot can only do worse, making the game end earlier). For the connect-four game, such a path exists if you are the starting player. Here is where the **minimax** algorithm comes in play.
 
 Before we can apply this algorithm to game trees, we need to define a scoring function for each node in the tree. We will just take the same scoring function as the [blog post](http://blog.gamesolver.org/solving-connect-four/02-test-protocol/) this writing is based upon. The score for a game board configuration is equal to:
-* 0 if the game is going to end in a draw
-* 22 - the number of stones used if we can win the game
-* -(22 - the number of stones) if we will lose.
+
+- 0 if the game is going to end in a draw
+
+- 22 - the number of stones used if we can win the game
+
+- -(22 - the number of stones) if we will lose.
+
+
 In the picture below, if we assume that we are the yellow player, we can assign a score of -18 to the game board, since the red player can win with his fourth stone.
 
 ![This game board is assigned a score of -18 since the opponent can finish with 4 stones](https://cdn-images-1.medium.com/max/2000/1*d21t9oTSTYWcfdJnpc4jYQ.png)
 
 In practice, it is hard to assign a score when the game has not yet finished. That’s why we explore our tree until we reach a leaf node, calculate the score and propagate this score back upwards to the root. Now, when we are propagating these values upwards, internal nodes within our game tree will receive multiple values (a value for each of its children). The question is what value we should assign to the internal nodes. Now we can give the definition for the value of an internal node:
-* If the internal node is on an odd depth, we take the **minimum** value of the children their values (as an opponent, we want to make the final score as negative as possible, since we want to win)
-* If the internal node is on an even depth, we take the **maximum** value of the children their values (we want our score to be as positive as possible)
+
+- If the internal node is on an odd depth, we take the **minimum** value of the children their values (as an opponent, we want to make the final score as negative as possible, since we want to win)
+
+- If the internal node is on an even depth, we take the **maximum** value of the children their values (we want our score to be as positive as possible)
 
 Here’s an example, taken directly from [wikipedia](https://en.wikipedia.org/wiki/Minimax):
 
@@ -331,8 +348,10 @@ Here’s an example, taken directly from [wikipedia](https://en.wikipedia.org/wi
 > So now we have a way to find the optimal path within a game tree. The problem with this approach is that, especially in the beginning of the game, it takes a very long time to traverse the entire tree. We only have 1 second to make a move! Therefore, we introduce a technique that allows us to prune (large) parts of the game tree, such that we do not need to search it entirely. The algorithm is called **alpha-beta pruning**.
 
 I will summarize the most important concepts. A nice step-by-step video, by prof. Pieter Abbeel, can be found [here](https://www.youtube.com/watch?v=xBXHtz4Gbdo). We define the following variables:
-* **alpha**: the current best score on the path to the root by the maximizer (us)
-* **beta**: the current best score on path to the root by minimizer (opponent)
+
+- **alpha**: the current best score on the path to the root by the maximizer (us)
+
+- **beta**: the current best score on path to the root by minimizer (opponent)
 
 What we do is update our alpha and beta values every time we see a new value from our children (depending on whether we are on an even or odd depth). We pass these alpha and beta along to our other children, now when we find a value that is either higher than our current beta, or lower than our current alpha, we can discard the entire subtree (since we are sure that the optimal path will not go through this). Let us take a look at another example, again taken from [wikipedia](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning):
 
@@ -357,21 +376,25 @@ In the subsequent section, further optimizations to this alpha-beta algorithm, o
 In what now follows, the most significant implemented optimizations will be listed with a corresponding plot of the success rates, compared to the baseline.
 
 **1. Use of caching (transposition tables & Python LRU cache)**
+
 We can add the **position** and **mask** bitmap together to form a unique key. This key can be stored in a dictionary with the corresponding upper or lower bound. Now, before we start iterating over all our children, we can already initialize our current value, by getting the corresponding bound from the cache first. Another very simple optimization is adding [lru_cache decorators](https://docs.python.org/3/library/functools.html) to every helper-function.
 
 ![We can see quite an improvement of our success rates compared to the baseline. Unfortunately, we plateau at around the same x-value as our baseline, which means we still need an intermediate solution for our (approximately) first 26 moves.](https://cdn-images-1.medium.com/max/3710/1*saxwjnOBfG4OPrgTA81x-w.png)
 
 **2. Earlier determination of winning state**
+
 Initially, an ending state (leaf node) was reached when either four tokens were connected or 42 moves were made. We can already determine one move earlier if the game will end or not (namely if there are three tokens connected and the user can make a move that introduces the fourth token in the connection). This is a very efficient check, and makes our trees more shallow.
 
 ![We see a significant improvement by making our trees more shallow… Moreover, we plateau at a lower x-value (around 23), which means we will only need an intermediate solution for the first 22 moves.](https://cdn-images-1.medium.com/max/3726/1*lBtM-A76LF-Jr5tpetxGOQ.png)
 
 **3. Go for any winning path, not the winning path with shortest number of moves**
+
 Instead of looking for a maximum or minimum value, we can just follow the path of the first strictly positive or negative (respectively) value. Those paths are not the optimal one (we will not win with a minimal number of moves or lose with a maximum number of moves), but we were more than happy with a regular win (it did not have to be the optimal one).
 
 ![An increase in the success rates, but we do not plateau on a lower x-value.](https://cdn-images-1.medium.com/max/3726/1*pH9baJnGRXQ8ciw-vJNLPg.png)
 
 **4. Other optimizations**
+
 Many other optimizations were tried: multi-processing (did not work out, probably due to the overhead in Python), sorting the order of leaf traversal based on heuristics (only worked on low depths of the game tree), pruning subtrees early that will lead to a game loss (small gain), etc. Here are the success rates of our final solution:
 
 ![The final listed improvements did not result in significant gains. Our solver can solve every sequence as soon as the length is higher or equal than 23. This means we need to find a solution to bridge the first 22 moves, where our solver often takes longer than 1 second.](https://cdn-images-1.medium.com/max/3726/1*8OwVWen-T1A-yNg8GyPVCg.png)

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+  {% block title %}Publications{% endblock %}
+  {% block content %}
+
+
+  <script>
+    var toggleButton = function(element){
+      if(element.classList.contains('inactive')){
+        element.classList.remove("inactive");
+        element.classList.add("active");
+      } else {
+        element.classList.remove("active");
+        element.classList.add("inactive");
+      }
+    }
+
+    var getActiveButtons = function(buttons){
+      var values = [];
+      for(j = 0; j < buttons.length; j++){
+        if(buttons[j].classList.contains('active')){
+          values.push(buttons[j].text);
+        }
+      }
+      return values;
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+
+      var options = {
+        valueNames: [
+          'title',
+          { attr: 'year', name: 'year' },
+          { attr: 'type', name: 'type' },
+        ]
+      };
+
+      var publicationList = new List('publicationList', options);
+      console.log(publicationList);
+
+      buttons = document.getElementsByClassName('filterBtn');
+      for(i = 0; i < buttons.length; i++){
+        buttons[i].addEventListener("click", function(){
+          toggleButton(this);
+
+          var activeButtons = getActiveButtons(buttons);
+          publicationList.filter(function(item){
+            return (activeButtons.includes(item.values().year) && activeButtons.includes(item.values().type));
+          });
+
+        });
+      }
+
+
+
+    });
+  </script>
+
+  <div class="main-container">
+    <div class="pure-g">
+      <div class="pure-u-1 pure-u-lg-2-3">
+        <div class="entry-content">
+          <div id="publicationList">
+            <ul class='list' style='text-align: left; font-size: 12px;'>
+              {% for publication in publications %}
+                <li id="{{ publication.key }}" data-id="{{ loop.index }}" style='margin-bottom: 10pt;'>
+                  <a class='title year type' href="{{ SITEURL }}/publications/{{ publication.key }}.html" year="{{ publication.year }}" type="{{ publications_per_type_rev[publication] }}">{{ publication.title }}</a> <br>
+                  
+                  {% for author in publication.authors %}
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                      {% if author in MEDIUS_AUTHORS.keys() %}
+                          <a href="{{ SITEURL }}/author/{{ author | replace(' ', '-') | lower }}.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">{{ author }}</a>
+                      {% else %}
+                          {{ author }}
+                      {% endif %}{% if loop.index < publication.authors|length %},{% endif %}
+                    </p>
+                  {% endfor %} <br>
+                  
+                  <em style='color: rgba(0, 0, 0, 0.3);'>{{ publication.where }}</em>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pure-u-1 pure-u-lg-1-3">
+        <div class="right-container">
+          <div class="right-bar">
+
+            <div class="right-head">
+              Filter by year
+            </div>
+            <div class="tags">
+              {% for year in publications_per_year.keys()|sort %}
+                <a class="filterBtn active" style="cursor: pointer;">{{ year }}</a>
+              {% endfor %}
+            </div>
+
+            <div class="right-head">
+              Filter by article type
+            </div>
+            <div class="tags">
+              {% for type in publications_per_type.keys() %}
+                <a class="filterBtn active" style="cursor: pointer;">{{ type }}</a>
+              {% endfor %}
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
