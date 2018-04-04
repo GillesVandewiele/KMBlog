@@ -1,0 +1,37 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc:   <http://purl.org/dc/elements/1.1/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+
+<#FemkeOngenae>
+   a foaf:Person ;
+   foaf:name "Femke Ongenae" ;
+   foaf:givenName "Femke" ;
+   foaf:familyName "Ongenae" ;
+   foaf:mbox <mailto:femke.ongenae@ugent.be> ;
+   foaf:depiction <broken> ;
+   foaf:account <https://biblio.ugent.be/person/802000192218> ;
+   foaf:account <https://scholar.google.be/citations?user=ezkNNF4AAAAJ&hl=nl> ;
+   foaf:account <https://github.com/fongenae> ;
+   foaf:account <https://twitter.com/fongenae> ;
+   foaf:account <https://www.linkedin.com/in/femke-ongenae-10b2587/> ;
+   foaf:interest "Project Management" ;
+   foaf:interest "Grant Coordination" ;
+   foaf:interest "Ontology" ;
+   foaf:interest "Predictive Analytics" ;
+   foaf:interest "Agile Development" ;
+   foaf:interest "SCRUM" ;
+   foaf:interest "Semantic Web" ;
+   foaf:interest "Stream Reasoning" ;
+   foaf:interest "eHealth" ;
+   foaf:interest "Machine Learning" ;
+   foaf:interest "Anomaly Detection" ;
+   foaf:interest "Root Cause Analysis" ;
+   foaf:interest "Multidisciplinary Research" ;
+   foaf:interest "Medical Informatics" ;
+   foaf:interest "Internet of Things" ;
+   foaf:interest "Data Analytics" ;
+   foaf:interest "Decision Support Systems" ;
+   foaf:interest "White-Box Machine Learning" ;
+   owl:sameAs <https://data.verborgh.org/people/femke_ongenae> .

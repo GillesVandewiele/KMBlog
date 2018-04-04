@@ -2,7 +2,7 @@ Title: Medius
 Category: Category
 Date: 2015-09-11
 SubTitle: The medium is the message
-Authors: Gilles Vandewiele, Pieter Bonte, Bram Steenwinckel, Jelle De Bock, Mathias De Brouwer, Stijn Verstichel
+Authors: Gilles Vandewiele, Pieter Bonte, Bram Steenwinckel, Jelle De Bock, Mathias De Brouwer, Stijn Verstichel, Femke Ongenae
 Cover: https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Hubble2005-01-barred-spiral-galaxy-NGC1300.jpg/1920px-Hubble2005-01-barred-spiral-galaxy-NGC1300.jpg
 Thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Hubble2005-01-barred-spiral-galaxy-NGC1300.jpg/800px-Hubble2005-01-barred-spiral-galaxy-NGC1300.jpg
 

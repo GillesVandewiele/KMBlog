@@ -56,8 +56,8 @@ def extract_authors(author_path, site_url=''):
             description = str(list(qres)[0][0].toPython())
         else:
             interests = [str(x[0].toPython()) for x in qres]
-            description = ','.join(interests[:-2]) 
-            description += ' and '.join(interests[-2:])
+            description = ', '.join(interests[:-2]) 
+            description += ', ' + ' and '.join(interests[-2:])
         author_dict[name]['description'] = description
 
         # Get his image
