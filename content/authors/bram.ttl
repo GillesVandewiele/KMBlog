@@ -10,7 +10,7 @@
     foaf:givenName "Bram" ;
     foaf:familyName "Steenwinckel" ;
     foaf:mbox <mailto:bram.steenwinckel@ugent.be> ;
-    foaf:depiction <https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAMABADGAAwAAQAAAAAAAA4sAAAAJDVmMWQyMjQzLWY1MzYtNDZkMS1hZWE3LWE4ZmYyM2Y0OTdjYQ.jpg> ;
+    foaf:depiction <https://avatars0.githubusercontent.com/u/9083494> ;
     foaf:account <https://github.com/bsteenwi/> ;
     foaf:account <https://twitter.com/BSteenwinckel> ;
     foaf:account <https://www.linkedin.com/in/bram-steenwinckel-557069147/> ;

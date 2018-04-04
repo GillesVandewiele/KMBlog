@@ -3,23 +3,23 @@ import os
 
 
 def extract_authors(author_path, site_url=''):
-	"""Extract all rdf files from author_path and construct a dictionary,
-	used to construct the author pages, of the following format:
-	{
-		'Name': {
-			'description': 'research interests',
-			'image': 'profile picture',
-			'cover': 'cover picture',
-			'links': [('github', ''),
-					  ('linkedin', ''),
-					  ('twitter-square', '')]
-		},
-		...
-	}
-	The links are only used when they are recognized by their url. The cover
-	picture can either be a static image (no url, just a filename), in which
-	case it is retrieved from site_url/images/<filename>
-	"""
+    """Extract all rdf files from author_path and construct a dictionary,
+    used to construct the author pages, of the following format:
+    {
+        'Name': {
+            'description': 'research interests',
+            'image': 'profile picture',
+            'cover': 'cover picture',
+            'links': [('github', ''),
+                      ('linkedin', ''),
+                      ('twitter-square', '')]
+        },
+        ...
+    }
+    The links are only used when they are recognized by their url. The cover
+    picture can either be a static image (no url, just a filename), in which
+    case it is retrieved from site_url/images/<filename>
+    """
     g = rdflib.Graph()
     for author_rdf_file in os.listdir(author_path):
         g.parse(author_path+os.sep+author_rdf_file, format='turtle')
@@ -96,9 +96,28 @@ def extract_authors(author_path, site_url=''):
                 author_dict[name]['links'].append(('globe', uri))
 
         author_dict[name]['links'] = sorted(
-        	author_dict[name]['links'], 
-        	key=lambda x: x[0]
+            author_dict[name]['links'], 
+            key=lambda x: x[0]
         )
 
     return author_dict
 
+def aggregate_rdf_files(paths, output_path):
+    """Browse over all file in each element of `paths`. Try parsing it with 
+    rdflib. After iterating over all the files, serialize the aggregated graph 
+    in Turtle format.
+    """
+    #rdflib.util.guess_format to get the format
+    g = rdflib.Graph()
+    for path in paths:
+        for file in os.listdir(path):
+            try:
+                print(end='Trying to parse {}... '.format(file))
+                g.parse(
+                    path+os.sep+file,
+                    format=rdflib.util.guess_format(path+os.sep+file)
+                )
+                print('Success!')
+            except:
+                print('Fail!')
+    g.serialize(destination=output_path, format='turtle')

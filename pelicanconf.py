@@ -10,8 +10,12 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 import sys
 sys.path.append(dir_path)
 
-from rdfparser import extract_authors
+from rdfparser import extract_authors, aggregate_rdf_files
 
+rdf_paths = [
+  'content/authors'
+]
+aggregate_rdf_files(rdf_paths, 'content/km_rdf.ttl')
 
 AUTHORS_PATH = 'content/authors'       
 AUTHORS = extract_authors(AUTHORS_PATH)
