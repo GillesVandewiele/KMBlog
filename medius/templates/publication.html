@@ -8,18 +8,19 @@
 
         <div class="article-header-container" style='text-align:left'>
                 <div class="title-container">
-                    <h5 style='margin-bottom: 5pt;'>{{ publication.title }}</h5>
+                    <h5 property="schema:name foaf:name dc:title" style='margin-bottom: 5pt;'>{{ publication.title }}</h5>
                     <h6 style='margin-top: 0pt;'>
                         by
                         {% for author in publication.authors %}
-                            {{ author }}{% if loop.index < publication.authors|length %},{% endif %}
+                            <span resource="{% if author in MEDIUS_AUTHORS.keys() %}{{ SITEURL }}/author/{{ author | replace(' ', '-') | lower }}.html {% endif %}" property="schema:author dc:creator foaf:maker" typeof="schema:Person foaf:Person"><span property="foaf:name dc:title">
+                            {{ author }}</span></span>{% if loop.index < publication.authors|length %},{% endif %}
                         {% endfor %}
                     </h6>
                 </div>
         </div>
-        <div class="entry-content" style='text-align:left; margin-bottom: 10pt;'>
+        <p property="schema:description dc:description" class="entry-content" style='text-align:left; margin-bottom: 10pt;'>
             {{ publication.abstract }}
-        </div>
+        </p>
 
       </div>
 

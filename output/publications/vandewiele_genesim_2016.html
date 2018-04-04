@@ -32,15 +32,20 @@
 
         <div class="article-header-container" style='text-align:left'>
                 <div class="title-container">
-                    <h5 style='margin-bottom: 5pt;'>GENESIM : genetic extraction of a single, interpretable model</h5>
+                    <h5 property="schema:name foaf:name dc:title" style='margin-bottom: 5pt;'>GENESIM : genetic extraction of a single, interpretable model</h5>
                     <h6 style='margin-top: 0pt;'>
                         by
-                            Gilles Vandewiele,                            Olivier Janssens,                            Femke Ongenae,                            Filip De Turck,                            Sofie Van Hoecke                    </h6>
+                            <span resource="/author/gilles-vandewiele.html " property="schema:author dc:creator foaf:maker" typeof="schema:Person foaf:Person"><span property="foaf:name dc:title">
+                            Gilles Vandewiele</span></span>,                            <span resource="" property="schema:author dc:creator foaf:maker" typeof="schema:Person foaf:Person"><span property="foaf:name dc:title">
+                            Olivier Janssens</span></span>,                            <span resource="/author/femke-ongenae.html " property="schema:author dc:creator foaf:maker" typeof="schema:Person foaf:Person"><span property="foaf:name dc:title">
+                            Femke Ongenae</span></span>,                            <span resource="" property="schema:author dc:creator foaf:maker" typeof="schema:Person foaf:Person"><span property="foaf:name dc:title">
+                            Filip De Turck</span></span>,                            <span resource="" property="schema:author dc:creator foaf:maker" typeof="schema:Person foaf:Person"><span property="foaf:name dc:title">
+                            Sofie Van Hoecke</span></span>                    </h6>
                 </div>
         </div>
-        <div class="entry-content" style='text-align:left; margin-bottom: 10pt;'>
+        <p property="schema:description dc:description" class="entry-content" style='text-align:left; margin-bottom: 10pt;'>
             Models obtained by decision tree induction techniques excel in being interpretable. However, they can be prone to overfitting, which results in a low predictive performance. Ensemble techniques are able to achieve a higher accuracy. However, this comes at a cost of losing interpretability of the resulting model. This makes ensemble techniques impractical in applications where decision support, instead of decision making, is crucial. To bridge this gap, we present the GENESIM algorithm that transforms an ensemble of decision trees to a single decision tree with an enhanced predictive performance by using a genetic algorithm. We compared GENESIM to prevalent decision tree induction and ensemble techniques using twelve publicly available data sets. The results show that GENESIM achieves a better predictive performance on most of these data sets than decision tree induction techniques and a predictive performance in the same order of magnitude as the ensemble techniques. Moreover, the resulting model of GENESIM has a very low complexity, making it very interpretable, in contrast to ensemble techniques.
-        </div>
+        </p>
 
       </div>
 

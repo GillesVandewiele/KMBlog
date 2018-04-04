@@ -32,15 +32,21 @@
 
         <div class="article-header-container" style='text-align:left'>
                 <div class="title-container">
-                    <h5 style='margin-bottom: 5pt;'>SENSdesc: Connect Sensor queries and Context</h5>
+                    <h5 property="schema:name foaf:name dc:title" style='margin-bottom: 5pt;'>SENSdesc: Connect Sensor queries and Context</h5>
                     <h6 style='margin-top: 0pt;'>
                         by
-                            Dörthe Arndt,                            Pieter Bonte,                            Alexander Dejonghe,                            Ruben Verborgh,                            Filip De Turck,                            Femke Ongenae                    </h6>
+                            <span resource="" property="schema:author dc:creator foaf:maker" typeof="schema:Person foaf:Person"><span property="foaf:name dc:title">
+                            Dörthe Arndt</span></span>,                            <span resource="/author/pieter-bonte.html " property="schema:author dc:creator foaf:maker" typeof="schema:Person foaf:Person"><span property="foaf:name dc:title">
+                            Pieter Bonte</span></span>,                            <span resource="" property="schema:author dc:creator foaf:maker" typeof="schema:Person foaf:Person"><span property="foaf:name dc:title">
+                            Alexander Dejonghe</span></span>,                            <span resource="" property="schema:author dc:creator foaf:maker" typeof="schema:Person foaf:Person"><span property="foaf:name dc:title">
+                            Ruben Verborgh</span></span>,                            <span resource="" property="schema:author dc:creator foaf:maker" typeof="schema:Person foaf:Person"><span property="foaf:name dc:title">
+                            Filip De Turck</span></span>,                            <span resource="/author/femke-ongenae.html " property="schema:author dc:creator foaf:maker" typeof="schema:Person foaf:Person"><span property="foaf:name dc:title">
+                            Femke Ongenae</span></span>                    </h6>
                 </div>
         </div>
-        <div class="entry-content" style='text-align:left; margin-bottom: 10pt;'>
+        <p property="schema:description dc:description" class="entry-content" style='text-align:left; margin-bottom: 10pt;'>
             Modern developments confront us with an ever increasing amount of streaming data: different sensors in environments like hospitals or factories communicate their measurements to other applications. Having this data at disposal faces us with a new challenge: the data needs to be integrated to existing frameworks. As the availability of sensors can rapidly change, these need to be flexible enough to easily incorporate new systems without having to be explicitly configured. Semantic Web applications offer a solution for that enabling computers to ‘understand’ data. But for them the pure amount of data and different possible queries which can be performed on it can form an obstacle. This paper tackles this problem: we present a formalism to describe stream queries in the ontology context in which they might become relevant. These descriptions enable us to automatically decide based on the actual setting and the problem to be solved which and how sensors should be monitored further. This helps us to limit the streaming data taken into account for reasoning tasks and make stream reasoning more performant. We illustrate our approach on a health-care use case where different sensors are used to measure data on patients and their surrounding in a hospital.
-        </div>
+        </p>
 
       </div>
 
