@@ -50,3 +50,13 @@
   date: August 19-23, 2018
   place: London, United Kingdom
   sub: ML
+  
+- name: ISWC
+  year: 2018
+  id: iswc2018
+  link: http://iswc2018.semanticweb.org/
+  deadline: "2018-04-06 23:59:59"
+  timezone: America/Los_Angeles
+  date: October 08-12, 2018
+  place: Monterey, CA 
+  sub: SW
