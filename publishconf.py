@@ -23,6 +23,7 @@ MENUITEMS = (
     ('About', SITEURL+'/about.html'),
     ('Publications', SITEURL+'/publications.html'),
     ('Blog', SITEURL+'/blog.html'),
+    ('Conferences', SITEURL+'/conferences.html'),
     )
 
 
