@@ -45,7 +45,7 @@ DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU = False
 
 PLUGIN_PATHS = ['pelican-plugins']
-PLUGINS = ['pelican-bibtex', 'pelican-yml']
+PLUGINS = ['pelican-bibtex', 'pelican-yml', 'authors']
 
 STATIC_PATHS = ['images']
 
