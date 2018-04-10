@@ -71,18 +71,18 @@
 
   <div class="main-container">
     <div class="pure-g">
-        <div class="entry-content">
+        <div class="entry-content" style='width: 80%'>
           <div id='conferencesList'>
           <ul class='list' style='list-style-type: none;'>
             {% for conf in conferences %}
                 <li id="{{conf.id}}" data-id="{{ loop.index }}" class="{% for sub in conf.sub %} {{sub}}-conf {% endfor %}" >
-                    <div class="pure-u-12-24 type" type={{conf.type}}>
+                    <div class="pure-u-12-24 type" type={{conf.type}} style='width: 50%'>
                         <a href="{{conf.link}}"><b>{{conf.name}} {{conf.year}}</b></a>
                         <div class="meta">
                           {{conf.date}} <br> <a href="http://maps.google.com/?q={{conf.place}}">{{conf.place}}</a>
                         </div>
                     </div>
-                    <div class="pure-u-8-24">
+                    <div class="pure-u-8-24" style='min-width: 0;'>
                         <span class="timer"></span>
                         <div class="deadline">
                           <div>
@@ -90,7 +90,7 @@
                           </div>
                         </div>
                         <div class="calendar">
-                          <img src='/images/calendar.png' style='display: inline-block; vertical-align: middle; width: 5%; height: 5%'/>
+                          <img src='{{SITE_URL}}/images/calendar.png' style='display: inline-block; vertical-align: middle; width: 5%; height: 5%'/>
                         </div>
                     </div>
                 <hr>
@@ -100,8 +100,8 @@
           </div>
         </div>
 
-      <div class="pure-u-4-24">
-        <div class="right-container">
+      <div class="pure-u-4-24" style='min-width: 0;'>
+        <div class="right-container" style='width: 20%'>
           <div class="right-bar">
 
             <div class="right-head">
