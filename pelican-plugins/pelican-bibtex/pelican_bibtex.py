@@ -103,7 +103,7 @@ class BibGenerator(Generator):
                     bibdata_all.entries[key] = entry
         except PybtexError as e:
             logger.warn('`pelican_bibtex` failed to parse file %s: %s' % (
-                refs_file,
+                file,
                 str(e)
             ))
             return

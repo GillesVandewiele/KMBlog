@@ -107,17 +107,16 @@ def aggregate_rdf_files(paths, output_path):
     rdflib. After iterating over all the files, serialize the aggregated graph 
     in Turtle format.
     """
-    #rdflib.util.guess_format to get the format
     g = rdflib.Graph()
     for path in paths:
-        for file in os.listdir(path):
-            try:
+        try:
+            for file in os.listdir(path):
                 print(end='Trying to parse {}... '.format(file))
                 g.parse(
                     path+os.sep+file,
                     format=rdflib.util.guess_format(path+os.sep+file)
                 )
                 print('Success!')
-            except:
-                print('Fail!')
+        except:
+            print('Fail!')
     g.serialize(destination=output_path, format='turtle')

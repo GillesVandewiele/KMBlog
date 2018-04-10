@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Publications</title>
+        <title>Conferences</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
@@ -20,231 +20,538 @@
             <li class="pure-menu-item"><a href="/about.html" class="pure-menu-link">About</a></li>
             <li class="pure-menu-item"><a href="/publications.html" class="pure-menu-link">Publications</a></li>
             <li class="pure-menu-item"><a href="/blog.html" class="pure-menu-link">Blog</a></li>
+            <li class="pure-menu-item"><a href="/conferences.html" class="pure-menu-link">Conferences</a></li>
 
         </ul>
     </div>
 
 
 
-
-  <script>
-    var toggleButton = function(element){
-      if(element.classList.contains('inactive')){
-        element.classList.remove("inactive");
-        element.classList.add("active");
-      } else {
-        element.classList.remove("active");
-        element.classList.add("inactive");
-      }
-    }
-
-    var getActiveButtons = function(buttons){
-      var values = [];
-      for(j = 0; j < buttons.length; j++){
-        if(buttons[j].classList.contains('active')){
-          values.push(buttons[j].text);
-        }
-      }
-      return values;
-    }
-
-    document.addEventListener('DOMContentLoaded', function(){
-
-      var options = {
-        valueNames: [
-          'title',
-          { attr: 'year', name: 'year' },
-          { attr: 'type', name: 'type' },
-        ]
-      };
-
-      var publicationList = new List('publicationList', options);
-      console.log(publicationList);
-
-      buttons = document.getElementsByClassName('filterBtn');
-      for(i = 0; i < buttons.length; i++){
-        buttons[i].addEventListener("click", function(){
-          toggleButton(this);
-
-          var activeButtons = getActiveButtons(buttons);
-          publicationList.filter(function(item){
-            return (activeButtons.includes(item.values().year) && activeButtons.includes(item.values().type));
-          });
-
-        });
-      }
-
-
-
-    });
-  </script>
-
   <div class="main-container">
     <div class="pure-g">
       <div class="pure-u-1 pure-u-lg-2-3">
         <div class="entry-content">
-          <div id="publicationList">
-            <ul class='list' style='text-align: left; font-size: 12px;'>
-                <li id="arndt_ai4health_2018" data-id="1" style='margin-bottom: 10pt;'>
-                  <a class='title year type' href="/publications/arndt_ai4health_2018.html" year="2018" type="Conference">SENSdesc: Connect Sensor queries and Context</a> <br>
-                  
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Dörthe Arndt
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          <a href="/author/pieter-bonte.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Pieter Bonte</a>
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Alexander Dejonghe
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Ruben Verborgh
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Filip De Turck
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          <a href="/author/femke-ongenae.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Femke Ongenae</a>
-                    </p>
- <br>
-                  
-                  <em style='color: rgba(0, 0, 0, 0.3);'>Proceedings of the 11th International Joint Conference on Biomedical Engineering Systems and Technologies</em>
-                </li>
-                <li id="vandewiele_genesim_2016" data-id="2" style='margin-bottom: 10pt;'>
-                  <a class='title year type' href="/publications/vandewiele_genesim_2016.html" year="2016" type="Conference">GENESIM : genetic extraction of a single, interpretable model</a> <br>
-                  
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          <a href="/author/gilles-vandewiele.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Gilles Vandewiele</a>
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Olivier Janssens
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          <a href="/author/femke-ongenae.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Femke Ongenae</a>
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Filip De Turck
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Sofie Van Hoecke
-                    </p>
- <br>
-                  
-                  <em style='color: rgba(0, 0, 0, 0.3);'>NIPS 2016: Workshop on Interpretable Machine Learning for Complex Systems</em>
-                </li>
-                <li id="8541801" data-id="3" style='margin-bottom: 10pt;'>
-                  <a class='title year type' href="/publications/8541801.html" year="2017" type="Conference">Attributing recognised activities in multi-person households using ontology-based finite state machines</a> <br>
-                  
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          <a href="/author/stijn-verstichel.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Stijn Verstichel</a>
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          T. Tourwé
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Jelle Nelis
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          N. Gonzalez-Deleito
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          E. Tsiporkova
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          <a href="/author/femke-ongenae.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Femke Ongenae</a>
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Bruno Volckaert
-                    </p>
- <br>
-                  
-                  <em style='color: rgba(0, 0, 0, 0.3);'>SWIT2017, the Second Workshop on Semantic Web Technologies for the Internet of Things co-located with 16th International Semantic Web Conference (ISWC 2017)</em>
-                </li>
-                <li id="ONGENAE20137629" data-id="4" style='margin-bottom: 10pt;'>
-                  <a class='title year type' href="/publications/ONGENAE20137629.html" year="2013" type="Journal">A probabilistic ontology-based platform for self-learning context-aware healthcare applications</a> <br>
-                  
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          <a href="/author/femke-ongenae.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Femke Ongenae</a>
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Maxim Claeys
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Thomas Dupont
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Wannes Kerckhove
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Piet Verhoeve
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Tom Dhaene
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Filip De Turck
-                    </p>
- <br>
-                  
-                  <em style='color: rgba(0, 0, 0, 0.3);'>Expert Systems with Applications</em>
-                </li>
-                <li id="8550825" data-id="5" style='margin-bottom: 10pt;'>
-                  <a class='title year type' href="/publications/8550825.html" year="2018" type="Journal">Sharing health data in Belgium: A home care case study using the Vitalink platform</a> <br>
-                  
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Femke De Backere
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          <a href="/author/pieter-bonte.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Pieter Bonte</a>
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          <a href="/author/stijn-verstichel.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Stijn Verstichel</a>
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          <a href="/author/femke-ongenae.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Femke Ongenae</a>
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Filip De Turck
-                    </p>
- <br>
-                  
-                  <em style='color: rgba(0, 0, 0, 0.3);'>INFORMATICS FOR HEALTH & SOCIAL CARE</em>
-                </li>
-                <li id="bonte2017massif" data-id="6" style='margin-bottom: 10pt;'>
-                  <a class='title year type' href="/publications/bonte2017massif.html" year="2017" type="Journal">The MASSIF platform: a modular and semantic platform for the development of flexible IoT services</a> <br>
-                  
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          <a href="/author/pieter-bonte.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Pieter Bonte</a>
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          <a href="/author/femke-ongenae.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Femke Ongenae</a>
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Femke De Backere
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Jeroen Schaballie
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Dörthe Arndt
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          <a href="/author/stijn-verstichel.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Stijn Verstichel</a>
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Erik Mannens
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Rik Van de Walle
-,                    </p>
-                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
-                          Filip De Turck
-                    </p>
- <br>
-                  
-                  <em style='color: rgba(0, 0, 0, 0.3);'>Knowledge and Information Systems</em>
-                </li>
-            </ul>
+          <div id="conferencesList">
+              <div id="bmvc2018" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://bmvc2018.org/"><b>BMVC 2018</b></a>
+                        <div class="meta">
+                          September 03-06, 2018 // <a href="http://maps.google.com/?q=Newcastle upon Tyne">Newcastle upon Tyne</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="nips18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="https://nips.cc/Conferences/2018"><b>NIPS 2018</b></a>
+                        <div class="meta">
+                          December 3-8, 2018 // <a href="http://maps.google.com/?q=Palais des Congrès de Montréal, Montréal, Canada">Palais des Congrès de Montréal, Montréal, Canada</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="emnlp18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://emnlp2018.org"><b>EMNLP 2018</b></a>
+                        <div class="meta">
+                          November 2-4, 2018 // <a href="http://maps.google.com/?q=Brussels, Belgium">Brussels, Belgium</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="threedv18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://3dv18.uniud.it"><b>3DV 2018</b></a>
+                        <div class="meta">
+                          September 5-8, 2018 // <a href="http://maps.google.com/?q=Verona, Italy">Verona, Italy</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="conll18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://www.conll.org/"><b>CoNLL 2018</b></a>
+                        <div class="meta">
+                          October 31 - November 1, 2018 // <a href="http://maps.google.com/?q=Brussels, Belgium">Brussels, Belgium</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="corl2018" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://www.robot-learning.org/"><b>CoRL 2018</b></a>
+                        <div class="meta">
+                          October 29-31, 2018 // <a href="http://maps.google.com/?q=Zurich, Switzerland">Zurich, Switzerland</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="wacv19" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://wacv19.uccs.us/"><b>WACV 2019</b></a>
+                        <div class="meta">
+                          January 8-11, 2019 // <a href="http://maps.google.com/?q=Waikoloa Village, Hawaii">Waikoloa Village, Hawaii</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="accv18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://accv2018.net/"><b>ACCV 2018</b></a>
+                        <div class="meta">
+                          December 2-6, 2018 // <a href="http://maps.google.com/?q=Perth, Western Australia">Perth, Western Australia</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="icra18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://www.icra2018.org/"><b>ICRA 2018</b></a>
+                        <div class="meta">
+                          May 21-25, 2018 // <a href="http://maps.google.com/?q=Brisbane, Australia">Brisbane, Australia</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="aistats18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://www.aistats.org/"><b>AISTATS 2018</b></a>
+                        <div class="meta">
+                          April 9-11, 2018 // <a href="http://maps.google.com/?q=Lanzarote, Spain">Lanzarote, Spain</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="iclr18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://iclr.cc/"><b>ICLR 2018</b></a>
+                        <div class="meta">
+                          April 30-May 3, 2018 // <a href="http://maps.google.com/?q=Vancouver Convention Center, Vancouver, Canada">Vancouver Convention Center, Vancouver, Canada</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="icassp18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="https://2018.ieeeicassp.org/"><b>ICASSP 2018</b></a>
+                        <div class="meta">
+                          April 15-20, 2018 // <a href="http://maps.google.com/?q=Calgary, Alberta, Canada">Calgary, Alberta, Canada</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="aamas18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://celweb.vuse.vanderbilt.edu/aamas18"><b>AAMAS 2018</b></a>
+                        <div class="meta">
+                          July 11-13, 2018 // <a href="http://maps.google.com/?q=Stockholm, Sweden">Stockholm, Sweden</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="cvpr18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://cvpr2018.thecvf.com/"><b>CVPR 2018</b></a>
+                        <div class="meta">
+                          June 18-23, 2018 // <a href="http://maps.google.com/?q=Salt Lake City, Utah">Salt Lake City, Utah</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="naacl18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://naacl2018.org/"><b>NAACL 2018</b></a>
+                        <div class="meta">
+                          June 2-4, 2018 // <a href="http://maps.google.com/?q=New Orleans, USA">New Orleans, USA</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="siggraph18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://s2018.siggraph.org/"><b>SIGGRAPH 2018</b></a>
+                        <div class="meta">
+                          August 12-16, 2018 // <a href="http://maps.google.com/?q=Vancouver, Canada">Vancouver, Canada</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="ijcai18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="https://www.ijcai-18.org/"><b>IJCAI 2018</b></a>
+                        <div class="meta">
+                          July 13-19, 2018 // <a href="http://maps.google.com/?q=Stockholm, Sweden">Stockholm, Sweden</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="rss18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://www.roboticsconference.org/"><b>RSS 2018</b></a>
+                        <div class="meta">
+                          June 26-30, 2018 // <a href="http://maps.google.com/?q=Pittsburgh, Pennsylvania, USA">Pittsburgh, Pennsylvania, USA</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="icml18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="https://icml.cc/Conferences/2018"><b>ICML 2018</b></a>
+                        <div class="meta">
+                          July 10-15, 2018 // <a href="http://maps.google.com/?q=Stockholm, Sweden">Stockholm, Sweden</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="kdd18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://www.kdd.org/kdd2018/"><b>KDD 2018</b></a>
+                        <div class="meta">
+                          August 19-23, 2018 // <a href="http://maps.google.com/?q=London, United Kingdom">London, United Kingdom</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="colt18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://www.learningtheory.org/colt2018/"><b>COLT 2018</b></a>
+                        <div class="meta">
+                          July 5-9, 2018 // <a href="http://maps.google.com/?q=Stockholm, Sweden">Stockholm, Sweden</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="iros2018" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="https://www.iros2018.org/"><b>IROS 2018</b></a>
+                        <div class="meta">
+                          October 1-5, 2018 // <a href="http://maps.google.com/?q=Madrid, Spain">Madrid, Spain</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="uai18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://auai.org/uai2018/index.php"><b>UAI 2018</b></a>
+                        <div class="meta">
+                          August 06-10, 2018 // <a href="http://maps.google.com/?q=Monterey, California, USA">Monterey, California, USA</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="eccv18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="https://eccv2018.org/"><b>ECCV 2018</b></a>
+                        <div class="meta">
+                          September 8-14, 2018 // <a href="http://maps.google.com/?q=Munich, Germany">Munich, Germany</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="coling18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://coling2018.org/"><b>COLING 2018</b></a>
+                        <div class="meta">
+                          August 20-25, 2018 // <a href="http://maps.google.com/?q=Santa Fe, New Mexico, USA">Santa Fe, New Mexico, USA</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
+              <div id="interspeech18" class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="http://interspeech2018.org/"><b>Interspeech 2018</b></a>
+                        <div class="meta">
+                          September 2-6, 2018 // <a href="http://maps.google.com/?q=Hyderabad, India">Hyderabad, India</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <span class="timer"></span>
+                      <div class="deadline">
+                        <div>Deadline:
+                          <span class="deadline-time"></span>
+                        </div>
+                      </div>
+                      <div class="calendar"></div>
+                    </div>
+                </div>
+                <hr>
+              </div>
           </div>
         </div>
       </div>
@@ -254,21 +561,9 @@
           <div class="right-bar">
 
             <div class="right-head">
-              Filter by year
+              Filter by type
             </div>
             <div class="tags">
-                <a class="filterBtn active" style="cursor: pointer;">2013</a>
-                <a class="filterBtn active" style="cursor: pointer;">2016</a>
-                <a class="filterBtn active" style="cursor: pointer;">2017</a>
-                <a class="filterBtn active" style="cursor: pointer;">2018</a>
-            </div>
-
-            <div class="right-head">
-              Filter by article type
-            </div>
-            <div class="tags">
-                <a class="filterBtn active" style="cursor: pointer;">Conference</a>
-                <a class="filterBtn active" style="cursor: pointer;">Journal</a>
             </div>
 
           </div>

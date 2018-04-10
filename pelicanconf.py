@@ -45,7 +45,7 @@ DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU = False
 
 PLUGIN_PATHS = ['pelican-plugins']
-PLUGINS = ['pelican-bibtex']
+PLUGINS = ['pelican-bibtex', 'pelican-yml']
 
 STATIC_PATHS = ['images']
 
@@ -54,7 +54,7 @@ MENUITEMS = (
     ('About', SITEURL+'/about.html'),
     ('Publications', SITEURL+'/publications.html'),
     ('Blog', SITEURL+'/blog.html'),
-    #('Conferences', SITEURL+'/conferences.html'),
+    ('Conferences', SITEURL+'/conferences.html'),
     )
 
 # Blogroll
@@ -65,13 +65,13 @@ ICONS = (
     ('github', 'https://github.com/IBCNServices'),
 )
 
-DIRECT_TEMPLATES = ('includes/posts', 'publications', 'index', 'about', 'blog', 'conferences')
+DIRECT_TEMPLATES = ('includes/posts', 'publications', 'index', 'about', 'blog')
 PAGINATED_DIRECT_TEMPLATES = ('index', 'includes/posts', 'publications', 'blog') 
 DISQUS_SITENAME = "localhost"
 
 PUBLICATIONS_SRC = 'content/publications'
-CONFERENCES_SRC = 'content/conferences.yml'
-CONFERENCES_TYPES = 'content/types.yml'
+CONFERENCES_SRC = 'content/conferences/conferences.yml'
+CONFERENCES_TYPES = 'content/conferences/types.yml'
 
 MEDIUS_AUTHORS = AUTHORS
 
