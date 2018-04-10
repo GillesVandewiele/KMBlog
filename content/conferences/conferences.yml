@@ -60,3 +60,13 @@
   date: October 08-12, 2018
   place: Monterey, CA 
   sub: SW
+  
+- name: ECML PKDD
+  year: 2018
+  id: ecml18
+  link: http://www.ecmlpkdd2018.org/
+  deadline: "2018-04-12 23:59:59"
+  timezone: GMT
+  date: September 10-14, 2018
+  place: Dublin, Ireland
+  sub: ML
