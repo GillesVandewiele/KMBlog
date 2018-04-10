@@ -71,7 +71,7 @@
       <div class="pure-u-1 pure-u-lg-2-3">
         <div class="entry-content">
           <div id="publicationList">
-            <ul class='list' style='text-align: left; font-size: 12px;'>
+            <ul class='list' style='text-align: left; font-size: 12px; list-style-type: none;'>
               {% for publication in publications %}
                 <li id="{{ publication.key }}" data-id="{{ loop.index }}" style='margin-bottom: 10pt;'>
                   <a class='title year type' href="{{ SITEURL }}/publications/{{ publication.key }}.html" year="{{ publication.year }}" type="{{ publications_per_type_rev[publication] }}">{{ publication.title }}</a> <br>

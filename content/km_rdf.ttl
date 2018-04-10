@@ -177,41 +177,41 @@
 
 <file:///publication/8541801> a schema:ScholarlyArticle,
         foaf:Document ;
-    dc1:creator _:N0a534511817c4b5d9aed01c4aa779a01,
-        _:N0e5285c3876243e8b4176568a51bba3e,
-        _:N3cc676c925a347598fa8d68db40aedbe,
-        _:N63236d88af274ee3b992c56be0361e39,
-        _:Na8cc1830c39a4d20974b3d2d65dbd8fc,
+    dc1:creator _:N1c7314ab7af243bebc4ba393c1cd3047,
+        _:N2634857afc7047bfa2e3221c70048386,
+        _:N43f641441fe446bcbdf6c4b96904d6c4,
+        _:N48789752a3074d799918f6dd7e76ca93,
+        _:Ndc6403395cf6447482b8d2826c2b1122,
         <file:///author/femke-ongenae>,
         <file:///author/stijn-verstichel> ;
     dc1:description """
                 Continuous person monitoring systems usually assume singleperson households. Presence of visitors, such as family members and friends, and multi-person households are therefore not taken into consideration, although they can still influence results. However, in order to reason about a specific monitored person’s evolution and trends, it is needed to accurately recognise the different activities that these persons perform throughout a day. This paper considers multi-person households and focuses on the problem of assigning activities detected by a continuous monitoring system to the person that has performed these activities. The proposed solution consists of modelling the domain terminology into an ontology, as well as that person’s typical habits by means of a Finite State Machine – represented in its own ontology – using the concepts from the domain ontology. Sequences of recognized activities are then compared to the Finite State Machines associated to the different persons in a household, and assigned to the person with the most similar modelled sequence.
             """@en ;
     dc1:title "Attributing recognised activities in multi-person households using ontology-based finite state machines"@en ;
-    schema:author _:N0a534511817c4b5d9aed01c4aa779a01,
-        _:N0e5285c3876243e8b4176568a51bba3e,
-        _:N3cc676c925a347598fa8d68db40aedbe,
-        _:N63236d88af274ee3b992c56be0361e39,
-        _:Na8cc1830c39a4d20974b3d2d65dbd8fc,
+    schema:author _:N1c7314ab7af243bebc4ba393c1cd3047,
+        _:N2634857afc7047bfa2e3221c70048386,
+        _:N43f641441fe446bcbdf6c4b96904d6c4,
+        _:N48789752a3074d799918f6dd7e76ca93,
+        _:Ndc6403395cf6447482b8d2826c2b1122,
         <file:///author/femke-ongenae>,
         <file:///author/stijn-verstichel> ;
     schema:description """
                 Continuous person monitoring systems usually assume singleperson households. Presence of visitors, such as family members and friends, and multi-person households are therefore not taken into consideration, although they can still influence results. However, in order to reason about a specific monitored person’s evolution and trends, it is needed to accurately recognise the different activities that these persons perform throughout a day. This paper considers multi-person households and focuses on the problem of assigning activities detected by a continuous monitoring system to the person that has performed these activities. The proposed solution consists of modelling the domain terminology into an ontology, as well as that person’s typical habits by means of a Finite State Machine – represented in its own ontology – using the concepts from the domain ontology. Sequences of recognized activities are then compared to the Finite State Machines associated to the different persons in a household, and assigned to the person with the most similar modelled sequence.
             """@en ;
     schema:name "Attributing recognised activities in multi-person households using ontology-based finite state machines"@en ;
-    foaf:maker _:N0a534511817c4b5d9aed01c4aa779a01,
-        _:N0e5285c3876243e8b4176568a51bba3e,
-        _:N3cc676c925a347598fa8d68db40aedbe,
-        _:N63236d88af274ee3b992c56be0361e39,
-        _:Na8cc1830c39a4d20974b3d2d65dbd8fc,
+    foaf:maker _:N1c7314ab7af243bebc4ba393c1cd3047,
+        _:N2634857afc7047bfa2e3221c70048386,
+        _:N43f641441fe446bcbdf6c4b96904d6c4,
+        _:N48789752a3074d799918f6dd7e76ca93,
+        _:Ndc6403395cf6447482b8d2826c2b1122,
         <file:///author/femke-ongenae>,
         <file:///author/stijn-verstichel> ;
     foaf:name "Attributing recognised activities in multi-person households using ontology-based finite state machines"@en .
 
 <file:///publication/8550825> a schema:ScholarlyArticle,
         foaf:Document ;
-    dc1:creator _:N206218b04695452683beac80838ddd61,
-        _:Na8685a93e2f44ae48d5ee786ab976761,
+    dc1:creator _:N632f49a74cfb421496f268ddd73c58a4,
+        _:N70c5696c880e4ec4970d191d55e4f787,
         <file:///author/femke-ongenae>,
         <file:///author/pieter-bonte>,
         <file:///author/stijn-verstichel> ;
@@ -219,8 +219,8 @@
                 In 2013, the Flemish Government launched the Vitalink platform. This initiative focuses on the sharing of health and welfare data to support primary healthcare. In this paper, the objectives and mission of the Vitalink initiative are discussed. Security and privacy measures are reviewed, and the technical implementation of the Vitalink platform is presented. Through a case study, the possibility of interaction with cloud solutions for healthcare is also investigated upon; this was initially not the focus of Vitalink. The Vitalink initiative provides support for secure data sharing in primary healthcare, which in the long term will improve the efficiency of care and will decrease costs. Based on the results of the case study, Vitalink allowed cloud solutions or applications not providing end-to-end security to use their system. The most important lesson learned during this research was the need for firm regulations and stipulations for cloud solutions to interact with the Vitalink platform. However, these are currently still vague.
             """@en ;
     dc1:title "Sharing health data in Belgium: A home care case study using the Vitalink platform"@en ;
-    schema:author _:N206218b04695452683beac80838ddd61,
-        _:Na8685a93e2f44ae48d5ee786ab976761,
+    schema:author _:N632f49a74cfb421496f268ddd73c58a4,
+        _:N70c5696c880e4ec4970d191d55e4f787,
         <file:///author/femke-ongenae>,
         <file:///author/pieter-bonte>,
         <file:///author/stijn-verstichel> ;
@@ -228,8 +228,8 @@
                 In 2013, the Flemish Government launched the Vitalink platform. This initiative focuses on the sharing of health and welfare data to support primary healthcare. In this paper, the objectives and mission of the Vitalink initiative are discussed. Security and privacy measures are reviewed, and the technical implementation of the Vitalink platform is presented. Through a case study, the possibility of interaction with cloud solutions for healthcare is also investigated upon; this was initially not the focus of Vitalink. The Vitalink initiative provides support for secure data sharing in primary healthcare, which in the long term will improve the efficiency of care and will decrease costs. Based on the results of the case study, Vitalink allowed cloud solutions or applications not providing end-to-end security to use their system. The most important lesson learned during this research was the need for firm regulations and stipulations for cloud solutions to interact with the Vitalink platform. However, these are currently still vague.
             """@en ;
     schema:name "Sharing health data in Belgium: A home care case study using the Vitalink platform"@en ;
-    foaf:maker _:N206218b04695452683beac80838ddd61,
-        _:Na8685a93e2f44ae48d5ee786ab976761,
+    foaf:maker _:N632f49a74cfb421496f268ddd73c58a4,
+        _:N70c5696c880e4ec4970d191d55e4f787,
         <file:///author/femke-ongenae>,
         <file:///author/pieter-bonte>,
         <file:///author/stijn-verstichel> ;
@@ -237,75 +237,75 @@
 
 <file:///publication/ONGENAE20137629> a schema:ScholarlyArticle,
         foaf:Document ;
-    dc1:creator _:N0506a0dd5c67429fb91181cdcc3fb565,
-        _:N0a6c4b93496748e287c58587c9a5b91f,
-        _:N21c5117f15e04595bb3e9e532e1d5148,
-        _:Nbf6f6a3000e1454e8bb2f349c88bcf9e,
-        _:Nf2ecb2bcd2a944ac964e07232c1ac612,
-        _:Nfd243c8af7a443deb119bd68ea9ccf87,
+    dc1:creator _:N6f328701645c489a8541f0beef65d89f,
+        _:N8698150a6d564568890f4649d827118e,
+        _:Nbb6e355cc18a464d949eebbe28703276,
+        _:Nd8cc7945449040248b0089768f7ee2a6,
+        _:Ne141a71e49e64001ab4f546770b72e43,
+        _:Ne750dd0aaf734133b152af05eb2ce33e,
         <file:///author/femke-ongenae> ;
     dc1:description """
                 Context-aware platforms consist of dynamic algorithms that take the context information into account to adapt the behavior of the applications. The relevant context information is modeled in a context model. Recently, a trend has emerged towards capturing the context in an ontology, which formally models the concepts within a certain domain, their relations and properties.Although much research has been done on the subject, the adoption of context-aware services in healthcare is lagging behind what could be expected. The main complaint made by users is that they had to significantly alter workflow patterns to accommodate the system. When new technology is introduced, the behavior of the users changes to adapt to it. Moreover, small differences in user requirements often occur between different environments where the application is deployed. However, it is difficult to foresee these changes in workflow patterns and requirements at development time. Consequently, the context-aware applications are not tuned towards the needs of the users and they are required to change their behavior to accommodate the technology instead of the other way around.To tackle this issue, a self-learning, probabilistic, ontology-based framework is proposed, which allows context-aware applications to adapt their behavior at run-time. It exploits the context information gathered in the ontology to mine for trends and patterns in the behavior of the users. These trends are then prioritized and filtered by associating probabilities, which express their reliability. This new knowledge and their associated probabilities are then integrated into the context model and dynamic algorithms. Finally, the probabilities are in- or decreased, according to context and behavioral information gathered about the usage of the learned information.A use case is presented to illustrate the applicability of the framework, namely mining the reasons for patients’ nurse call light use to automatically launch calls. Detecting Systemic Inflammatory Response Syndrome (SIRS) as a reason for nurse calls is used as a realistic scenario to evaluate the correctness and performance of the proposed framework. It is shown that correct results are achieved when the dataset contains at least 1000 instances and the amount of noise is lower than 5%. The execution time and memory usage are also negligible for a realistic dataset, i.e., below 100 ms and 10 MB.
             """@en ;
     dc1:title "A probabilistic ontology-based platform for self-learning context-aware healthcare applications"@en ;
-    schema:author _:N0506a0dd5c67429fb91181cdcc3fb565,
-        _:N0a6c4b93496748e287c58587c9a5b91f,
-        _:N21c5117f15e04595bb3e9e532e1d5148,
-        _:Nbf6f6a3000e1454e8bb2f349c88bcf9e,
-        _:Nf2ecb2bcd2a944ac964e07232c1ac612,
-        _:Nfd243c8af7a443deb119bd68ea9ccf87,
+    schema:author _:N6f328701645c489a8541f0beef65d89f,
+        _:N8698150a6d564568890f4649d827118e,
+        _:Nbb6e355cc18a464d949eebbe28703276,
+        _:Nd8cc7945449040248b0089768f7ee2a6,
+        _:Ne141a71e49e64001ab4f546770b72e43,
+        _:Ne750dd0aaf734133b152af05eb2ce33e,
         <file:///author/femke-ongenae> ;
     schema:description """
                 Context-aware platforms consist of dynamic algorithms that take the context information into account to adapt the behavior of the applications. The relevant context information is modeled in a context model. Recently, a trend has emerged towards capturing the context in an ontology, which formally models the concepts within a certain domain, their relations and properties.Although much research has been done on the subject, the adoption of context-aware services in healthcare is lagging behind what could be expected. The main complaint made by users is that they had to significantly alter workflow patterns to accommodate the system. When new technology is introduced, the behavior of the users changes to adapt to it. Moreover, small differences in user requirements often occur between different environments where the application is deployed. However, it is difficult to foresee these changes in workflow patterns and requirements at development time. Consequently, the context-aware applications are not tuned towards the needs of the users and they are required to change their behavior to accommodate the technology instead of the other way around.To tackle this issue, a self-learning, probabilistic, ontology-based framework is proposed, which allows context-aware applications to adapt their behavior at run-time. It exploits the context information gathered in the ontology to mine for trends and patterns in the behavior of the users. These trends are then prioritized and filtered by associating probabilities, which express their reliability. This new knowledge and their associated probabilities are then integrated into the context model and dynamic algorithms. Finally, the probabilities are in- or decreased, according to context and behavioral information gathered about the usage of the learned information.A use case is presented to illustrate the applicability of the framework, namely mining the reasons for patients’ nurse call light use to automatically launch calls. Detecting Systemic Inflammatory Response Syndrome (SIRS) as a reason for nurse calls is used as a realistic scenario to evaluate the correctness and performance of the proposed framework. It is shown that correct results are achieved when the dataset contains at least 1000 instances and the amount of noise is lower than 5%. The execution time and memory usage are also negligible for a realistic dataset, i.e., below 100 ms and 10 MB.
             """@en ;
     schema:name "A probabilistic ontology-based platform for self-learning context-aware healthcare applications"@en ;
-    foaf:maker _:N0506a0dd5c67429fb91181cdcc3fb565,
-        _:N0a6c4b93496748e287c58587c9a5b91f,
-        _:N21c5117f15e04595bb3e9e532e1d5148,
-        _:Nbf6f6a3000e1454e8bb2f349c88bcf9e,
-        _:Nf2ecb2bcd2a944ac964e07232c1ac612,
-        _:Nfd243c8af7a443deb119bd68ea9ccf87,
+    foaf:maker _:N6f328701645c489a8541f0beef65d89f,
+        _:N8698150a6d564568890f4649d827118e,
+        _:Nbb6e355cc18a464d949eebbe28703276,
+        _:Nd8cc7945449040248b0089768f7ee2a6,
+        _:Ne141a71e49e64001ab4f546770b72e43,
+        _:Ne750dd0aaf734133b152af05eb2ce33e,
         <file:///author/femke-ongenae> ;
     foaf:name "A probabilistic ontology-based platform for self-learning context-aware healthcare applications"@en .
 
 <file:///publication/arndt_ai4health_2018> a schema:ScholarlyArticle,
         foaf:Document ;
-    dc1:creator _:N2590e1aa70784b38a941b14a5ac49432,
-        _:N5c92d08676ad423cad670bfee082a325,
-        _:N67500acaa39541abbc59b83d6019bfa4,
-        _:Na6639ba944b246cab8b85242d86b4cd3,
+    dc1:creator _:N825cbece9e8845c392a826a40b3bc5e4,
+        _:N9955aaa0410a42978e350a1482d1ca23,
+        _:Naa7b1caa1d2848d38f2151052b403abf,
+        _:Nc415fde0fefd4f9a9129d5c2ecec8705,
         <file:///author/femke-ongenae>,
         <file:///author/pieter-bonte> ;
     dc1:description """
                 Modern developments confront us with an ever increasing amount of streaming data: different sensors in environments like hospitals or factories communicate their measurements to other applications. Having this data at disposal faces us with a new challenge: the data needs to be integrated to existing frameworks. As the availability of sensors can rapidly change, these need to be flexible enough to easily incorporate new systems without having to be explicitly configured. Semantic Web applications offer a solution for that enabling computers to ‘understand’ data. But for them the pure amount of data and different possible queries which can be performed on it can form an obstacle. This paper tackles this problem: we present a formalism to describe stream queries in the ontology context in which they might become relevant. These descriptions enable us to automatically decide based on the actual setting and the problem to be solved which and how sensors should be monitored further. This helps us to limit the streaming data taken into account for reasoning tasks and make stream reasoning more performant. We illustrate our approach on a health-care use case where different sensors are used to measure data on patients and their surrounding in a hospital.
             """@en ;
     dc1:title "SENSdesc: Connect Sensor queries and Context"@en ;
-    schema:author _:N2590e1aa70784b38a941b14a5ac49432,
-        _:N5c92d08676ad423cad670bfee082a325,
-        _:N67500acaa39541abbc59b83d6019bfa4,
-        _:Na6639ba944b246cab8b85242d86b4cd3,
+    schema:author _:N825cbece9e8845c392a826a40b3bc5e4,
+        _:N9955aaa0410a42978e350a1482d1ca23,
+        _:Naa7b1caa1d2848d38f2151052b403abf,
+        _:Nc415fde0fefd4f9a9129d5c2ecec8705,
         <file:///author/femke-ongenae>,
         <file:///author/pieter-bonte> ;
     schema:description """
                 Modern developments confront us with an ever increasing amount of streaming data: different sensors in environments like hospitals or factories communicate their measurements to other applications. Having this data at disposal faces us with a new challenge: the data needs to be integrated to existing frameworks. As the availability of sensors can rapidly change, these need to be flexible enough to easily incorporate new systems without having to be explicitly configured. Semantic Web applications offer a solution for that enabling computers to ‘understand’ data. But for them the pure amount of data and different possible queries which can be performed on it can form an obstacle. This paper tackles this problem: we present a formalism to describe stream queries in the ontology context in which they might become relevant. These descriptions enable us to automatically decide based on the actual setting and the problem to be solved which and how sensors should be monitored further. This helps us to limit the streaming data taken into account for reasoning tasks and make stream reasoning more performant. We illustrate our approach on a health-care use case where different sensors are used to measure data on patients and their surrounding in a hospital.
             """@en ;
     schema:name "SENSdesc: Connect Sensor queries and Context"@en ;
-    foaf:maker _:N2590e1aa70784b38a941b14a5ac49432,
-        _:N5c92d08676ad423cad670bfee082a325,
-        _:N67500acaa39541abbc59b83d6019bfa4,
-        _:Na6639ba944b246cab8b85242d86b4cd3,
+    foaf:maker _:N825cbece9e8845c392a826a40b3bc5e4,
+        _:N9955aaa0410a42978e350a1482d1ca23,
+        _:Naa7b1caa1d2848d38f2151052b403abf,
+        _:Nc415fde0fefd4f9a9129d5c2ecec8705,
         <file:///author/femke-ongenae>,
         <file:///author/pieter-bonte> ;
     foaf:name "SENSdesc: Connect Sensor queries and Context"@en .
 
 <file:///publication/bonte2017massif> a schema:ScholarlyArticle,
         foaf:Document ;
-    dc1:creator _:N15a997281f3b48caba6571c84ecada87,
-        _:N3c8fcd0e5dcc49fca067b2c1921536b2,
-        _:N63f5f32937b94421a594cf99a18d8b44,
-        _:Nd407b18fc88e4dffb2a03b3f443f9e96,
-        _:Ndad4ad12cfd042c7962dfd4946e6c517,
-        _:Nfc86b5cf2cdb40598ca2a8741fa83315,
+    dc1:creator _:N2301daf3c5e04d75a0f336baf8f659ba,
+        _:N248abd6c2f954b8e9cf61ac8d6488554,
+        _:N388f32da58514cb9a860dd1ac02e0415,
+        _:N5d6b3d9b75794a839a73129682a06464,
+        _:N5eb72a30cf914a00916ef16644bb497b,
+        _:N69df5f3d5ed44152afc9cb71bd77245b,
         <file:///author/femke-ongenae>,
         <file:///author/pieter-bonte>,
         <file:///author/stijn-verstichel> ;
@@ -313,12 +313,12 @@
                 Internet of Things (IoT), data-producing entities sense their environment and transmit these observations to a data processing platform for further analysis. Applications can have a notion of context awareness by combining this sensed data, or by processing the combined data. The processes of combining data can consist both of merging the dynamic sensed data, as well as fusing the sensed data with background and historical data. Semantics can aid in this task, as they have proven their use in data integration, knowledge exchange and reasoning. Semantic services performing reasoning on the integrated sensed data, combined with background knowledge, such as profile data, allow extracting useful information and support intelligent decision making. However, advanced reasoning on the combination of this sensed data and background knowledge is still hard to achieve. Furthermore, the collaboration between semantic services allows to reach complex decisions. The dynamic composition of such collaborative workflows that can adapt to the current context, has not received much attention yet. In this paper, we present MASSIF, a data-driven platform for the semantic annotation of and reasoning on IoT data. It allows the integration of multiple modular reasoning services that can collaborate in a flexible manner to facilitate complex decision-making processes. Data-driven workflows are enabled by letting services specify the data they would like to consume. After thorough processing, these services can decide to share their decisions with other consumers. By defining the data these services would like to consume, they can operate on a subset of data, improving reasoning efficiency. Furthermore, each of these services can integrate the consumed data with background knowledge in its own context model, for rapid intelligent decision making. To show the strengths of the platform, two use cases are detailed and thoroughly evaluated.
             """@en ;
     dc1:title "The MASSIF platform: a modular and semantic platform for the development of flexible IoT services"@en ;
-    schema:author _:N15a997281f3b48caba6571c84ecada87,
-        _:N3c8fcd0e5dcc49fca067b2c1921536b2,
-        _:N63f5f32937b94421a594cf99a18d8b44,
-        _:Nd407b18fc88e4dffb2a03b3f443f9e96,
-        _:Ndad4ad12cfd042c7962dfd4946e6c517,
-        _:Nfc86b5cf2cdb40598ca2a8741fa83315,
+    schema:author _:N2301daf3c5e04d75a0f336baf8f659ba,
+        _:N248abd6c2f954b8e9cf61ac8d6488554,
+        _:N388f32da58514cb9a860dd1ac02e0415,
+        _:N5d6b3d9b75794a839a73129682a06464,
+        _:N5eb72a30cf914a00916ef16644bb497b,
+        _:N69df5f3d5ed44152afc9cb71bd77245b,
         <file:///author/femke-ongenae>,
         <file:///author/pieter-bonte>,
         <file:///author/stijn-verstichel> ;
@@ -326,12 +326,12 @@
                 Internet of Things (IoT), data-producing entities sense their environment and transmit these observations to a data processing platform for further analysis. Applications can have a notion of context awareness by combining this sensed data, or by processing the combined data. The processes of combining data can consist both of merging the dynamic sensed data, as well as fusing the sensed data with background and historical data. Semantics can aid in this task, as they have proven their use in data integration, knowledge exchange and reasoning. Semantic services performing reasoning on the integrated sensed data, combined with background knowledge, such as profile data, allow extracting useful information and support intelligent decision making. However, advanced reasoning on the combination of this sensed data and background knowledge is still hard to achieve. Furthermore, the collaboration between semantic services allows to reach complex decisions. The dynamic composition of such collaborative workflows that can adapt to the current context, has not received much attention yet. In this paper, we present MASSIF, a data-driven platform for the semantic annotation of and reasoning on IoT data. It allows the integration of multiple modular reasoning services that can collaborate in a flexible manner to facilitate complex decision-making processes. Data-driven workflows are enabled by letting services specify the data they would like to consume. After thorough processing, these services can decide to share their decisions with other consumers. By defining the data these services would like to consume, they can operate on a subset of data, improving reasoning efficiency. Furthermore, each of these services can integrate the consumed data with background knowledge in its own context model, for rapid intelligent decision making. To show the strengths of the platform, two use cases are detailed and thoroughly evaluated.
             """@en ;
     schema:name "The MASSIF platform: a modular and semantic platform for the development of flexible IoT services"@en ;
-    foaf:maker _:N15a997281f3b48caba6571c84ecada87,
-        _:N3c8fcd0e5dcc49fca067b2c1921536b2,
-        _:N63f5f32937b94421a594cf99a18d8b44,
-        _:Nd407b18fc88e4dffb2a03b3f443f9e96,
-        _:Ndad4ad12cfd042c7962dfd4946e6c517,
-        _:Nfc86b5cf2cdb40598ca2a8741fa83315,
+    foaf:maker _:N2301daf3c5e04d75a0f336baf8f659ba,
+        _:N248abd6c2f954b8e9cf61ac8d6488554,
+        _:N388f32da58514cb9a860dd1ac02e0415,
+        _:N5d6b3d9b75794a839a73129682a06464,
+        _:N5eb72a30cf914a00916ef16644bb497b,
+        _:N69df5f3d5ed44152afc9cb71bd77245b,
         <file:///author/femke-ongenae>,
         <file:///author/pieter-bonte>,
         <file:///author/stijn-verstichel> ;
@@ -339,27 +339,27 @@
 
 <file:///publication/vandewiele_genesim_2016> a schema:ScholarlyArticle,
         foaf:Document ;
-    dc1:creator _:N35cf7e3f5a304d73b0b346469425f983,
-        _:N6f7acc9dec6249cdafbcc580f1341210,
-        _:Nb71a4f1bdb264237a9ee302381f67d90,
+    dc1:creator _:N85ebe24503d445718f99dd8f814cd1c3,
+        _:Nb8733fd676a047ec9dbaabff2b60c468,
+        _:Ne5c69c3345aa46c9bc1571d76bc666c7,
         <file:///author/femke-ongenae>,
         <file:///author/gilles-vandewiele> ;
     dc1:description """
                 Models obtained by decision tree induction techniques excel in being interpretable. However, they can be prone to overfitting, which results in a low predictive performance. Ensemble techniques are able to achieve a higher accuracy. However, this comes at a cost of losing interpretability of the resulting model. This makes ensemble techniques impractical in applications where decision support, instead of decision making, is crucial. To bridge this gap, we present the GENESIM algorithm that transforms an ensemble of decision trees to a single decision tree with an enhanced predictive performance by using a genetic algorithm. We compared GENESIM to prevalent decision tree induction and ensemble techniques using twelve publicly available data sets. The results show that GENESIM achieves a better predictive performance on most of these data sets than decision tree induction techniques and a predictive performance in the same order of magnitude as the ensemble techniques. Moreover, the resulting model of GENESIM has a very low complexity, making it very interpretable, in contrast to ensemble techniques.
             """@en ;
     dc1:title "GENESIM : genetic extraction of a single, interpretable model"@en ;
-    schema:author _:N35cf7e3f5a304d73b0b346469425f983,
-        _:N6f7acc9dec6249cdafbcc580f1341210,
-        _:Nb71a4f1bdb264237a9ee302381f67d90,
+    schema:author _:N85ebe24503d445718f99dd8f814cd1c3,
+        _:Nb8733fd676a047ec9dbaabff2b60c468,
+        _:Ne5c69c3345aa46c9bc1571d76bc666c7,
         <file:///author/femke-ongenae>,
         <file:///author/gilles-vandewiele> ;
     schema:description """
                 Models obtained by decision tree induction techniques excel in being interpretable. However, they can be prone to overfitting, which results in a low predictive performance. Ensemble techniques are able to achieve a higher accuracy. However, this comes at a cost of losing interpretability of the resulting model. This makes ensemble techniques impractical in applications where decision support, instead of decision making, is crucial. To bridge this gap, we present the GENESIM algorithm that transforms an ensemble of decision trees to a single decision tree with an enhanced predictive performance by using a genetic algorithm. We compared GENESIM to prevalent decision tree induction and ensemble techniques using twelve publicly available data sets. The results show that GENESIM achieves a better predictive performance on most of these data sets than decision tree induction techniques and a predictive performance in the same order of magnitude as the ensemble techniques. Moreover, the resulting model of GENESIM has a very low complexity, making it very interpretable, in contrast to ensemble techniques.
             """@en ;
     schema:name "GENESIM : genetic extraction of a single, interpretable model"@en ;
-    foaf:maker _:N35cf7e3f5a304d73b0b346469425f983,
-        _:N6f7acc9dec6249cdafbcc580f1341210,
-        _:Nb71a4f1bdb264237a9ee302381f67d90,
+    foaf:maker _:N85ebe24503d445718f99dd8f814cd1c3,
+        _:Nb8733fd676a047ec9dbaabff2b60c468,
+        _:Ne5c69c3345aa46c9bc1571d76bc666c7,
         <file:///author/femke-ongenae>,
         <file:///author/gilles-vandewiele> ;
     foaf:name "GENESIM : genetic extraction of a single, interpretable model"@en .
@@ -386,133 +386,133 @@
     dc1:title "Femke Ongenae"@en ;
     foaf:name "Femke Ongenae"@en .
 
-_:N0506a0dd5c67429fb91181cdcc3fb565 a schema:Person,
-        foaf:Person ;
-    dc1:title "Piet Verhoeve"@en ;
-    foaf:name "Piet Verhoeve"@en .
-
-_:N0a534511817c4b5d9aed01c4aa779a01 a schema:Person,
-        foaf:Person ;
-    dc1:title "E. Tsiporkova"@en ;
-    foaf:name "E. Tsiporkova"@en .
-
-_:N0a6c4b93496748e287c58587c9a5b91f a schema:Person,
-        foaf:Person ;
-    dc1:title "Thomas Dupont"@en ;
-    foaf:name "Thomas Dupont"@en .
-
-_:N0e5285c3876243e8b4176568a51bba3e a schema:Person,
+_:N1c7314ab7af243bebc4ba393c1cd3047 a schema:Person,
         foaf:Person ;
     dc1:title "N. Gonzalez-Deleito"@en ;
     foaf:name "N. Gonzalez-Deleito"@en .
 
-_:N15a997281f3b48caba6571c84ecada87 a schema:Person,
-        foaf:Person ;
-    dc1:title "Rik Van de Walle"@en ;
-    foaf:name "Rik Van de Walle"@en .
-
-_:N206218b04695452683beac80838ddd61 a schema:Person,
+_:N2301daf3c5e04d75a0f336baf8f659ba a schema:Person,
         foaf:Person ;
     dc1:title "Filip De Turck"@en ;
     foaf:name "Filip De Turck"@en .
 
-_:N21c5117f15e04595bb3e9e532e1d5148 a schema:Person,
-        foaf:Person ;
-    dc1:title "Wannes Kerckhove"@en ;
-    foaf:name "Wannes Kerckhove"@en .
-
-_:N2590e1aa70784b38a941b14a5ac49432 a schema:Person,
-        foaf:Person ;
-    dc1:title "Dörthe Arndt"@en ;
-    foaf:name "Dörthe Arndt"@en .
-
-_:N35cf7e3f5a304d73b0b346469425f983 a schema:Person,
-        foaf:Person ;
-    dc1:title "Filip De Turck"@en ;
-    foaf:name "Filip De Turck"@en .
-
-_:N3c8fcd0e5dcc49fca067b2c1921536b2 a schema:Person,
-        foaf:Person ;
-    dc1:title "Dörthe Arndt"@en ;
-    foaf:name "Dörthe Arndt"@en .
-
-_:N3cc676c925a347598fa8d68db40aedbe a schema:Person,
-        foaf:Person ;
-    dc1:title "Jelle Nelis"@en ;
-    foaf:name "Jelle Nelis"@en .
-
-_:N5c92d08676ad423cad670bfee082a325 a schema:Person,
-        foaf:Person ;
-    dc1:title "Filip De Turck"@en ;
-    foaf:name "Filip De Turck"@en .
-
-_:N63236d88af274ee3b992c56be0361e39 a schema:Person,
-        foaf:Person ;
-    dc1:title "T. Tourwé"@en ;
-    foaf:name "T. Tourwé"@en .
-
-_:N63f5f32937b94421a594cf99a18d8b44 a schema:Person,
-        foaf:Person ;
-    dc1:title "Filip De Turck"@en ;
-    foaf:name "Filip De Turck"@en .
-
-_:N67500acaa39541abbc59b83d6019bfa4 a schema:Person,
-        foaf:Person ;
-    dc1:title "Alexander Dejonghe"@en ;
-    foaf:name "Alexander Dejonghe"@en .
-
-_:N6f7acc9dec6249cdafbcc580f1341210 a schema:Person,
-        foaf:Person ;
-    dc1:title "Sofie Van Hoecke"@en ;
-    foaf:name "Sofie Van Hoecke"@en .
-
-_:Na6639ba944b246cab8b85242d86b4cd3 a schema:Person,
-        foaf:Person ;
-    dc1:title "Ruben Verborgh"@en ;
-    foaf:name "Ruben Verborgh"@en .
-
-_:Na8685a93e2f44ae48d5ee786ab976761 a schema:Person,
-        foaf:Person ;
-    dc1:title "Femke De Backere"@en ;
-    foaf:name "Femke De Backere"@en .
-
-_:Na8cc1830c39a4d20974b3d2d65dbd8fc a schema:Person,
-        foaf:Person ;
-    dc1:title "Bruno Volckaert"@en ;
-    foaf:name "Bruno Volckaert"@en .
-
-_:Nb71a4f1bdb264237a9ee302381f67d90 a schema:Person,
-        foaf:Person ;
-    dc1:title "Olivier Janssens"@en ;
-    foaf:name "Olivier Janssens"@en .
-
-_:Nbf6f6a3000e1454e8bb2f349c88bcf9e a schema:Person,
-        foaf:Person ;
-    dc1:title "Maxim Claeys"@en ;
-    foaf:name "Maxim Claeys"@en .
-
-_:Nd407b18fc88e4dffb2a03b3f443f9e96 a schema:Person,
-        foaf:Person ;
-    dc1:title "Jeroen Schaballie"@en ;
-    foaf:name "Jeroen Schaballie"@en .
-
-_:Ndad4ad12cfd042c7962dfd4946e6c517 a schema:Person,
-        foaf:Person ;
-    dc1:title "Femke De Backere"@en ;
-    foaf:name "Femke De Backere"@en .
-
-_:Nf2ecb2bcd2a944ac964e07232c1ac612 a schema:Person,
-        foaf:Person ;
-    dc1:title "Tom Dhaene"@en ;
-    foaf:name "Tom Dhaene"@en .
-
-_:Nfc86b5cf2cdb40598ca2a8741fa83315 a schema:Person,
+_:N248abd6c2f954b8e9cf61ac8d6488554 a schema:Person,
         foaf:Person ;
     dc1:title "Erik Mannens"@en ;
     foaf:name "Erik Mannens"@en .
 
-_:Nfd243c8af7a443deb119bd68ea9ccf87 a schema:Person,
+_:N2634857afc7047bfa2e3221c70048386 a schema:Person,
+        foaf:Person ;
+    dc1:title "Bruno Volckaert"@en ;
+    foaf:name "Bruno Volckaert"@en .
+
+_:N388f32da58514cb9a860dd1ac02e0415 a schema:Person,
+        foaf:Person ;
+    dc1:title "Jeroen Schaballie"@en ;
+    foaf:name "Jeroen Schaballie"@en .
+
+_:N43f641441fe446bcbdf6c4b96904d6c4 a schema:Person,
+        foaf:Person ;
+    dc1:title "Jelle Nelis"@en ;
+    foaf:name "Jelle Nelis"@en .
+
+_:N48789752a3074d799918f6dd7e76ca93 a schema:Person,
+        foaf:Person ;
+    dc1:title "E. Tsiporkova"@en ;
+    foaf:name "E. Tsiporkova"@en .
+
+_:N5d6b3d9b75794a839a73129682a06464 a schema:Person,
+        foaf:Person ;
+    dc1:title "Femke De Backere"@en ;
+    foaf:name "Femke De Backere"@en .
+
+_:N5eb72a30cf914a00916ef16644bb497b a schema:Person,
+        foaf:Person ;
+    dc1:title "Dörthe Arndt"@en ;
+    foaf:name "Dörthe Arndt"@en .
+
+_:N632f49a74cfb421496f268ddd73c58a4 a schema:Person,
+        foaf:Person ;
+    dc1:title "Femke De Backere"@en ;
+    foaf:name "Femke De Backere"@en .
+
+_:N69df5f3d5ed44152afc9cb71bd77245b a schema:Person,
+        foaf:Person ;
+    dc1:title "Rik Van de Walle"@en ;
+    foaf:name "Rik Van de Walle"@en .
+
+_:N6f328701645c489a8541f0beef65d89f a schema:Person,
+        foaf:Person ;
+    dc1:title "Thomas Dupont"@en ;
+    foaf:name "Thomas Dupont"@en .
+
+_:N70c5696c880e4ec4970d191d55e4f787 a schema:Person,
         foaf:Person ;
     dc1:title "Filip De Turck"@en ;
     foaf:name "Filip De Turck"@en .
+
+_:N825cbece9e8845c392a826a40b3bc5e4 a schema:Person,
+        foaf:Person ;
+    dc1:title "Ruben Verborgh"@en ;
+    foaf:name "Ruben Verborgh"@en .
+
+_:N85ebe24503d445718f99dd8f814cd1c3 a schema:Person,
+        foaf:Person ;
+    dc1:title "Olivier Janssens"@en ;
+    foaf:name "Olivier Janssens"@en .
+
+_:N8698150a6d564568890f4649d827118e a schema:Person,
+        foaf:Person ;
+    dc1:title "Tom Dhaene"@en ;
+    foaf:name "Tom Dhaene"@en .
+
+_:N9955aaa0410a42978e350a1482d1ca23 a schema:Person,
+        foaf:Person ;
+    dc1:title "Filip De Turck"@en ;
+    foaf:name "Filip De Turck"@en .
+
+_:Naa7b1caa1d2848d38f2151052b403abf a schema:Person,
+        foaf:Person ;
+    dc1:title "Dörthe Arndt"@en ;
+    foaf:name "Dörthe Arndt"@en .
+
+_:Nb8733fd676a047ec9dbaabff2b60c468 a schema:Person,
+        foaf:Person ;
+    dc1:title "Sofie Van Hoecke"@en ;
+    foaf:name "Sofie Van Hoecke"@en .
+
+_:Nbb6e355cc18a464d949eebbe28703276 a schema:Person,
+        foaf:Person ;
+    dc1:title "Maxim Claeys"@en ;
+    foaf:name "Maxim Claeys"@en .
+
+_:Nc415fde0fefd4f9a9129d5c2ecec8705 a schema:Person,
+        foaf:Person ;
+    dc1:title "Alexander Dejonghe"@en ;
+    foaf:name "Alexander Dejonghe"@en .
+
+_:Nd8cc7945449040248b0089768f7ee2a6 a schema:Person,
+        foaf:Person ;
+    dc1:title "Wannes Kerckhove"@en ;
+    foaf:name "Wannes Kerckhove"@en .
+
+_:Ndc6403395cf6447482b8d2826c2b1122 a schema:Person,
+        foaf:Person ;
+    dc1:title "T. Tourwé"@en ;
+    foaf:name "T. Tourwé"@en .
+
+_:Ne141a71e49e64001ab4f546770b72e43 a schema:Person,
+        foaf:Person ;
+    dc1:title "Filip De Turck"@en ;
+    foaf:name "Filip De Turck"@en .
+
+_:Ne5c69c3345aa46c9bc1571d76bc666c7 a schema:Person,
+        foaf:Person ;
+    dc1:title "Filip De Turck"@en ;
+    foaf:name "Filip De Turck"@en .
+
+_:Ne750dd0aaf734133b152af05eb2ce33e a schema:Person,
+        foaf:Person ;
+    dc1:title "Piet Verhoeve"@en ;
+    foaf:name "Piet Verhoeve"@en .
 

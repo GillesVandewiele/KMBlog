@@ -2,45 +2,115 @@
   {% block title %}Conferences{% endblock %}
   {% block content %}
 
+  <style>
+    .ind-cal{
+      margin-left: 5%;
+    }
+    .main-container{
+      text-align: left;
+    }
+    .past {
+      opacity: 0.5;
+    }
+    .meta{
+      font-size: 60%;
+    }
+    .deadline {
+      font-size: 60%;
+    }
+    .calendar {
+      font-size: 60%;
+    }
+  </style>
+  <script>
+    var toggleButton = function(element){
+      if(element.classList.contains('inactive')){
+        element.classList.remove("inactive");
+        element.classList.add("active");
+      } else {
+        element.classList.remove("active");
+        element.classList.add("inactive");
+      }
+    }
+
+    var getActiveButtons = function(buttons){
+      var values = [];
+      for(j = 0; j < buttons.length; j++){
+        if(buttons[j].classList.contains('active')){
+          values.push(buttons[j].text);
+        }
+      }
+      return values;
+    }
+    document.addEventListener('DOMContentLoaded', function(){
+
+      var options = {
+        valueNames: [
+          { attr: 'type', name: 'type' }
+        ]
+      };
+
+      var conferencesList = new List('conferencesList', options);
+      buttons = document.getElementsByClassName('filterBtnType');
+      for(i = 0; i < buttons.length; i++){
+        buttons[i].addEventListener("click", function(){
+          toggleButton(this);
+          var activeButtons = getActiveButtons(buttons);
+          conferencesList.filter(function(item){
+            var result = true;
+            if(activeButtons.length > 0){
+              result = result && activeButtons.includes(item.values().type)
+            }
+            return result;
+          });
+        });
+      }
+
+    });
+  </script>
+
   <div class="main-container">
     <div class="pure-g">
-      <div class="pure-u-1 pure-u-lg-2-3">
         <div class="entry-content">
-          <div id="conferencesList">
+          <div id='conferencesList'>
+          <ul class='list' style='list-style-type: none;'>
             {% for conf in conferences %}
-              <div id="{{conf.id}}" class="{% for sub in conf.sub %} {{sub}}-conf {% endfor %}">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6">
+                <li id="{{conf.id}}" data-id="{{ loop.index }}" class="{% for sub in conf.sub %} {{sub}}-conf {% endfor %}" >
+                    <div class="pure-u-12-24 type" type={{conf.type}}>
                         <a href="{{conf.link}}"><b>{{conf.name}} {{conf.year}}</b></a>
                         <div class="meta">
-                          {{conf.date}} // <a href="http://maps.google.com/?q={{conf.place}}">{{conf.place}}</a>
+                          {{conf.date}} <br> <a href="http://maps.google.com/?q={{conf.place}}">{{conf.place}}</a>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <span class="timer"></span>
-                      <div class="deadline">
-                        <div>Deadline:
-                          <span class="deadline-time"></span>
+                    <div class="pure-u-8-24">
+                        <span class="timer"></span>
+                        <div class="deadline">
+                          <div>
+                            <span class="deadline-time"></span>
+                          </div>
                         </div>
-                      </div>
-                      <div class="calendar"></div>
+                        <div class="calendar">
+                          <img src='/images/calendar.png' style='display: inline-block; vertical-align: middle; width: 5%; height: 5%'/>
+                        </div>
                     </div>
-                </div>
                 <hr>
-              </div>
+                </li>
             {% endfor %}
+          </ul>
           </div>
         </div>
-      </div>
 
-      <div class="pure-u-1 pure-u-lg-1-3">
+      <div class="pure-u-4-24">
         <div class="right-container">
           <div class="right-bar">
 
             <div class="right-head">
-              Filter by type
+              Type
             </div>
             <div class="tags">
+              {% for type in conferences_per_type.keys()|sort %}
+                <a class="filterBtn filterBtnType inactive" style="cursor: pointer;">{{ type }}</a>
+              {% endfor %}
             </div>
 
           </div>
@@ -49,4 +119,50 @@
 
     </div>
   </div>
+  <script type="text/javascript" charset="utf-8">
+    $(function() {
+        {% for conf in conferences %}
+        {% if conf.deadline == "TBA" %}
+          $('#{{conf.id}} .timer').html("TBA");
+          $('#{{conf.id}} .deadline-time').html("TBA");
+        {% else %}
+          // adjust date according to deadline timezone
+          var timezone = {% if conf.timezone %}"{{conf.timezone}}" {% else %} "America/New_York" {% endif %};
+          var confDate = moment.tz("{{conf.deadline}}", timezone);
+
+          // render countdown timer
+          $('#{{conf.id}} .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+          $('#{{conf.id}} .deadline-time').html(confDate.toString());
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: '{{conf.id}}'
+            },
+            data: {
+              // Event title
+              title: '{{conf.name}} {{conf.year}} deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#{{conf.id}} .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          if (today.diff(confDate) > 0)
+            $('#{{conf.id}}').addClass('past');
+        {% endif %}
+        {% endfor %}
+    });
+  </script>
 {% endblock %}
