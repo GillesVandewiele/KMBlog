@@ -13,12 +13,14 @@ sys.path.append(dir_path)
 from rdfparser import extract_authors, aggregate_rdf_files
 
 rdf_paths = [
-  'content/authors'
+  'content/authors',
+  'output/publications'
 ]
 aggregate_rdf_files(rdf_paths, 'content/km_rdf.ttl')
 
 AUTHORS_PATH = 'content/authors'       
 AUTHORS = extract_authors(AUTHORS_PATH)
+
 
 SITENAME = 'Knowledge Management'
 SITEURL = ''
@@ -68,6 +70,8 @@ PAGINATED_DIRECT_TEMPLATES = ('index', 'includes/posts', 'publications', 'blog')
 DISQUS_SITENAME = "localhost"
 
 PUBLICATIONS_SRC = 'content/publications'
+CONFERENCES_SRC = 'content/conferences.yml'
+CONFERENCES_TYPES = 'content/types.yml'
 
 MEDIUS_AUTHORS = AUTHORS
 
