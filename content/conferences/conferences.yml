@@ -61,6 +61,16 @@
   place: Monterey, CA 
   sub: SW
   
+- name: ESWC
+  year: 2018
+  id: eswc2018
+  link: https://2018.eswc-conferences.org
+  deadline: "2018-01-12 23:59:59"
+  timezone: America/Hawaii
+  date: June 03-07, 2018
+  place: Crete, Greece 
+  sub: SW
+
 - name: ECML PKDD
   year: 2018
   id: ecml18
