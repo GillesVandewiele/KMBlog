@@ -9,7 +9,7 @@
   timezone: America/Los_Angeles
   date: December 3-8, 2018
   place: "Palais des Congr\xE8s de Montr\xE9al, Montr\xE9al, Canada"
-  sub: ML
+  sub: Machine Learning
 
 - name: AISTATS
   year: 2018
@@ -19,7 +19,7 @@
   timezone: Etc/GMT
   date: April 9-11, 2018
   place: Lanzarote, Spain
-  sub: ML
+  sub: Machine Learning
 
 - name: SIGGRAPH
   year: 2018
@@ -29,7 +29,7 @@
   timezone: GMT
   date: August 12-16, 2018
   place: Vancouver, Canada
-  sub: GR
+  sub: Virtual Reality
 
 - name: ICML
   year: 2018
@@ -39,7 +39,7 @@
   timezone: EST
   date: July 10-15, 2018
   place: Stockholm, Sweden
-  sub: ML
+  sub: Machine Learning
 
 - name: KDD
   year: 2018
@@ -49,7 +49,7 @@
   timezone: America/Los_Angeles
   date: August 19-23, 2018
   place: London, United Kingdom
-  sub: ML
+  sub: Machine Learning
   
 - name: ISWC
   year: 2018
@@ -59,7 +59,7 @@
   timezone: America/Los_Angeles
   date: October 08-12, 2018
   place: Monterey, CA 
-  sub: SW
+  sub: Semantic Web
   
 - name: ESWC
   year: 2018
@@ -69,7 +69,7 @@
   timezone: America/Hawaii
   date: June 03-07, 2018
   place: Crete, Greece 
-  sub: SW
+  sub: Semantic Web
 
 - name: ECML PKDD
   year: 2018
@@ -79,4 +79,4 @@
   timezone: GMT
   date: September 10-14, 2018
   place: Dublin, Ireland
-  sub: ML
+  sub: Machine Learning
