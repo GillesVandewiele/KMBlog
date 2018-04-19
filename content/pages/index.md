@@ -1,8 +1,6 @@
-Title: Home
+Title: Welcome to the DISKOVER blog!
 url: 
 save_as: index.html
-
-#Welcome to the DISKOVER blog! 
 
 DISKOVER stands for DIStributed KnOwledge-based systems for adVancEd applications. We are a research team within the [IDLab](https://www.ugent.be/ea/idlab/en) research group of [Ghent University](https://www.ugent.be/en) - [imec](https://www.imec-int.com/en/home). 
 
