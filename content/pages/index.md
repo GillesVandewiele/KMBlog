@@ -6,9 +6,9 @@ save_as: index.html
 
 DISKOVER stands for DIStributed KnOwledge-based systems for adVancEd applications. We are a research team within the [IDLab](https://www.ugent.be/ea/idlab/en) research group of [Ghent University](https://www.ugent.be/en) - [imec](https://www.imec-int.com/en/home). 
 
-Here you can find out more about our [research topics](../../output/blog.html), [publications](../../output/publications.html), [projects](../../output/about.html), [educational courses](../../output/about.html), and [vacancies](../../output/about.html) for PhD positions, project researchers and master thesis topics and the [conferences](../../output/conferences.html) we are attending.
+Here you can find out more about our [research topics](./blog.html), [publications](./publications.html), [projects](./about.html), [educational courses](./about.html), and [vacancies](./about.html) for PhD positions, project researchers and master thesis topics and the [conferences](./conferences.html) we are attending.
 
-Feel free to discuss with us by commenting on our [blog](../../output/blog.html) or reaching out to us through [mail](../../output/contact.html)! 
+Feel free to discuss with us by commenting on our [blog](./blog.html) or reaching out to us through [mail](./contact.html)! 
 
 ##Who are we?
 
