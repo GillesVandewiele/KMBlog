@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Publications</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <script src="/theme/js/list.js"> </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/theme/js/jquery.countdown.min.js"> </script>
+        <script src="/theme/js/moment.min.js"> </script>
+        <script src="/theme/js/moment-timezone-with-data.min.js"> </script>
+        <script src="/theme/js/store.min.js"> </script>
+        <script src="/theme/js/ouical.min.js"> </script>
+</head>
+<body>
+
+    <div class="navigation pure-menu pure-menu-horizontal">
+        <a href="/" class="pure-menu-heading  pure-menu-link">Knowledge Management</a>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"></li>
+            <li class="pure-menu-item"><a href="/about.html" class="pure-menu-link">About</a></li>
+            <li class="pure-menu-item"><a href="/publications.html" class="pure-menu-link">Publications</a></li>
+            <li class="pure-menu-item"><a href="/blog.html" class="pure-menu-link">Blog</a></li>
+            <li class="pure-menu-item"><a href="/conferences.html" class="pure-menu-link">Conferences</a></li>
+
+        </ul>
+    </div>
+
+
+
+
+  <script>
+    var toggleButton = function(element){
+      if(element.classList.contains('inactive')){
+        element.classList.remove("inactive");
+        element.classList.add("active");
+      } else {
+        element.classList.remove("active");
+        element.classList.add("inactive");
+      }
+    }
+
+    var getActiveButtons = function(buttons){
+      var values = [];
+      for(j = 0; j < buttons.length; j++){
+        if(buttons[j].classList.contains('active')){
+          values.push(buttons[j].text);
+        }
+      }
+      return values;
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+
+      var options = {
+        valueNames: [
+          'title',
+          { attr: 'year', name: 'year' },
+          { attr: 'type', name: 'type' },
+        ]
+      };
+
+      var publicationList = new List('publicationList', options);
+      console.log(publicationList);
+
+      buttons = document.getElementsByClassName('filterBtn');
+      yearButtons = document.getElementsByClassName('filterBtnYear');
+      typeButtons = document.getElementsByClassName('filterBtnType');
+      for(i = 0; i < buttons.length; i++){
+        buttons[i].addEventListener("click", function(){
+          toggleButton(this);
+
+          var activeButtons = getActiveButtons(buttons);
+          var yearActiveButtons = getActiveButtons(yearButtons);
+          var typeActiveButtons = getActiveButtons(typeButtons);
+          publicationList.filter(function(item){
+            var result = true;
+            if(yearActiveButtons.length > 0){
+              result = result && yearActiveButtons.includes(item.values().year)
+            }
+            if(typeActiveButtons.length > 0){
+              result = result && typeActiveButtons.includes(item.values().type)
+            }
+            return result;
+          });
+
+        });
+      }
+
+
+
+    });
+  </script>
+
+  <div class="main-container">
+    <div class="pure-g">
+      <div class="pure-u-1 pure-u-lg-2-3">
+        <div class="entry-content">
+          <div id="publicationList">
+            <ul class='list' style='text-align: left; font-size: 12px; list-style-type: none;'>
+                <li id="8541801" data-id="1" style='margin-bottom: 10pt;'>
+                  <a class='title year type' href="/publications/8541801.html" year="2017" type="Conference">Attributing recognised activities in multi-person households using ontology-based finite state machines</a> <br>
+                  
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          <a href="/author/stijn-verstichel.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Stijn Verstichel</a>
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          T. Tourwé
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Jelle Nelis
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          N. Gonzalez-Deleito
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          E. Tsiporkova
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          <a href="/author/femke-ongenae.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Femke Ongenae</a>
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Bruno Volckaert
+                    </p>
+ <br>
+                  
+                  <em style='color: rgba(0, 0, 0, 0.3);'>SWIT2017, the Second Workshop on Semantic Web Technologies for the Internet of Things co-located with 16th International Semantic Web Conference (ISWC 2017)</em>
+                </li>
+                <li id="8550825" data-id="2" style='margin-bottom: 10pt;'>
+                  <a class='title year type' href="/publications/8550825.html" year="2018" type="Journal">Sharing health data in Belgium: A home care case study using the Vitalink platform</a> <br>
+                  
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Femke De Backere
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          <a href="/author/pieter-bonte.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Pieter Bonte</a>
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          <a href="/author/stijn-verstichel.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Stijn Verstichel</a>
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          <a href="/author/femke-ongenae.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Femke Ongenae</a>
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Filip De Turck
+                    </p>
+ <br>
+                  
+                  <em style='color: rgba(0, 0, 0, 0.3);'>INFORMATICS FOR HEALTH & SOCIAL CARE</em>
+                </li>
+                <li id="ONGENAE20137629" data-id="3" style='margin-bottom: 10pt;'>
+                  <a class='title year type' href="/publications/ONGENAE20137629.html" year="2013" type="Journal">A probabilistic ontology-based platform for self-learning context-aware healthcare applications</a> <br>
+                  
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          <a href="/author/femke-ongenae.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Femke Ongenae</a>
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Maxim Claeys
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Thomas Dupont
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Wannes Kerckhove
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Piet Verhoeve
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Tom Dhaene
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Filip De Turck
+                    </p>
+ <br>
+                  
+                  <em style='color: rgba(0, 0, 0, 0.3);'>Expert Systems with Applications</em>
+                </li>
+                <li id="arndt_ai4health_2018" data-id="4" style='margin-bottom: 10pt;'>
+                  <a class='title year type' href="/publications/arndt_ai4health_2018.html" year="2018" type="Conference">SENSdesc: Connect Sensor queries and Context</a> <br>
+                  
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Dörthe Arndt
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          <a href="/author/pieter-bonte.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Pieter Bonte</a>
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Alexander Dejonghe
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Ruben Verborgh
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Filip De Turck
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          <a href="/author/femke-ongenae.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Femke Ongenae</a>
+                    </p>
+ <br>
+                  
+                  <em style='color: rgba(0, 0, 0, 0.3);'>Proceedings of the 11th International Joint Conference on Biomedical Engineering Systems and Technologies</em>
+                </li>
+                <li id="bonte2017massif" data-id="5" style='margin-bottom: 10pt;'>
+                  <a class='title year type' href="/publications/bonte2017massif.html" year="2017" type="Journal">The MASSIF platform: a modular and semantic platform for the development of flexible IoT services</a> <br>
+                  
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          <a href="/author/pieter-bonte.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Pieter Bonte</a>
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          <a href="/author/femke-ongenae.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Femke Ongenae</a>
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Femke De Backere
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Jeroen Schaballie
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Dörthe Arndt
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          <a href="/author/stijn-verstichel.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Stijn Verstichel</a>
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Erik Mannens
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Rik Van de Walle
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Filip De Turck
+                    </p>
+ <br>
+                  
+                  <em style='color: rgba(0, 0, 0, 0.3);'>Knowledge and Information Systems</em>
+                </li>
+                <li id="vandewiele_genesim_2016" data-id="6" style='margin-bottom: 10pt;'>
+                  <a class='title year type' href="/publications/vandewiele_genesim_2016.html" year="2016" type="Conference">GENESIM : genetic extraction of a single, interpretable model</a> <br>
+                  
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          <a href="/author/gilles-vandewiele.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Gilles Vandewiele</a>
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Olivier Janssens
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          <a href="/author/femke-ongenae.html" style="color: rgba(0, 0, 0, 0.3); text-decoration: none; border-bottom: 1px dotted">Femke Ongenae</a>
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Filip De Turck
+,                    </p>
+                    <p class='author' style='display: inline-block; margin-top: 2pt; margin-bottom: 2pt; margin-right: 0pt; color: rgba(0, 0, 0, 0.3);'>
+                          Sofie Van Hoecke
+                    </p>
+ <br>
+                  
+                  <em style='color: rgba(0, 0, 0, 0.3);'>NIPS 2016: Workshop on Interpretable Machine Learning for Complex Systems</em>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pure-u-1 pure-u-lg-1-3">
+        <div class="right-container">
+          <div class="right-bar">
+
+            <div class="right-head">
+              Filter by year
+            </div>
+            <div class="tags">
+                <a class="filterBtn filterBtnYear inactive" style="cursor: pointer;">2013</a>
+                <a class="filterBtn filterBtnYear inactive" style="cursor: pointer;">2016</a>
+                <a class="filterBtn filterBtnYear inactive" style="cursor: pointer;">2017</a>
+                <a class="filterBtn filterBtnYear inactive" style="cursor: pointer;">2018</a>
+            </div>
+
+            <div class="right-head">
+              Filter by article type
+            </div>
+            <div class="tags">
+                <a class="filterBtn filterBtnType inactive" style="cursor: pointer;">Conference</a>
+                <a class="filterBtn filterBtnType inactive" style="cursor: pointer;">Journal</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+    <footer class="index-footer">
+
+        <a href="http://idlab.technology">IDLab</a>
+        <a href="http://www.ugent.be/">UGent</a>
+
+        <p style='color: rgba(0, 0, 0, 0.3); font-size: 12px; display: inline-block'>
+            &#9400; Gilles Vandewiele (2018)  | 
+            Created with <a href="https://blog.getpelican.com/" target='_blank' style='margin-right: 0'>Pelican </a> (<a href="https://github.com/onur/medius" target='_blank' style='margin-right: 0'>Medius</a> template)
+        </p>
+
+    </footer>
+
+</body>
+</html>
