@@ -11,3 +11,14 @@ script:
 env:
   global:
     secure: PPFg+0L9YwkqGMkLqskxkWTLUsY417Z583gQWoRTqod5DIJpsM7xwlM7pn1SyWK0l8czWt3YdXbFRJZehBiefMAEqYPdFl5Dw2rxx9ntqVoi/LIUqxZt3rnqGpgUhwacEqaNLx+j9/6xkEv5myeQcUeKi+6uLvvWaUNV8y/jhNsTWnYOGrcjlbiEM/AfxYn5IGscMdIQLnv904SUVoftPa/kthK3gIk7XM51S/IUq4yN+YaMUH+a1fJ7ARkXPHC8M2A3CB5iqyGQeUj/wqdISBBdObgps085GKfMd2UWK6E/75bmVS89RIvc9zedLYGCh2wBSiad6xRzHZuSJk58wUl6UYLdujM5PRM9lNb+ekE+weRNw8LtgweAj3VKHdsUn5VnTzC9zmml32TJm2jvyqFUqpXC7nOJCEc9l+vvUeBdpHN+oMRyuftsNt2SPRWDAUDgfw0oFiN9uX8wKG70KJuEkJN45N/CAkha2KbnHQ5KrSfBlt0x+8hpKMrHgiNwr0zSaeiGVSj2PegxEZ5sV88zXpkNA8ibm9UK+aDwxL91t+hi8vgk3ZBcsB1tKqwbZjOo9UeK8/Gcra+OSJaqPb6AEkxNfa2/DVR9Bx+hFYMOZ0pbwuXE8rOV5fbmZPTNjmvIoU9RkNy3KbfoZdWA0NchO3zHf7viIt+odswldfw=
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: public
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  on:
+    branch: master
+  repo: GillesVandewiele/KMBlog
+  target_branch: master
+  fqdn: diskover.atlantis.ugent.be

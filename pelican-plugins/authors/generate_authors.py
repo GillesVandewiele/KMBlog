@@ -6,7 +6,6 @@ def add_missing_authors(generator):
     # presumably an iterator with string keys/items as author names
     authors = generator.settings.get('AUTHORS', {})
     added_authors = set(author.name for author, articles in generator.authors)
-    # add missing ones
     for author in set(authors)-added_authors:
         generator.authors.append((Author(author, generator.settings), []))
 
