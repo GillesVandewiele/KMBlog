@@ -20,5 +20,5 @@ deploy:
   on:
     branch: master
   repo: GillesVandewiele/KMBlog
-  target_branch: master
+  target_branch: gh-pages
   fqdn: diskover.atlantis.ugent.be
