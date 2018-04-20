@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Conferences</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <script src="/theme/js/list.js"> </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/theme/js/jquery.countdown.min.js"> </script>
+        <script src="/theme/js/moment.min.js"> </script>
+        <script src="/theme/js/moment-timezone-with-data.min.js"> </script>
+        <script src="/theme/js/store.min.js"> </script>
+        <script src="/theme/js/ouical.min.js"> </script>
+</head>
+<body>
+
+    <div class="navigation pure-menu pure-menu-horizontal">
+        <a href="/" class="pure-menu-heading  pure-menu-link">Knowledge Management</a>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"></li>
+            <li class="pure-menu-item"><a href="/about.html" class="pure-menu-link">About</a></li>
+            <li class="pure-menu-item"><a href="/publications.html" class="pure-menu-link">Publications</a></li>
+            <li class="pure-menu-item"><a href="/blog.html" class="pure-menu-link">Blog</a></li>
+            <li class="pure-menu-item"><a href="/conferences.html" class="pure-menu-link">Conferences</a></li>
+
+        </ul>
+    </div>
+
+
+
+  <style>
+    .ind-cal{
+      margin-left: 5%;
+    }
+    .main-container{
+      text-align: left;
+    }
+    .past {
+      opacity: 0.5;
+    }
+    .meta{
+      font-size: 60%;
+    }
+    .deadline {
+      font-size: 60%;
+    }
+    .calendar {
+      font-size: 60%;
+    }
+  </style>
+  <script>
+    var toggleButton = function(element){
+      if(element.classList.contains('inactive')){
+        element.classList.remove("inactive");
+        element.classList.add("active");
+      } else {
+        element.classList.remove("active");
+        element.classList.add("inactive");
+      }
+    }
+
+    var getActiveButtons = function(buttons){
+      var values = [];
+      for(j = 0; j < buttons.length; j++){
+        if(buttons[j].classList.contains('active')){
+          values.push(buttons[j].text);
+        }
+      }
+      return values;
+    }
+    document.addEventListener('DOMContentLoaded', function(){
+
+      var options = {
+        valueNames: [
+          { attr: 'type', name: 'type' }
+        ]
+      };
+
+      var conferencesList = new List('conferencesList', options);
+      buttons = document.getElementsByClassName('filterBtnType');
+      for(i = 0; i < buttons.length; i++){
+        buttons[i].addEventListener("click", function(){
+          toggleButton(this);
+          var activeButtons = getActiveButtons(buttons);
+          conferencesList.filter(function(item){
+            var result = true;
+            if(activeButtons.length > 0){
+              result = result && activeButtons.includes(item.values().type)
+            }
+            return result;
+          });
+        });
+      }
+
+    });
+  </script>
+
+  <div class="main-container">
+    <div class="pure-g">
+        <div class="entry-content" style='width: 80%'>
+          <div id='conferencesList'>
+          <ul class='list' style='list-style-type: none;'>
+                <li id="nips18" data-id="1" class="" >
+                    <div class="pure-u-12-24 type" type=ML style='width: 50%'>
+                        <a href="https://nips.cc/Conferences/2018"><b>NIPS 2018</b></a>
+                        <div class="meta">
+                          December 3-8, 2018 <br> <a href="http://maps.google.com/?q=Palais des Congrès de Montréal, Montréal, Canada">Palais des Congrès de Montréal, Montréal, Canada</a>
+                        </div>
+                    </div>
+                    <div class="pure-u-8-24" style='min-width: 0;'>
+                        <span class="timer"></span>
+                        <div class="deadline">
+                          <div>
+                            <span class="deadline-time"></span>
+                          </div>
+                        </div>
+                        <div class="calendar">
+                          <img src='/images/calendar.png' style='display: inline-block; vertical-align: middle; width: 5%; height: 5%'/>
+                        </div>
+                    </div>
+                <hr>
+                </li>
+                <li id="aistats18" data-id="2" class="" >
+                    <div class="pure-u-12-24 type" type=ML style='width: 50%'>
+                        <a href="http://www.aistats.org/"><b>AISTATS 2018</b></a>
+                        <div class="meta">
+                          April 9-11, 2018 <br> <a href="http://maps.google.com/?q=Lanzarote, Spain">Lanzarote, Spain</a>
+                        </div>
+                    </div>
+                    <div class="pure-u-8-24" style='min-width: 0;'>
+                        <span class="timer"></span>
+                        <div class="deadline">
+                          <div>
+                            <span class="deadline-time"></span>
+                          </div>
+                        </div>
+                        <div class="calendar">
+                          <img src='/images/calendar.png' style='display: inline-block; vertical-align: middle; width: 5%; height: 5%'/>
+                        </div>
+                    </div>
+                <hr>
+                </li>
+                <li id="siggraph18" data-id="3" class="" >
+                    <div class="pure-u-12-24 type" type=VR style='width: 50%'>
+                        <a href="http://s2018.siggraph.org/"><b>SIGGRAPH 2018</b></a>
+                        <div class="meta">
+                          August 12-16, 2018 <br> <a href="http://maps.google.com/?q=Vancouver, Canada">Vancouver, Canada</a>
+                        </div>
+                    </div>
+                    <div class="pure-u-8-24" style='min-width: 0;'>
+                        <span class="timer"></span>
+                        <div class="deadline">
+                          <div>
+                            <span class="deadline-time"></span>
+                          </div>
+                        </div>
+                        <div class="calendar">
+                          <img src='/images/calendar.png' style='display: inline-block; vertical-align: middle; width: 5%; height: 5%'/>
+                        </div>
+                    </div>
+                <hr>
+                </li>
+                <li id="icml18" data-id="4" class="" >
+                    <div class="pure-u-12-24 type" type=ML style='width: 50%'>
+                        <a href="https://icml.cc/Conferences/2018"><b>ICML 2018</b></a>
+                        <div class="meta">
+                          July 10-15, 2018 <br> <a href="http://maps.google.com/?q=Stockholm, Sweden">Stockholm, Sweden</a>
+                        </div>
+                    </div>
+                    <div class="pure-u-8-24" style='min-width: 0;'>
+                        <span class="timer"></span>
+                        <div class="deadline">
+                          <div>
+                            <span class="deadline-time"></span>
+                          </div>
+                        </div>
+                        <div class="calendar">
+                          <img src='/images/calendar.png' style='display: inline-block; vertical-align: middle; width: 5%; height: 5%'/>
+                        </div>
+                    </div>
+                <hr>
+                </li>
+                <li id="kdd18" data-id="5" class="" >
+                    <div class="pure-u-12-24 type" type=ML style='width: 50%'>
+                        <a href="http://www.kdd.org/kdd2018/"><b>KDD 2018</b></a>
+                        <div class="meta">
+                          August 19-23, 2018 <br> <a href="http://maps.google.com/?q=London, United Kingdom">London, United Kingdom</a>
+                        </div>
+                    </div>
+                    <div class="pure-u-8-24" style='min-width: 0;'>
+                        <span class="timer"></span>
+                        <div class="deadline">
+                          <div>
+                            <span class="deadline-time"></span>
+                          </div>
+                        </div>
+                        <div class="calendar">
+                          <img src='/images/calendar.png' style='display: inline-block; vertical-align: middle; width: 5%; height: 5%'/>
+                        </div>
+                    </div>
+                <hr>
+                </li>
+                <li id="iswc2018" data-id="6" class="" >
+                    <div class="pure-u-12-24 type" type=SW style='width: 50%'>
+                        <a href="http://iswc2018.semanticweb.org/"><b>ISWC 2018</b></a>
+                        <div class="meta">
+                          October 08-12, 2018 <br> <a href="http://maps.google.com/?q=Monterey, CA">Monterey, CA</a>
+                        </div>
+                    </div>
+                    <div class="pure-u-8-24" style='min-width: 0;'>
+                        <span class="timer"></span>
+                        <div class="deadline">
+                          <div>
+                            <span class="deadline-time"></span>
+                          </div>
+                        </div>
+                        <div class="calendar">
+                          <img src='/images/calendar.png' style='display: inline-block; vertical-align: middle; width: 5%; height: 5%'/>
+                        </div>
+                    </div>
+                <hr>
+                </li>
+                <li id="eswc2018" data-id="7" class="" >
+                    <div class="pure-u-12-24 type" type=SW style='width: 50%'>
+                        <a href="https://2018.eswc-conferences.org"><b>ESWC 2018</b></a>
+                        <div class="meta">
+                          June 03-07, 2018 <br> <a href="http://maps.google.com/?q=Crete, Greece">Crete, Greece</a>
+                        </div>
+                    </div>
+                    <div class="pure-u-8-24" style='min-width: 0;'>
+                        <span class="timer"></span>
+                        <div class="deadline">
+                          <div>
+                            <span class="deadline-time"></span>
+                          </div>
+                        </div>
+                        <div class="calendar">
+                          <img src='/images/calendar.png' style='display: inline-block; vertical-align: middle; width: 5%; height: 5%'/>
+                        </div>
+                    </div>
+                <hr>
+                </li>
+                <li id="ecml18" data-id="8" class="" >
+                    <div class="pure-u-12-24 type" type=ML style='width: 50%'>
+                        <a href="http://www.ecmlpkdd2018.org/"><b>ECML PKDD 2018</b></a>
+                        <div class="meta">
+                          September 10-14, 2018 <br> <a href="http://maps.google.com/?q=Dublin, Ireland">Dublin, Ireland</a>
+                        </div>
+                    </div>
+                    <div class="pure-u-8-24" style='min-width: 0;'>
+                        <span class="timer"></span>
+                        <div class="deadline">
+                          <div>
+                            <span class="deadline-time"></span>
+                          </div>
+                        </div>
+                        <div class="calendar">
+                          <img src='/images/calendar.png' style='display: inline-block; vertical-align: middle; width: 5%; height: 5%'/>
+                        </div>
+                    </div>
+                <hr>
+                </li>
+          </ul>
+          </div>
+        </div>
+
+      <div class="pure-u-4-24" style='min-width: 0;'>
+        <div class="right-container" style='width: 20%'>
+          <div class="right-bar">
+
+            <div class="right-head">
+              Type
+            </div>
+            <div class="tags">
+                <a class="filterBtn filterBtnType inactive" style="cursor: pointer;">ML</a>
+                <a class="filterBtn filterBtnType inactive" style="cursor: pointer;">SW</a>
+                <a class="filterBtn filterBtnType inactive" style="cursor: pointer;">VR</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script type="text/javascript" charset="utf-8">
+    $(function() {
+          // adjust date according to deadline timezone
+          var timezone = "America/Los_Angeles" ;
+          var confDate = moment.tz("2018-05-18 13:00:00", timezone);
+
+          // render countdown timer
+          $('#nips18 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+          $('#nips18 .deadline-time').html(confDate.toString());
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'nips18'
+            },
+            data: {
+              // Event title
+              title: 'NIPS 2018 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#nips18 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          if (today.diff(confDate) > 0)
+            $('#nips18').addClass('past');
+          // adjust date according to deadline timezone
+          var timezone = "Etc/GMT" ;
+          var confDate = moment.tz("2017-10-13 23:59:59", timezone);
+
+          // render countdown timer
+          $('#aistats18 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+          $('#aistats18 .deadline-time').html(confDate.toString());
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'aistats18'
+            },
+            data: {
+              // Event title
+              title: 'AISTATS 2018 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#aistats18 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          if (today.diff(confDate) > 0)
+            $('#aistats18').addClass('past');
+          // adjust date according to deadline timezone
+          var timezone = "GMT" ;
+          var confDate = moment.tz("2018-01-23 21:59:59", timezone);
+
+          // render countdown timer
+          $('#siggraph18 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+          $('#siggraph18 .deadline-time').html(confDate.toString());
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'siggraph18'
+            },
+            data: {
+              // Event title
+              title: 'SIGGRAPH 2018 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#siggraph18 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          if (today.diff(confDate) > 0)
+            $('#siggraph18').addClass('past');
+          // adjust date according to deadline timezone
+          var timezone = "EST" ;
+          var confDate = moment.tz("2018-02-09 18:59:59", timezone);
+
+          // render countdown timer
+          $('#icml18 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+          $('#icml18 .deadline-time').html(confDate.toString());
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'icml18'
+            },
+            data: {
+              // Event title
+              title: 'ICML 2018 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#icml18 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          if (today.diff(confDate) > 0)
+            $('#icml18').addClass('past');
+          // adjust date according to deadline timezone
+          var timezone = "America/Los_Angeles" ;
+          var confDate = moment.tz("2018-02-11 23:59:59", timezone);
+
+          // render countdown timer
+          $('#kdd18 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+          $('#kdd18 .deadline-time').html(confDate.toString());
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'kdd18'
+            },
+            data: {
+              // Event title
+              title: 'KDD 2018 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#kdd18 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          if (today.diff(confDate) > 0)
+            $('#kdd18').addClass('past');
+          // adjust date according to deadline timezone
+          var timezone = "America/Los_Angeles" ;
+          var confDate = moment.tz("2018-04-06 23:59:59", timezone);
+
+          // render countdown timer
+          $('#iswc2018 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+          $('#iswc2018 .deadline-time').html(confDate.toString());
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'iswc2018'
+            },
+            data: {
+              // Event title
+              title: 'ISWC 2018 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#iswc2018 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          if (today.diff(confDate) > 0)
+            $('#iswc2018').addClass('past');
+          // adjust date according to deadline timezone
+          var timezone = "America/Hawaii" ;
+          var confDate = moment.tz("2018-01-12 23:59:59", timezone);
+
+          // render countdown timer
+          $('#eswc2018 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+          $('#eswc2018 .deadline-time').html(confDate.toString());
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'eswc2018'
+            },
+            data: {
+              // Event title
+              title: 'ESWC 2018 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#eswc2018 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          if (today.diff(confDate) > 0)
+            $('#eswc2018').addClass('past');
+          // adjust date according to deadline timezone
+          var timezone = "GMT" ;
+          var confDate = moment.tz("2018-04-12 23:59:59", timezone);
+
+          // render countdown timer
+          $('#ecml18 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+          $('#ecml18 .deadline-time').html(confDate.toString());
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'ecml18'
+            },
+            data: {
+              // Event title
+              title: 'ECML PKDD 2018 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#ecml18 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          if (today.diff(confDate) > 0)
+            $('#ecml18').addClass('past');
+    });
+  </script>
+
+
+    <footer class="index-footer">
+
+        <a href="http://idlab.technology">IDLab</a>
+        <a href="http://www.ugent.be/">UGent</a>
+
+        <p style='color: rgba(0, 0, 0, 0.3); font-size: 12px; display: inline-block'>
+            &#9400; Gilles Vandewiele (2018)  | 
+            Created with <a href="https://blog.getpelican.com/" target='_blank' style='margin-right: 0'>Pelican </a> (<a href="https://github.com/onur/medius" target='_blank' style='margin-right: 0'>Medius</a> template)
+        </p>
+
+    </footer>
+
+</body>
+</html>
