@@ -24,6 +24,6 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: rsync -r --delete-after --quiet output gilles@diskover.atlantis.ugent.be:KMBlog/
+  script: rsync -r --delete-after --quiet output/* gilles@diskover.atlantis.ugent.be:KMBlog/
   on:
-    branch: output
+    branch: gh-pages
