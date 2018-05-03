@@ -147,7 +147,7 @@
                 <hr>
                 </li>
                 <li id="siggraph18" data-id="3" class="" >
-                    <div class="pure-u-12-24 type" type=GR style='width: 50%'>
+                    <div class="pure-u-12-24 type" type=VR style='width: 50%'>
                         <a href="http://s2018.siggraph.org/"><b>SIGGRAPH 2018</b></a>
                         <div class="meta">
                           August 12-16, 2018 <br> <a href="http://maps.google.com/?q=Vancouver, Canada">Vancouver, Canada</a>
@@ -226,7 +226,27 @@
                     </div>
                 <hr>
                 </li>
-                <li id="ecml18" data-id="7" class="" >
+                <li id="eswc2018" data-id="7" class="" >
+                    <div class="pure-u-12-24 type" type=SW style='width: 50%'>
+                        <a href="https://2018.eswc-conferences.org"><b>ESWC 2018</b></a>
+                        <div class="meta">
+                          June 03-07, 2018 <br> <a href="http://maps.google.com/?q=Crete, Greece">Crete, Greece</a>
+                        </div>
+                    </div>
+                    <div class="pure-u-8-24" style='min-width: 0;'>
+                        <span class="timer"></span>
+                        <div class="deadline">
+                          <div>
+                            <span class="deadline-time"></span>
+                          </div>
+                        </div>
+                        <div class="calendar">
+                          <img src='/images/calendar.png' style='display: inline-block; vertical-align: middle; width: 5%; height: 5%'/>
+                        </div>
+                    </div>
+                <hr>
+                </li>
+                <li id="ecml18" data-id="8" class="" >
                     <div class="pure-u-12-24 type" type=ML style='width: 50%'>
                         <a href="http://www.ecmlpkdd2018.org/"><b>ECML PKDD 2018</b></a>
                         <div class="meta">
@@ -258,9 +278,9 @@
               Type
             </div>
             <div class="tags">
-                <a class="filterBtn filterBtnType inactive" style="cursor: pointer;">GR</a>
                 <a class="filterBtn filterBtnType inactive" style="cursor: pointer;">ML</a>
                 <a class="filterBtn filterBtnType inactive" style="cursor: pointer;">SW</a>
+                <a class="filterBtn filterBtnType inactive" style="cursor: pointer;">VR</a>
             </div>
 
           </div>
@@ -481,6 +501,41 @@
           var today = moment();
           if (today.diff(confDate) > 0)
             $('#iswc2018').addClass('past');
+          // adjust date according to deadline timezone
+          var timezone = "America/Hawaii" ;
+          var confDate = moment.tz("2018-01-12 23:59:59", timezone);
+
+          // render countdown timer
+          $('#eswc2018 .timer').countdown(confDate.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+          });
+          $('#eswc2018 .deadline-time').html(confDate.toString());
+
+          // add calendar button
+          var myCalendar = createCalendar({
+            options: {
+              class: 'calendar-obj',
+
+              // You can pass an ID. If you don't, one will be generated for you
+              id: 'eswc2018'
+            },
+            data: {
+              // Event title
+              title: 'ESWC 2018 deadline',
+
+              // Event start date
+              start: confDate.toDate(), // new Date('June 15, 2013 19:00'),
+
+              // Event duration
+              duration: 60,
+            }
+          });
+          document.querySelector('#eswc2018 .calendar').appendChild(myCalendar);
+
+          // check if date has passed, add 'past' class to it
+          var today = moment();
+          if (today.diff(confDate) > 0)
+            $('#eswc2018').addClass('past');
           // adjust date according to deadline timezone
           var timezone = "GMT" ;
           var confDate = moment.tz("2018-04-12 23:59:59", timezone);

@@ -24,6 +24,7 @@ import codecs
 
 BIBTEX_TYPE_TO_TEXT = {
     'inproceedings': 'Conference',
+    'incollection': 'Conference',
     'article': 'Journal',
     'book': 'Book',
     'booklet': 'Book',
@@ -128,12 +129,20 @@ class BibGenerator(Generator):
             year = entry.fields.get('year', 2018)
             
             authors = entry.fields.get('author', '').split(' and ')
-            authors = [
-                LatexNodes2Text().latex_to_text(
-                    re.sub(r'[\{\}]', '', (x.split(',')[1] + ' ' + x.split(',')[0]).strip())
-                )
-                for x in authors
-            ]
+            print(authors)
+            parsed_authors = []
+            for author in authors:
+                if ',' in author:
+                    parsed_authors.append(
+                        LatexNodes2Text().latex_to_text(
+                            re.sub(r'[\{\}]', '', (author.split(',')[1] + ' ' + author.split(',')[0]).strip())
+                        )
+                    )
+                else:
+                    parsed_authors.append(
+                        LatexNodes2Text().latex_to_text(author)
+                    )
+            authors = parsed_authors
             
             title = LatexNodes2Text().latex_to_text(entry.fields.get('title', ''))
             
