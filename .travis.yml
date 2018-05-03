@@ -26,4 +26,4 @@ deploy:
   skip_cleanup: true
   script: rsync -r --delete-after --quiet output/* gilles@diskover.atlantis.ugent.be:KMBlog/
   on:
-    branch: gh-pages
+    branch: master
