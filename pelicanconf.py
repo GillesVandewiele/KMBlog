@@ -16,7 +16,7 @@ rdf_paths = [
   'content/authors',
   'output/publications'
 ]
-aggregate_rdf_files(rdf_paths, 'content/km_rdf.ttl')
+aggregate_rdf_files(rdf_paths, 'output/km_rdf.ttl')
 
 AUTHORS_PATH = 'content/authors'       
 AUTHORS = extract_authors(AUTHORS_PATH)
