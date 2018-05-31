@@ -59,7 +59,8 @@ MENUITEMS = (
 
 # Blogroll
 LINKS = (('IDLab', 'http://idlab.technology'),
-         ('UGent', 'http://www.ugent.be/'))
+         ('UGent', 'http://www.ugent.be/'),
+         ('imec', 'https://www.imec-int.com/en/home'))
 
 ICONS = (
     ('github', 'https://github.com/IBCNServices'),
