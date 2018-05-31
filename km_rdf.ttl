@@ -1,0 +1,110 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///home/travis/build/GillesVandewiele/KMBlog/content/authors/bram.ttl#BramSteenwinckel> a foaf:Person ;
+    foaf:account <https://github.com/bsteenwi/>,
+        <https://twitter.com/BSteenwinckel>,
+        <https://www.linkedin.com/in/bram-steenwinckel-557069147/> ;
+    foaf:depiction <https://avatars0.githubusercontent.com/u/9083494> ;
+    foaf:familyName "Steenwinckel" ;
+    foaf:givenName "Bram" ;
+    foaf:interest "Anomaly Detection",
+        "Root Cause Analysis" ;
+    foaf:mbox <mailto:bram.steenwinckel@ugent.be> ;
+    foaf:name "Bram Steenwinckel" .
+
+<file:///home/travis/build/GillesVandewiele/KMBlog/content/authors/femkeo.ttl#FemkeOngenae> a foaf:Person ;
+    owl:sameAs <https://data.verborgh.org/people/femke_ongenae> ;
+    foaf:account <https://biblio.ugent.be/person/802000192218>,
+        <https://github.com/fongenae>,
+        <https://scholar.google.be/citations?user=ezkNNF4AAAAJ&hl=nl>,
+        <https://twitter.com/fongenae>,
+        <https://www.linkedin.com/in/femke-ongenae-10b2587/> ;
+    foaf:depiction <file:///home/travis/build/GillesVandewiele/KMBlog/content/authors/broken> ;
+    foaf:familyName "Ongenae" ;
+    foaf:givenName "Femke" ;
+    foaf:interest "Agile Development",
+        "Anomaly Detection",
+        "Data Analytics",
+        "Decision Support Systems",
+        "Grant Coordination",
+        "Internet of Things",
+        "Machine Learning",
+        "Medical Informatics",
+        "Multidisciplinary Research",
+        "Ontology",
+        "Predictive Analytics",
+        "Project Management",
+        "Root Cause Analysis",
+        "SCRUM",
+        "Semantic Web",
+        "Stream Reasoning",
+        "White-Box Machine Learning",
+        "eHealth" ;
+    foaf:mbox <mailto:femke.ongenae@ugent.be> ;
+    foaf:name "Femke Ongenae" .
+
+<file:///home/travis/build/GillesVandewiele/KMBlog/content/authors/gilles.ttl#GillesVandewiele> a foaf:Person ;
+    owl:sameAs <https://data.verborgh.org/people/gilles_vandewiele> ;
+    foaf:account <https://github.com/GillesVandewiele>,
+        <https://twitter.com/gillesvdwiele>,
+        <https://www.linkedin.com/in/gillesvandewiele> ;
+    foaf:depiction <http://users.ugent.be/~givdwiel/img/profielfoto.jpg> ;
+    foaf:familyName "Vandewiele" ;
+    foaf:givenName "Gilles" ;
+    foaf:homepage <http://users.ugent.be/~givdwiel> ;
+    foaf:interest "Decision Support Systems",
+        "White-Box Machine Learning" ;
+    foaf:mbox <mailto:gilles.vandewiele@ugent.be> ;
+    foaf:name "Gilles Vandewiele" .
+
+<file:///home/travis/build/GillesVandewiele/KMBlog/content/authors/jelle.ttl#JelleDeBock> a foaf:Person ;
+    foaf:account <https://github.com/jelledebock>,
+        <https://twitter.com/JelleDeBock>,
+        <https://www.linkedin.com/in/jelle-de-bock-670a7090/> ;
+    foaf:depiction "jelle.jpg" ;
+    foaf:familyName "De Bock" ;
+    foaf:givenName "Jelle" ;
+    foaf:interest "Data processing and analytics" ;
+    foaf:mbox <mailto:jelle.debock@ugent.be> ;
+    foaf:name "Jelle De Bock" .
+
+<file:///home/travis/build/GillesVandewiele/KMBlog/content/authors/mathias.ttl#MathiasDeBrouwer> a foaf:Person ;
+    foaf:account <https://github.com/mrdbrouw>,
+        <https://twitter.com/mathiasdbr>,
+        <https://www.linkedin.com/in/mathiasdebrouwer/> ;
+    foaf:depiction <https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAIA_wDGAAAAAQAAAAAAAAtsAAAAJGNhMWUwMTc1LTM4OTctNDc0NC04YjUwLTZhZDgzZDljNmJhNg.jpg> ;
+    foaf:familyName "De Brouwer" ;
+    foaf:givenName "Mathias" ;
+    foaf:interest "Edge Computing",
+        "Stream Reasoning" ;
+    foaf:mbox <mailto:mrdbrouw.debrouwer@ugent.be> ;
+    foaf:name "Mathias De Brouwer" .
+
+<file:///home/travis/build/GillesVandewiele/KMBlog/content/authors/pieter.ttl#PieterBonte> a foaf:Person ;
+    foaf:account <https://github.com/pbonte/>,
+        <https://twitter.com/psbonte>,
+        <https://www.linkedin.com/in/pieter-bonte-9294315a> ;
+    foaf:depiction "pieter.jpg" ;
+    foaf:familyName "Bonte" ;
+    foaf:givenName "Pieter" ;
+    foaf:interest "Stream Reasoning" ;
+    foaf:mbox <mailto:pieter.bonte@ugent.be> ;
+    foaf:name "Pieter Bonte" .
+
+<file:///home/travis/build/GillesVandewiele/KMBlog/content/authors/stijn.ttl#StijnVerstichel> a foaf:Person ;
+    foaf:account <https://be.linkedin.com/in/stijn-verstichel-3202015>,
+        <https://github.com/svrstich/>,
+        <https://twitter.com/svrstich> ;
+    foaf:depiction <https://www.ugent.be/ea/img/idlab/members/stijnverstichel-jpg/@@images/744c237f-5a8f-4a7b-829b-4209233551b0.jpeg> ;
+    foaf:familyName "Verstichel" ;
+    foaf:givenName "Stijn" ;
+    foaf:interest "Distributed Reasoning for Fault Detection and Diagnosis" ;
+    foaf:mbox <mailto:stijn.verstichel@ugent.be> ;
+    foaf:name "Stijn Verstichel" .
+
