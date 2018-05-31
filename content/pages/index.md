@@ -1,8 +1,8 @@
-Title: Welcome to the DISKOVER blog!
+Title: Welcome to the KM blog!
 url: 
 save_as: index.html
 
-DISKOVER stands for DIStributed KnOwledge-based systems for adVancEd applications. We are a research team within the [IDLab](https://www.ugent.be/ea/idlab/en) research group of [Ghent University](https://www.ugent.be/en) - [imec](https://www.imec-int.com/en/home). 
+KM stands for Knowledge Management. We are a research team within the [IDLab](https://www.ugent.be/ea/idlab/en) research group of [Ghent University](https://www.ugent.be/en) - [imec](https://www.imec-int.com/en/home). 
 
 Here you can find out more about our [research topics](./blog.html), [publications](./publications.html), [projects](./about.html), [educational courses](./about.html), and [vacancies](./about.html) for PhD positions, project researchers and master thesis topics and the [conferences](./conferences.html) we are attending.
 
@@ -10,7 +10,7 @@ Feel free to discuss with us by commenting on our [blog](./blog.html) or reachin
 
 ##Who are we?
 
-The DISKOVER team performs research on harnessing data to create more **intelligent systems**.  More and more data is being generated today. However, raw data is meaningless. It needs to be combined with **expert and domain knowledge** in order to derive or predict interesting events from the data streams. To allow for **real-time decision making** based on  these events, this analysis should be performed in a performant and scalable manner. Moreover, the constructed algorithms should be **interpretable** such that domain experts can understand why the system suggests a particular decision. To support this, we are  performing research into novel algorithms to perform this analysis more accurately and effectively, including techniques such as **semantic reasoning** (logic-based, Semantic Web, etc.), **white-box machine learning** (decision trees, finite state machines, etc.), **reinforcement learning** and **fusion of semantics and machine learning**. 
+The KM team performs research on harnessing data to create more **intelligent systems**.  More and more data is being generated today. However, raw data is meaningless. It needs to be combined with **expert and domain knowledge** in order to derive or predict interesting events from the data streams. To allow for **real-time decision making** based on  these events, this analysis should be performed in a performant and scalable manner. Moreover, the constructed algorithms should be **interpretable** such that domain experts can understand why the system suggests a particular decision. To support this, we are  performing research into novel algorithms to perform this analysis more accurately and effectively, including techniques such as **semantic reasoning** (logic-based, Semantic Web, etc.), **white-box machine learning** (decision trees, finite state machines, etc.), **reinforcement learning** and **fusion of semantics and machine learning**. 
 
 These techniques are applied to a number of application areas, such as smart factories, personalized robotics, smart cities, etc. Three application areas are receiving most attention due to their possible societal impact, i.e., eHealth, VR and IoT.
 
